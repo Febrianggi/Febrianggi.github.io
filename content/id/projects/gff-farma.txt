@@ -15,9 +15,10 @@ HASIL:
 
 KONTRIBUSI:
 
+TEKNIK: 
 TOOLS: PHP, SQL
 
 GAMBAR:
 
-LINK_REPO: https://github.com/Febrianggi
+LINK_REPO: https://github.com/Febrianggi/php-mysql-pharmacy-database
 LINK_DEMO:

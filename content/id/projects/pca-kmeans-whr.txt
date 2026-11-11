@@ -18,10 +18,11 @@ HASIL:
 
 KONTRIBUSI:
 
+TEKNIK: Principal Component Analysis, K-Means
 TOOLS: R
 
 GAMBAR:
 - assets/projects/pca-kmeans-whr/1.webp | Slide daftar negara pada Kluster 1 dan Kluster 2 hasil K-Means
 
-LINK_REPO: https://github.com/Febrianggi
+LINK_REPO: https://github.com/Febrianggi/global-well-being
 LINK_DEMO:

@@ -21,8 +21,21 @@ function h(tag, props = {}, ...children) {
   return el;
 }
 
+function svgIcon(d) {
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute("viewBox", "0 0 24 24");
+  svg.setAttribute("aria-hidden", "true");
+  const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  path.setAttribute("d", d);
+  svg.append(path);
+  return svg;
+}
+
 const paragraphs = text => (text || "").split("\n\n").filter(Boolean).map(p => h("p", { text: p }));
 const external = { target: "_blank", rel: "noopener noreferrer" };
+const norm = s => s.trim().toLowerCase();
+const listOf = value => (Array.isArray(value) ? value : value ? [value] : []);
+const reducedMotion = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 const state = {
   lang: "id",
@@ -30,8 +43,6 @@ const state = {
   ui: {},
   profile: {},
   contact: {},
-  projects: [],
-  tools: [],
   filter: null,
   certIndex: 0,
 };
@@ -57,7 +68,7 @@ function errorBox(error, retry) {
     h("p", { text: t("ERROR", { file }, `Konten gagal dimuat (${file}).`) }),
     h("button", { class: "btn btn-ghost btn-sm", type: "button", onclick: retry }, t("RETRY", {}, "Coba lagi")));
 }
-const emptyBox = () => h("p", { class: "state state-empty", text: t("EMPTY", {}, "Belum ada isi di bagian ini.") });
+const emptyBox = (key = "EMPTY") => h("p", { class: "state state-empty", text: t(key, {}, "Belum ada isi di bagian ini.") });
 
 async function fill(name, loader, render) {
   const el = slotEl(name);
@@ -75,6 +86,12 @@ async function fill(name, loader, render) {
 
 const first = file => load(file, state.lang).then(records => records[0] || {});
 const all = file => load(file, state.lang);
+
+function loadList(manifestKey, folder) {
+  if (!(manifestKey in state.manifest)) return Promise.reject(new ContentError("content/manifest.txt", manifestKey));
+  return Promise.all(splitList(state.manifest[manifestKey]).map(slug =>
+    load(`${folder}/${slug}.txt`, state.lang).then(r => ({ slug, ...(r[0] || {}) }), error => ({ slug, error }))));
+}
 
 /* ------------------------------------------------------------------
    Teks antarmuka
@@ -99,47 +116,56 @@ function applyFields() {
 }
 
 /* ------------------------------------------------------------------
-   Hero, tentang, pendidikan, prestasi, kontak
+   Kontak: daftar tautan dipakai di profil dan bagian kontak
 ------------------------------------------------------------------- */
-function renderHero(el, [profile, contact]) {
+function contactLinks(contact) {
+  const handle = url => url.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "").split("/").pop();
+  return [
+    contact.WHATSAPP && { label: "WhatsApp", href: `https://wa.me/${contact.WHATSAPP.replace(/\D/g, "")}`, icon: "whatsapp.png", detail: `+${contact.WHATSAPP.replace(/\D/g, "")}` },
+    contact.LINKEDIN && { label: "LinkedIn", href: contact.LINKEDIN, icon: "linkedin.png", detail: handle(contact.LINKEDIN) },
+    contact.GITHUB && { label: "GitHub", href: contact.GITHUB, icon: "github.png", detail: handle(contact.GITHUB) },
+    contact.INSTAGRAM && { label: "Instagram", href: contact.INSTAGRAM, icon: "instagram.png", detail: `@${handle(contact.INSTAGRAM)}` },
+  ].filter(Boolean);
+}
+
+/* ------------------------------------------------------------------
+   Hero: judul, profil, tentang, pendidikan, prestasi
+------------------------------------------------------------------- */
+function renderProfile(el, [profile, contact]) {
   state.profile = profile;
   state.contact = contact;
   applyFields();
 
   const [firstName, ...rest] = (profile.NAMA || "").split(" ");
-  el.replaceChildren(
-    h("p", { class: "hero-role", text: profile.PERAN }),
-    h("h1", { id: "hero-name", class: "hero-name" },
-      h("span", { class: "accent-text", text: firstName }), rest.length ? ` ${rest.join(" ")}` : ""),
-    h("div", { class: "hero-intro" }, paragraphs(profile.INTRO)));
+  const brand = slotEl("brand");
+  brand.replaceChildren(firstName, rest.length ? " " : "", rest.length ? h("span", { text: rest.join(" ") }) : "");
 
-  // foto profil atau placeholder inisial
-  const portrait = slotEl("portrait");
-  const frame = h("div", { class: "portrait-frame" });
+  slotEl("page-title").replaceChildren(profile.JUDUL_HALAMAN || profile.NAMA || "");
+
+  const photo = h("div", { class: "photo" });
   if (profile.FOTO) {
-    frame.append(h("img", { src: profile.FOTO, alt: profile.FOTO_ALT || profile.NAMA, width: 800, height: 1000, fetchpriority: "high" }));
-    portrait.replaceChildren(frame);
+    photo.append(h("img", { src: profile.FOTO, alt: profile.FOTO_ALT || profile.NAMA, width: 600, height: 600, fetchpriority: "high" }));
   } else {
-    frame.append(h("span", { class: "portrait-initials", "aria-hidden": "true", text: profile.INISIAL || "" }));
-    portrait.replaceChildren(frame, h("figcaption", { class: "portrait-note", text: t("PHOTO_PENDING") }));
+    photo.append(h("span", { class: "photo-initials", "aria-hidden": "true", text: profile.INISIAL || "" }));
   }
 
-  const cv = slotEl("cv");
-  cv.hidden = !profile.CV;
-  if (profile.CV) cv.href = profile.CV;
-
-  for (const button of $$("[data-copy-email]")) button.disabled = !contact.EMAIL;
-
-  const links = [
-    contact.GITHUB && ["GitHub", contact.GITHUB, "github.png"],
-    contact.LINKEDIN && ["LinkedIn", contact.LINKEDIN, "linkedin.png"],
-    contact.INSTAGRAM && ["Instagram", contact.INSTAGRAM, "instagram.png"],
-    contact.WHATSAPP && ["WhatsApp", `https://wa.me/${contact.WHATSAPP.replace(/\D/g, "")}`, "whatsapp.png"],
-  ].filter(Boolean);
-  slotEl("social").replaceChildren(...links.map(([label, href, icon]) =>
-    h("li", {}, h("a", { href, ...external },
-      h("span", { class: "icon-tile icon-tile-dark" }, h("img", { src: `assets/contact/${icon}`, alt: "", width: 20, height: 20 })),
-      label))));
+  el.replaceChildren(
+    photo,
+    !profile.FOTO && h("p", { class: "photo-note", text: t("PHOTO_PENDING") }),
+    h("p", { class: "profile-name" },
+      h("span", { text: firstName }), rest.length ? h("span", { class: "accent", text: ` ${rest.join(" ")}` }) : ""),
+    profile.PERAN && h("p", { class: "profile-role", text: profile.PERAN }),
+    h("div", { class: "profile-actions" },
+      h("a", { class: "btn btn-primary", href: "#projects" }, t("HERO_CTA")),
+      contact.EMAIL && h("button", { class: "btn btn-ghost", type: "button", dataset: { copyEmail: "" } },
+        svgIcon("M9 9h10v10H9zM5 15V5h10"), t("COPY_EMAIL")),
+      profile.CV && h("a", { class: "btn btn-ghost", href: profile.CV, download: true }, t("CV"))),
+    h("ul", { class: "profile-social" }, [
+      contact.EMAIL && { label: "Email", href: `mailto:${contact.EMAIL}`, icon: "email.png" },
+      ...contactLinks(contact),
+    ].filter(Boolean).map(link =>
+      h("li", {}, h("a", { href: link.href, ...(link.href.startsWith("http") ? external : {}), "aria-label": link.label, title: link.label },
+        h("img", { src: `assets/contact/${link.icon}`, alt: "", width: 22, height: 22 }))))));
 }
 
 function renderAbout(el, about) {
@@ -149,11 +175,12 @@ function renderAbout(el, about) {
 function renderEducation(el, entries) {
   if (!entries.length) return el.replaceChildren(emptyBox());
   el.replaceChildren(h("ul", { class: "entry-list" }, entries.map(e =>
-    h("li", {},
+    h("li", { class: "education" },
       h("p", { class: "entry-title", text: e.INSTITUSI }),
-      h("p", { text: e.PROGRAM }),
-      h("p", { class: "mono muted", text: e.PERIODE }),
-      e.KETERANGAN && h("p", { class: "muted", text: e.KETERANGAN })))));
+      h("p", { class: "muted", text: e.PROGRAM }),
+      h("p", { class: "small", text: e.PERIODE }),
+      e.KETERANGAN && h("p", { class: "muted", text: e.KETERANGAN }),
+      e.IPK && h("p", { class: "gpa", text: `${e.IPK} GPA` })))));
 }
 
 function renderAchievements(el, entries) {
@@ -161,25 +188,71 @@ function renderAchievements(el, entries) {
   el.replaceChildren(h("ul", { class: "entry-list" }, entries.map(e =>
     h("li", {},
       h("p", { class: "entry-title", text: e.JUDUL }),
-      h("p", { class: "mono muted", text: [e.PENYELENGGARA, e.TAHUN].filter(Boolean).join(" · ") }),
-      e.KETERANGAN && h("p", { text: e.KETERANGAN }),
+      h("p", { class: "small muted", text: [e.PENYELENGGARA, e.TAHUN].filter(Boolean).join(" · ") }),
+      e.KETERANGAN && h("p", { class: "muted", text: e.KETERANGAN }),
       e.LINK && h("a", { class: "text-link", href: e.LINK, ...external }, t("EVIDENCE"))))));
 }
 
-function renderContact(el, contact) {
-  const email = contact.EMAIL;
-  el.replaceChildren(
-    h("div", { class: "contact-lead" }, paragraphs(contact.AJAKAN)),
-    email && h("div", { class: "contact-email" },
-      h("a", { class: "email-link", href: `mailto:${email}`, text: email }),
-      h("button", { class: "btn btn-primary", type: "button", dataset: { copyEmail: "" } }, t("COPY_EMAIL"))),
-    h("ul", { class: "contact-links" }, [
-      contact.GITHUB && ["GitHub", contact.GITHUB],
-      contact.LINKEDIN && ["LinkedIn", contact.LINKEDIN],
-      contact.INSTAGRAM && ["Instagram", contact.INSTAGRAM],
-      contact.WHATSAPP && ["WhatsApp", `https://wa.me/${contact.WHATSAPP.replace(/\D/g, "")}`],
-    ].filter(Boolean).map(([label, href]) =>
-      h("li", {}, h("a", { href, ...external }, h("span", { text: label }), h("span", { class: "mono muted", text: href.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "") }))))));
+/* ------------------------------------------------------------------
+   Technical skills (ikon) + filter proyek
+------------------------------------------------------------------- */
+function countTools(projects) {
+  const counts = new Map();
+  for (const project of projects) for (const tool of splitList(project.TOOLS)) counts.set(norm(tool), (counts.get(norm(tool)) || 0) + 1);
+  return counts;
+}
+
+function renderTools(el, { tools, projects, more }) {
+  const list = tools.filter(tool => tool.NAMA);
+  if (!list.length) return el.replaceChildren(emptyBox());
+  const counts = countTools([...projects, ...more]);
+
+  el.replaceChildren(h("ul", { class: "tech-grid" }, list.map(tool => {
+    const n = counts.get(norm(tool.NAMA)) || 0;
+    const icon = tool.IKON
+      ? h("img", { src: tool.IKON, alt: "", width: 30, height: 30, loading: "lazy" })
+      : h("span", { class: "monogram", "aria-hidden": "true", text: tool.NAMA.slice(0, 3) });
+    const inner = [h("span", { class: "tech-icon" }, icon), h("span", { class: "tech-name", text: tool.NAMA }),
+      n > 0 && h("span", { class: "tech-count", "aria-hidden": "true", text: n })];
+    const countLabel = n === 1 ? t("TOOLS_COUNT_ONE") : t("TOOLS_COUNT", { n });
+    return h("li", {}, n > 0
+      ? h("button", { class: "tech-item is-used", type: "button", dataset: { tool: norm(tool.NAMA) }, "aria-label": `${tool.NAMA}, ${countLabel}`, "aria-pressed": "false", onclick: () => toggleFilter(tool.NAMA) }, inner)
+      : h("div", { class: "tech-item" }, inner));
+  })));
+  applyFilter();
+}
+
+function toggleFilter(name) {
+  const same = state.filter && norm(state.filter) === norm(name);
+  state.filter = same ? null : name;
+  applyFilter();
+  if (!same) $("#projects").scrollIntoView({ behavior: reducedMotion() ? "auto" : "smooth", block: "start" });
+}
+
+function applyFilter() {
+  const key = state.filter ? norm(state.filter) : null;
+  const items = $$("[data-project-tools]");
+  let shown = 0;
+  for (const item of items) {
+    const match = !key || item.dataset.projectTools.split("|").includes(key);
+    item.hidden = !match;
+    if (match) shown++;
+    for (const chip of $$("[data-chip]", item)) chip.classList.toggle("is-match", Boolean(key) && chip.dataset.chip === key);
+  }
+  for (const button of $$(".tech-item[data-tool]")) button.setAttribute("aria-pressed", String(button.dataset.tool === key));
+
+  const status = $("#filter-status");
+  status.hidden = !key;
+  $("#filter-text").textContent = key ? t("FILTER_STATUS_TOOL", { n: shown, total: items.length, tool: state.filter }) : "";
+  for (const slot of ["projects", "more"]) {
+    const el = slotEl(slot);
+    const visible = $$("[data-project-tools]", el).some(item => !item.hidden);
+    let empty = $(".filter-empty", el);
+    if (key && !visible && $$("[data-project-tools]", el).length) {
+      if (!empty) el.append(empty = h("p", { class: "state state-empty filter-empty" }));
+      empty.textContent = t("FILTER_EMPTY");
+    } else empty?.remove();
+  }
 }
 
 /* ------------------------------------------------------------------
@@ -188,8 +261,7 @@ function renderContact(el, contact) {
 function mediaGrid(images, { large = false } = {}) {
   if (!images.length) {
     return h("div", { class: "media media-empty" },
-      h("div", { class: "media-placeholder" },
-        h("span", { text: t("IMAGE_PENDING") })));
+      h("div", { class: "media-placeholder" }, h("span", { text: t("IMAGE_PENDING") })));
   }
   const shown = images.slice(0, 4);
   const items = shown.map(img => ({ type: "image", src: img.src, alt: img.alt }));
@@ -215,7 +287,7 @@ function setZoom(on) {
   const button = $("#lightbox-zoom");
   stage.classList.toggle("is-zoomed", on);
   button.setAttribute("aria-pressed", String(on));
-  button.setAttribute("aria-label", t(on ? "ZOOM_OUT" : "ZOOM_IN"));
+  button.setAttribute("aria-label", t(on ? "ZOOM_OUT" : "ZOOM_IN", {}, on ? "Perkecil" : "Perbesar"));
 }
 
 function renderLightbox() {
@@ -240,99 +312,53 @@ function stepLightbox(delta) {
 }
 
 /* ------------------------------------------------------------------
-   Proyek + filter tools
+   Proyek unggulan
 ------------------------------------------------------------------- */
-const norm = s => s.trim().toLowerCase();
-
 async function loadProjects() {
-  const slugs = splitList(state.manifest.PROYEK);
-  if (!state.manifest.PROYEK) throw new ContentError("content/manifest.txt", "PROYEK");
-  const [tools, ...results] = await Promise.all([
-    all("tools.txt"),
-    ...slugs.map(slug => load(`projects/${slug}.txt`, state.lang)
-      .then(r => ({ slug, ...(r[0] || {}) }), error => ({ slug, error }))),
-  ]);
-  return { tools, projects: results };
+  const [tools, projects, more] = await Promise.all([all("tools.txt"), loadList("PROYEK", "projects"), loadList("PROYEK_LAINNYA", "more-projects")]);
+  return { tools, projects, more };
 }
 
-function projectCard(project) {
+const toolChips = tools => tools.length > 0 &&
+  h("ul", { class: "chips" }, tools.map(tool => h("li", { dataset: { chip: norm(tool) }, text: tool })));
+
+function featureRow(project) {
   if (project.error) {
-    return h("article", { class: "card project-card", dataset: { tools: "" } },
-      errorBox(project.error, () => renderAllContent()));
+    return h("article", { class: "feature", dataset: { projectTools: "" } }, errorBox(project.error, () => renderAllContent()));
   }
   const tools = splitList(project.TOOLS);
-  const images = parseImages(project.GAMBAR);
-  return h("article", { class: "card project-card", dataset: { tools: tools.map(norm).join("|") }, "aria-labelledby": `p-${project.slug}` },
-    mediaGrid(images),
-    h("div", { class: "card-body" },
-      project.TAHUN && h("p", { class: "mono muted", text: project.TAHUN }),
-      h("h3", { id: `p-${project.slug}`, text: project.JUDUL }),
-      project.SUBJUDUL && h("p", { class: "subtitle", text: project.SUBJUDUL }),
-      project.RINGKASAN && h("p", { class: "summary", text: project.RINGKASAN.split("\n\n")[0] }),
-      tools.length > 0 && h("ul", { class: "chips", "aria-label": t("PROJECT_TOOLS") }, tools.map(tool => h("li", { dataset: { tool: norm(tool) }, text: tool }))),
-      h("div", { class: "card-actions" },
+  const meta = [
+    project.TUJUAN && [t("PROJECT_GOAL"), project.TUJUAN],
+    project.TEKNIK && [t("PROJECT_TECHNIQUE"), project.TEKNIK],
+  ].filter(Boolean);
+
+  return h("article", { class: "feature", dataset: { projectTools: tools.map(norm).join("|") }, "aria-labelledby": `p-${project.slug}` },
+    mediaGrid(parseImages(project.GAMBAR)),
+    h("div", { class: "feature-body" },
+      h("h3", { id: `p-${project.slug}`, class: "feature-title", text: project.JUDUL }),
+      h("p", { class: "feature-subtitle", text: [project.TAHUN, project.SUBJUDUL].filter(Boolean).join(" • ") }),
+      project.RINGKASAN && h("p", { class: "feature-desc", text: project.RINGKASAN.split("\n\n")[0] }),
+      (meta.length > 0 || tools.length > 0) && h("dl", { class: "meta-grid" },
+        meta.map(([label, value]) => h("div", {}, h("dt", { text: label }), h("dd", { text: value }))),
+        tools.length > 0 && h("div", {}, h("dt", { text: t("PROJECT_TOOLS") }), h("dd", {}, toolChips(tools)))),
+      h("div", { class: "actions" },
         h("button", { class: "btn btn-primary btn-sm", type: "button", onclick: e => openProject(project, e.currentTarget) }, t("PROJECT_DETAIL")),
         project.LINK_REPO && h("a", { class: "btn btn-ghost btn-sm", href: project.LINK_REPO, ...external }, t("PROJECT_REPO")),
         project.LINK_DEMO && h("a", { class: "btn btn-ghost btn-sm", href: project.LINK_DEMO, ...external }, t("PROJECT_DEMO")))));
 }
 
-function renderProjects(el, { tools, projects }) {
-  state.tools = tools;
-  state.projects = projects;
-
-  if (!projects.length) el.replaceChildren(emptyBox());
-  else el.replaceChildren(...projects.map(projectCard));
-
-  // tombol filter: hanya tools yang benar-benar dipakai proyek
-  const used = new Set(projects.flatMap(p => splitList(p.TOOLS).map(norm)));
-  const filterTools = tools.map(tool => tool.NAMA).filter(name => name && used.has(norm(name)));
-  for (const name of used) if (!filterTools.some(n => norm(n) === name)) filterTools.push(projects.flatMap(p => splitList(p.TOOLS)).find(n => norm(n) === name));
-
-  const bar = slotEl("filters");
-  bar.replaceChildren($("#filter-label", bar) || h("span", { id: "filter-label", class: "filter-label" }),
-    h("button", { class: "chip-btn", type: "button", dataset: { filter: "" }, onclick: () => setFilter(null) }, t("FILTER_ALL")),
-    ...filterTools.map(name => h("button", { class: "chip-btn", type: "button", dataset: { filter: norm(name) }, onclick: () => setFilter(name) }, name)));
-  $("#filter-label").textContent = t("FILTER_LABEL");
-
+function renderProjects(el, { projects }) {
+  el.replaceChildren(...(projects.length ? projects.map(featureRow) : [emptyBox()]));
   applyFilter();
-}
-
-function setFilter(name) {
-  state.filter = name;
-  applyFilter();
-}
-
-function applyFilter() {
-  const key = state.filter ? norm(state.filter) : null;
-  const cards = $$(".project-card", slotEl("projects"));
-  let shown = 0;
-  for (const card of cards) {
-    const match = !key || card.dataset.tools.split("|").includes(key);
-    card.hidden = !match;
-    if (match) shown++;
-    for (const chip of $$(".chips li", card)) chip.classList.toggle("is-match", Boolean(key) && chip.dataset.tool === key);
-  }
-  for (const button of $$("[data-filter]", slotEl("filters"))) {
-    button.setAttribute("aria-pressed", String(button.dataset.filter === (key || "")));
-  }
-  const status = $("#filter-status");
-  status.textContent = key
-    ? t("FILTER_STATUS_TOOL", { n: shown, total: cards.length, tool: state.filter })
-    : t("FILTER_STATUS", { n: shown, total: cards.length });
-  let empty = $(".filter-empty", slotEl("projects"));
-  if (key && !shown) {
-    if (!empty) slotEl("projects").append(empty = h("p", { class: "state state-empty filter-empty" }));
-    empty.textContent = t("FILTER_EMPTY");
-  } else empty?.remove();
 }
 
 function openProject(project, trigger) {
   const dialog = $("#project-dialog");
   const tools = splitList(project.TOOLS);
-  const results = Array.isArray(project.HASIL) ? project.HASIL : splitList(project.HASIL ? [project.HASIL] : []);
+  const results = listOf(project.HASIL);
   const pending = () => h("p", { class: "muted", text: t("PROJECT_PENDING") });
 
-  $("#project-dialog-kicker").textContent = [project.SUBJUDUL, project.TAHUN].filter(Boolean).join(" · ");
+  $("#project-dialog-kicker").textContent = [project.TAHUN, project.SUBJUDUL].filter(Boolean).join(" • ");
   $("#project-dialog-title").textContent = project.JUDUL;
   $("#project-dialog-body").replaceChildren(
     mediaGrid(parseImages(project.GAMBAR), { large: true }),
@@ -341,8 +367,8 @@ function openProject(project, trigger) {
     h("section", {}, h("h3", { text: t("PROJECT_RESULTS") }),
       results.length ? h("ul", { class: "result-list" }, results.map(r => h("li", { text: r }))) : pending()),
     project.KONTRIBUSI && h("section", {}, h("h3", { text: t("PROJECT_CONTRIBUTION") }), ...paragraphs(project.KONTRIBUSI)),
-    tools.length > 0 && h("section", {}, h("h3", { text: t("PROJECT_TOOLS") }), h("ul", { class: "chips" }, tools.map(tool => h("li", { text: tool })))),
-    (project.LINK_REPO || project.LINK_DEMO) && h("div", { class: "card-actions" },
+    tools.length > 0 && h("section", {}, h("h3", { text: t("PROJECT_TOOLS") }), toolChips(tools)),
+    (project.LINK_REPO || project.LINK_DEMO) && h("div", { class: "actions" },
       project.LINK_DEMO && h("a", { class: "btn btn-primary", href: project.LINK_DEMO, ...external }, t("PROJECT_DEMO")),
       project.LINK_REPO && h("a", { class: "btn btn-ghost", href: project.LINK_REPO, ...external }, t("PROJECT_REPO"))));
   openDialog(dialog, trigger);
@@ -350,77 +376,63 @@ function openProject(project, trigger) {
 }
 
 /* ------------------------------------------------------------------
-   Tools
+   Proyek lainnya (kartu ringkas)
 ------------------------------------------------------------------- */
-function renderTools(el, { tools: toolList, projects }) {
-  if (!toolList.length) return el.replaceChildren(emptyBox());
-  const counts = new Map();
-  for (const project of projects) for (const tool of splitList(project.TOOLS)) counts.set(norm(tool), (counts.get(norm(tool)) || 0) + 1);
-
-  const groups = new Map();
-  for (const tool of toolList) {
-    if (!tool.NAMA) continue;
-    const group = tool.GRUP || "";
-    if (!groups.has(group)) groups.set(group, []);
-    groups.get(group).push(tool);
+function renderMore(el, { more }) {
+  if (!more.length) {
+    el.replaceChildren(h("div", { class: "more-empty" }, h("span", { class: "more-empty-mark", "aria-hidden": "true" }), h("p", { text: t("MORE_EMPTY") })));
+    return;
   }
-
-  el.replaceChildren(...[...groups].map(([group, tools]) => h("section", { class: "tool-group" },
-    group && h("h3", { text: group }),
-    h("ul", { class: "tool-list" }, tools.map(tool => {
-      const n = counts.get(norm(tool.NAMA)) || 0;
-      const icon = tool.IKON
-        ? h("img", { src: tool.IKON, alt: "", width: 28, height: 28, loading: "lazy" })
-        : h("span", { class: "monogram", "aria-hidden": "true", text: tool.NAMA.slice(0, 3) });
-      const label = [h("span", { class: "icon-tile" }, icon), h("span", { class: "tool-name", text: tool.NAMA }),
-        h("span", { class: "tool-count", text: n ? (n === 1 ? t("TOOLS_COUNT_ONE", {}, t("TOOLS_COUNT", { n })) : t("TOOLS_COUNT", { n })) : t("TOOLS_NONE") })];
-      return h("li", {}, n
-        ? h("button", { class: "tool", type: "button", onclick: () => showProjectsFor(tool.NAMA) }, label)
-        : h("div", { class: "tool is-idle" }, label));
-    })))));
-}
-
-function showProjectsFor(name) {
-  setFilter(name);
-  activateTab($("#tab-projects"));
-  $("#portfolio").scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
-  $("#tab-projects").focus({ preventScroll: true });
+  el.replaceChildren(...more.map(project => {
+    if (project.error) return h("article", { class: "more-card", dataset: { projectTools: "" } }, errorBox(project.error, () => renderAllContent()));
+    const tools = splitList(project.TOOLS);
+    const links = [
+      project.LINK_REPO && [t("PROJECT_REPO"), project.LINK_REPO],
+      project.LINK_DEMO && [t("PROJECT_DEMO"), project.LINK_DEMO],
+      project.LINK_LAPORAN && [t("PROJECT_REPORT"), project.LINK_LAPORAN],
+    ].filter(Boolean);
+    return h("article", { class: "more-card", dataset: { projectTools: tools.map(norm).join("|") } },
+      h("div", { class: "more-body" },
+        h("h3", { text: project.JUDUL }),
+        listOf(project.HASIL).length > 0 && h("ul", { class: "result-list" }, listOf(project.HASIL).map(r => h("li", { text: r }))),
+        (tools.length > 0 || project.KATEGORI) && h("p", { class: "more-tools" }, [tools.join(", "), project.KATEGORI].filter(Boolean).join(" | "))),
+      (project.TEKNIK || links.length > 0) && h("div", { class: "more-foot" },
+        project.TEKNIK && h("p", {}, h("strong", { text: `${t("PROJECT_TECHNIQUE")}: ` }), project.TEKNIK),
+        links.length > 0 && h("div", { class: "more-links" }, links.map(([label, href]) => h("a", { class: "text-link", href, ...external }, label)))));
+  }));
+  applyFilter();
 }
 
 /* ------------------------------------------------------------------
    Publikasi
 ------------------------------------------------------------------- */
-async function loadPublications() {
-  if (!state.manifest.PUBLIKASI) throw new ContentError("content/manifest.txt", "PUBLIKASI");
-  return Promise.all(splitList(state.manifest.PUBLIKASI).map(slug =>
-    load(`publications/${slug}.txt`, state.lang).then(r => ({ slug, ...(r[0] || {}) }), error => ({ slug, error }))));
-}
-
 function renderPublications(el, pubs) {
   if (!pubs.length) return el.replaceChildren(emptyBox());
   const me = norm((state.profile.NAMA || "Febrianggi").split(" ")[0]);
   el.replaceChildren(...pubs.map(pub => {
-    if (pub.error) return h("article", { class: "card pub" }, errorBox(pub.error, () => renderAllContent()));
+    if (pub.error) return h("article", { class: "pub" }, errorBox(pub.error, () => renderAllContent()));
     const published = norm(pub.STATUS || "terbit") !== "proses";
-    const isBook = norm(pub.JENIS || "").startsWith("buku") || norm(pub.JENIS || "") === "book";
+    const type = norm(pub.JENIS || "");
+    const isBook = type.startsWith("buku") || type === "book";
     const authors = splitList(pub.PENULIS).map((name, i, list) => [
       norm(name).includes(me) ? h("strong", { text: name }) : name, i < list.length - 1 ? ", " : ""]);
-    return h("article", { class: `card pub${pub.SAMPUL ? " pub-with-cover" : ""}`, "aria-labelledby": `pub-${pub.slug}` },
+    return h("article", { class: `pub${pub.SAMPUL ? " pub-with-cover" : ""}`, "aria-labelledby": `pub-${pub.slug}` },
       pub.SAMPUL && h("button", {
         class: "pub-cover", type: "button", "aria-label": `${t("IMAGE_ZOOM")}: ${pub.SAMPUL_ALT || pub.JUDUL}`,
         onclick: e => openLightbox([{ type: "image", src: pub.SAMPUL, alt: pub.SAMPUL_ALT || pub.JUDUL }], 0, e.currentTarget),
       }, h("img", { src: pub.SAMPUL, alt: pub.SAMPUL_ALT || pub.JUDUL, loading: "lazy", width: 700, height: 990 })),
-      h("div", { class: "pub-body" },
-        h("p", { class: "pub-meta" },
-          h("span", { class: `status ${published ? "is-published" : "is-progress"}`, text: t(published ? "PUB_PUBLISHED" : "PUB_IN_PROGRESS") }),
-          h("span", { class: "mono muted", text: [pub.JENIS, pub.TANGGAL].filter(Boolean).join(" · ") })),
-        h("h3", { id: `pub-${pub.slug}`, text: pub.JUDUL }),
-        authors.length > 0 && h("p", { class: "authors" }, authors.flat()),
-        pub.WADAH && h("p", { class: "mono muted venue", text: pub.WADAH }),
-        pub.RINGKASAN && h("p", { class: "summary", text: pub.RINGKASAN }),
-        h("div", { class: "card-actions" },
-          pub.LINK && h("a", { class: "btn btn-ghost btn-sm", href: pub.LINK, ...external }, t(isBook ? "PUB_BOOK" : "PUB_READ")),
-          pub.DOI && h("a", { class: "text-link mono", href: `https://doi.org/${pub.DOI}`, ...external }, `DOI ${pub.DOI}`))));
+      h("div", { class: "pub-main" },
+        h("div", { class: "pub-body" },
+          h("p", { class: "pub-meta" },
+            h("span", { class: `status ${published ? "is-published" : "is-progress"}`, text: t(published ? "PUB_PUBLISHED" : "PUB_IN_PROGRESS") }),
+            h("span", { class: "muted", text: [pub.JENIS, pub.TANGGAL].filter(Boolean).join(" · ") })),
+          h("h3", { id: `pub-${pub.slug}`, text: pub.JUDUL }),
+          pub.WADAH && h("p", { class: "venue", text: pub.WADAH }),
+          authors.length > 0 && h("p", { class: "authors" }, authors.flat()),
+          pub.RINGKASAN && h("p", { class: "summary", text: pub.RINGKASAN })),
+        (pub.LINK || pub.DOI) && h("div", { class: "pub-foot" },
+          pub.LINK && h("a", { class: "text-link", href: pub.LINK, ...external }, t(isBook ? "PUB_BOOK" : "PUB_READ")),
+          pub.DOI && h("a", { class: "text-link", href: `https://doi.org/${pub.DOI}`, ...external }, `doi.org/${pub.DOI}`))));
   }));
 }
 
@@ -444,30 +456,27 @@ function renderCertificates(el, certs) {
       media,
       h("div", { class: "cert-info" },
         h("h3", { text: cert.JUDUL }),
-        h("p", { class: "mono muted", text: [cert.PENERBIT, cert.TAHUN].filter(Boolean).join(" · ") }),
-        h("div", { class: "card-actions" },
+        h("p", { class: "small muted", text: [cert.PENERBIT, cert.TAHUN].filter(Boolean).join(" · ") }),
+        h("div", { class: "actions" },
           cert.LINK && h("a", { class: "btn btn-ghost btn-sm", href: cert.LINK, ...external }, t("CERT_VIEW")),
           cert.PDF && h("button", { class: "btn btn-ghost btn-sm", type: "button", onclick: e => openLightbox([{ type: "pdf", src: cert.PDF, alt: cert.JUDUL }], 0, e.currentTarget) }, t("CERT_PDF")))));
   });
 
   const multiple = certs.length > 1;
   const carousel = h("div", {
-    class: "cert-carousel", role: "region", "aria-roledescription": "carousel", "aria-label": t("TAB_CERTIFICATES"), tabindex: multiple ? "0" : null,
+    class: "cert-carousel", role: "region", "aria-roledescription": "carousel", "aria-label": t("CERTIFICATES_TITLE"), tabindex: multiple ? "0" : null,
     onkeydown: e => {
       if (e.key === "ArrowRight") { e.preventDefault(); selectCert(state.certIndex + 1); }
       if (e.key === "ArrowLeft") { e.preventDefault(); selectCert(state.certIndex - 1); }
     },
   }, h("div", { class: "cert-stage" }, cards),
   multiple && h("div", { class: "cert-controls" },
-    h("button", { class: "icon-btn", type: "button", "aria-label": t("CERT_PREV"), onclick: () => selectCert(state.certIndex - 1) },
-      svgIcon("M15 5l-7 7 7 7")),
+    h("button", { class: "icon-btn", type: "button", "aria-label": t("CERT_PREV"), onclick: () => selectCert(state.certIndex - 1) }, svgIcon("M15 5l-7 7 7 7")),
     h("div", { class: "cert-dots" }, certs.map((_, i) =>
       h("button", { type: "button", class: "dot", "aria-label": t("CERT_PICK", { i: i + 1 }), onclick: () => selectCert(i) }))),
-    h("span", { class: "mono muted cert-count", "aria-live": "polite" }),
-    h("button", { class: "icon-btn", type: "button", "aria-label": t("CERT_NEXT"), onclick: () => selectCert(state.certIndex + 1) },
-      svgIcon("M9 5l7 7-7 7"))));
+    h("span", { class: "small muted cert-count", "aria-live": "polite" }),
+    h("button", { class: "icon-btn", type: "button", "aria-label": t("CERT_NEXT"), onclick: () => selectCert(state.certIndex + 1) }, svgIcon("M9 5l7 7-7 7"))));
 
-  // geser dengan jari / mouse
   let startX = null;
   carousel.addEventListener("pointerdown", e => { startX = e.clientX; });
   carousel.addEventListener("pointerup", e => {
@@ -479,16 +488,6 @@ function renderCertificates(el, certs) {
 
   el.replaceChildren(carousel);
   selectCert(state.certIndex);
-}
-
-function svgIcon(d) {
-  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-  svg.setAttribute("viewBox", "0 0 24 24");
-  svg.setAttribute("aria-hidden", "true");
-  const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-  path.setAttribute("d", d);
-  svg.append(path);
-  return svg;
 }
 
 function selectCert(index) {
@@ -508,6 +507,29 @@ function selectCert(index) {
 }
 
 /* ------------------------------------------------------------------
+   Kontak
+------------------------------------------------------------------- */
+function renderContact(el, contact) {
+  const email = contact.EMAIL;
+  el.replaceChildren(
+    h("div", { class: "contact-lead" }, paragraphs(contact.AJAKAN)),
+    h("ul", { class: "contact-grid" },
+      email && h("li", { class: "contact-card" },
+        h("img", { src: "assets/contact/email.png", alt: "", width: 40, height: 40 }),
+        h("div", {},
+          h("p", { class: "contact-label", text: "Email" }),
+          h("a", { class: "contact-detail", href: `mailto:${email}`, text: email })),
+        h("button", { class: "icon-btn copy-btn", type: "button", dataset: { copyEmail: "" }, "aria-label": t("COPY_EMAIL"), title: t("COPY_EMAIL") },
+          svgIcon("M9 9h10v10H9zM5 15V5h10"))),
+      contactLinks(contact).map(link => h("li", {},
+        h("a", { class: "contact-card", href: link.href, ...external },
+          h("img", { src: `assets/contact/${link.icon}`, alt: "", width: 40, height: 40 }),
+          h("div", {},
+            h("p", { class: "contact-label", text: link.label }),
+            h("p", { class: "contact-detail", text: link.detail })))))));
+}
+
+/* ------------------------------------------------------------------
    Render semua konten (dipanggil saat awal & ganti bahasa)
 ------------------------------------------------------------------- */
 async function renderAllContent() {
@@ -517,51 +539,19 @@ async function renderAllContent() {
   setZoom(false);
 
   await Promise.all([
-    fill("hero", () => Promise.all([first("profile.txt"), first("contact.txt")]), renderHero),
+    fill("profile", () => Promise.all([first("profile.txt"), first("contact.txt")]), renderProfile),
     fill("about", () => first("about.txt"), renderAbout),
     fill("education", () => all("education.txt"), renderEducation),
     fill("achievements", () => all("achievements.txt"), renderAchievements),
-    fill("contact", () => first("contact.txt"), renderContact),
     fill("projects", loadProjects, renderProjects),
+    fill("more", loadProjects, renderMore),
     fill("tools", loadProjects, renderTools),
-    fill("publications", loadPublications, renderPublications),
+    fill("publications", () => loadList("PUBLIKASI", "publications"), renderPublications),
     fill("certificates", () => all("certificates.txt"), renderCertificates),
+    fill("contact", () => first("contact.txt"), renderContact),
   ]);
-  if (state.profile.NAMA) document.title = `${state.profile.NAMA} · ${t("PORTFOLIO_TITLE")}`;
-}
-
-/* ------------------------------------------------------------------
-   Tab portofolio (ARIA tabs + navigasi keyboard)
-------------------------------------------------------------------- */
-const tabs = $$('[role="tab"]');
-
-function activateTab(tab, updateHash = true) {
-  for (const item of tabs) {
-    const selected = item === tab;
-    item.setAttribute("aria-selected", String(selected));
-    item.tabIndex = selected ? 0 : -1;
-    $(`#${item.getAttribute("aria-controls")}`).hidden = !selected;
-  }
-  if (updateHash) history.replaceState(null, "", `#${tab.id.replace("tab-", "")}`);
-}
-
-function setupTabs() {
-  tabs.forEach((tab, index) => {
-    tab.addEventListener("click", () => activateTab(tab));
-    tab.addEventListener("keydown", event => {
-      const keys = { ArrowRight: index + 1, ArrowLeft: index - 1, Home: 0, End: tabs.length - 1 };
-      if (!(event.key in keys)) return;
-      event.preventDefault();
-      const next = tabs[(keys[event.key] + tabs.length) % tabs.length];
-      activateTab(next);
-      next.focus();
-    });
-  });
-  const fromHash = tabs.find(tab => `#${tab.id.replace("tab-", "")}` === location.hash);
-  if (fromHash) {
-    activateTab(fromHash, false);
-    requestAnimationFrame(() => $("#portfolio").scrollIntoView());
-  }
+  applyFilter();
+  if (state.profile.NAMA) document.title = `${state.profile.NAMA} · ${state.profile.JUDUL_HALAMAN || ""}`.replace(/ · $/, "");
 }
 
 /* ------------------------------------------------------------------
@@ -699,7 +689,7 @@ function setupHeader() {
   document.addEventListener("keydown", event => {
     if (event.key === "Escape" && nav.classList.contains("is-open")) { setOpen(false); toggle.focus(); }
   });
-  matchMedia("(min-width: 48rem)").addEventListener("change", () => setOpen(false));
+  matchMedia("(min-width: 64rem)").addEventListener("change", () => setOpen(false));
 
   $("#lang-toggle").addEventListener("click", async () => {
     state.lang = state.lang === "id" ? "en" : "id";
@@ -712,13 +702,17 @@ function setupHeader() {
    Mulai
 ------------------------------------------------------------------- */
 async function boot() {
-  if (location.protocol === "file:") $("#file-banner").hidden = false;
   $("[data-year]").textContent = new Date().getFullYear();
 
   setupHeader();
-  setupTabs();
   setupDialogs();
   setupCursorGlow();
+  $("#filter-clear").addEventListener("click", () => {
+    const pressed = $('.tech-item[aria-pressed="true"]');
+    state.filter = null;
+    applyFilter();
+    pressed?.focus({ preventScroll: true });
+  });
   document.addEventListener("click", event => {
     if (event.target.closest("[data-copy-email]")) copyEmail();
   });

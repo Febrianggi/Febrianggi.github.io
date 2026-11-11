@@ -8,14 +8,11 @@
 #       Selama kosong, tombol CV tidak muncul.
 # ============================================================
 
+JUDUL_HALAMAN: Portofolio Statistika & Analisis Data
 NAMA: Febrianggi Caesar Immanuel
 PANGGILAN: Febri
 INISIAL: FCI
 PERAN: Mahasiswa Statistika, Universitas Padjadjaran
-
-INTRO: Aku mengolah data dengan R, Python, dan Excel, lalu menyajikan hasilnya
-sebagai dashboard yang bisa langsung dibaca orang lain. Di halaman ini ada proyek,
-publikasi, dan sertifikat yang pernah kukerjakan.
 
 FOTO:
 FOTO_ALT: Foto Febrianggi Caesar Immanuel

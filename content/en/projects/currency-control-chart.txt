@@ -18,3 +18,5 @@ HASIL:
 
 GAMBAR:
 - assets/projects/currency-control-chart/1.webp | Dashboard overview: the rupiah sits above the upper control limit in April 2026
+
+TEKNIK: x̄ control chart, ±2 standard deviation control limits

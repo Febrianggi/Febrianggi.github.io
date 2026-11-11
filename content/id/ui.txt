@@ -1,43 +1,47 @@
 # ============================================================
-# TEKS ANTARMUKA (label tombol, menu, pesan)
+# TEKS ANTARMUKA (label tombol, menu, judul bagian, pesan)
 # Ubah teks di kanan titik dua. Jangan ubah nama kunci di kiri.
-# {n}, {total}, {i}, {file} diganti otomatis oleh website.
+# {n}, {total}, {i}, {file}, {tool}, {email} diganti otomatis.
 # ============================================================
 
 SKIP: Lewati ke konten utama
 NAV_ABOUT: Tentang
-NAV_PORTFOLIO: Portofolio
+NAV_PROJECTS: Proyek Unggulan
+NAV_MORE: Proyek Lainnya
+NAV_PUBLICATIONS: Publikasi
+NAV_CERTIFICATES: Sertifikat
 NAV_CONTACT: Kontak
 NAV_MENU: Menu
 LANG_BUTTON: EN
 LANG_LABEL: Tampilkan dalam Bahasa Inggris
 
+ABOUT_ME: Tentang Saya
+EDUCATION: Pendidikan
+SKILLS: Technical Skills
+SKILLS_HINT: Ikon bertanda angka dipakai di proyek. Pilih untuk menyaring proyek.
+ACHIEVEMENTS: Prestasi
+EVIDENCE: Lihat bukti
 HERO_CTA: Lihat proyek
 COPY_EMAIL: Salin email
 CV: Unduh CV
 PHOTO_PENDING: Foto menyusul
 
-ABOUT_TITLE: Tentang
-EDUCATION: Pendidikan
-ACHIEVEMENTS: Prestasi
-EVIDENCE: Lihat bukti
+PROJECTS_TITLE: Proyek Unggulan
+MORE_TITLE: Proyek Lainnya
+MORE_EMPTY: Proyek lainnya akan ditambahkan di sini.
+PUBLICATIONS_TITLE: Publikasi
+CERTIFICATES_TITLE: Sertifikat
 
-PORTFOLIO_TITLE: Portofolio
-PORTFOLIO_LEAD: Proyek analisis, tulisan yang sudah terbit, sertifikat, dan alat yang kupakai sehari-hari.
-TAB_PROJECTS: Proyek
-TAB_PUBLICATIONS: Publikasi
-TAB_CERTIFICATES: Sertifikat
-TAB_TOOLS: Tools
-
-FILTER_LABEL: Saring menurut tools
-FILTER_ALL: Semua
-FILTER_STATUS: Menampilkan {n} dari {total} proyek
 FILTER_STATUS_TOOL: Menampilkan {n} dari {total} proyek yang memakai {tool}
+FILTER_CLEAR: Tampilkan semua proyek
 FILTER_EMPTY: Belum ada proyek yang memakai tools ini.
 
 PROJECT_DETAIL: Catatan metodologi
-PROJECT_REPO: Repositori
+PROJECT_REPO: Repositori GitHub
 PROJECT_DEMO: Buka dashboard
+PROJECT_REPORT: Laporan
+PROJECT_GOAL: Tujuan
+PROJECT_TECHNIQUE: Metode
 PROJECT_SUMMARY: Ringkasan
 PROJECT_METHOD: Metode
 PROJECT_RESULTS: Hasil
@@ -60,12 +64,10 @@ CERT_COUNTER: {i} dari {n}
 CERT_PENDING: Gambar sertifikat menyusul
 CERT_PICK: Tampilkan sertifikat {i}
 
-TOOLS_HINT: Pilih tool untuk melihat proyek yang memakainya.
 TOOLS_COUNT: {n} proyek
 TOOLS_COUNT_ONE: 1 proyek
-TOOLS_NONE: Belum ada proyek
 
-CONTACT_TITLE: Kontak
+CONTACT_TITLE: Mari Terhubung
 TOAST_COPIED: Email berhasil disalin!
 TOAST_COPY_FAIL: Gagal menyalin otomatis. Email: {email}
 

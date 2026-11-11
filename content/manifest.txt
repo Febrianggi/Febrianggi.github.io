@@ -15,6 +15,10 @@ PROYEK:
 - pca-kmeans-whr
 - gff-farma
 
+# Proyek kecil / tambahan untuk bagian "Proyek Lainnya".
+# File-nya di content/id/more-projects/<slug>.txt (lihat _template.txt).
+PROYEK_LAINNYA:
+
 PUBLIKASI:
 - rupiah-control-chart
 - mdpi-sustainability-2026

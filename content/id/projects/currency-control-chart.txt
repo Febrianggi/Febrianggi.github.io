@@ -4,6 +4,7 @@
 # Kunci yang tersedia:
 #   JUDUL, SUBJUDUL, TAHUN, RINGKASAN, METODE (boleh beberapa paragraf),
 #   HASIL (daftar, tiap baris diawali "- "), KONTRIBUSI,
+#   TEKNIK (ringkasan metode satu baris, tampil di kartu),
 #   TOOLS (dipisah koma, harus sama dengan NAMA di tools.txt),
 #   GAMBAR (daftar "path | teks alt", maksimal 4 untuk grid 2x2),
 #   LINK_REPO, LINK_DEMO
@@ -31,11 +32,11 @@ HASIL:
 
 KONTRIBUSI:
 
+TEKNIK: x̄ control chart, batas kendali ±2 simpangan baku
 TOOLS: Python, Google Colab, Excel
 
 GAMBAR:
 - assets/projects/currency-control-chart/1.webp | Tampilan Overview dashboard: rupiah berada di atas batas kendali atas pada April 2026
 
-# TODO: ganti dengan link repo dan GitHub Pages dashboard ini
-LINK_REPO: https://github.com/Febrianggi
+LINK_REPO: https://github.com/Febrianggi/currency-control-charts
 LINK_DEMO:
