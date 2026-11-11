@@ -25,7 +25,7 @@ HASIL:
 KONTRIBUSI: Dikerjakan berdua dengan Gregorius Adiyatma Pradana sebagai tim Astral Express.
 
 TEKNIK: Linear Mixed Models (M1 sampai M4), dekomposisi varians, random slope
-TOOLS:
+TOOLS: Google Colab
 
 GAMBAR:
 - assets/projects/rasio-multilevel/1.webp | Halaman Background dashboard analisis multilevel RASIO: konteks masalah dan desain survei

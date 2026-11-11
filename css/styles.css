@@ -181,7 +181,7 @@ main:focus { outline: none; }
   text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 2px; text-underline-offset: 5px;
 }
 .text-link:hover { color: var(--accent-soft); }
-.feature-links { display: flex; flex-wrap: wrap; gap: 0 var(--s5); margin-top: var(--s1); }
+.feature .actions { gap: var(--s1) var(--s5); }
 
 /* ---------------------------------------------------------------------
    Skeleton & state
