@@ -21,4 +21,5 @@ TOOLS: PHP, SQL
 GAMBAR:
 
 LINK_REPO: https://github.com/Febrianggi/php-mysql-pharmacy-database
-LINK_DEMO:
+LINK_DEMO: https://febrianggi.github.io/php-mysql-pharmacy-database/
+LABEL_DEMO: Coba demo website

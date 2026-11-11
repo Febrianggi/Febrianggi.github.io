@@ -7,7 +7,7 @@
 #   TEKNIK (ringkasan metode satu baris, tampil di kartu),
 #   TOOLS (dipisah koma, harus sama dengan NAMA di tools.txt),
 #   GAMBAR (daftar "path | teks alt", maksimal 4 untuk grid 2x2),
-#   LINK_REPO, LINK_DEMO
+#   LINK_REPO, LINK_DEMO, LABEL_DEMO (teks tombol demo; kosong = "Buka dashboard")
 # ============================================================
 
 JUDUL: Currency Control Chart
@@ -39,4 +39,4 @@ GAMBAR:
 - assets/projects/currency-control-chart/1.webp | Tampilan Overview dashboard: rupiah berada di atas batas kendali atas pada April 2026
 
 LINK_REPO: https://github.com/Febrianggi/currency-control-charts
-LINK_DEMO:
+LINK_DEMO: https://febrianggi.github.io/currency-control-charts/

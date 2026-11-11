@@ -31,4 +31,4 @@ GAMBAR:
 - assets/projects/rasio-multilevel/1.webp | Halaman Background dashboard analisis multilevel RASIO: konteks masalah dan desain survei
 
 LINK_REPO: https://github.com/Febrianggi/final-round-RASIO
-LINK_DEMO:
+LINK_DEMO: https://febrianggi.github.io/final-round-RASIO/

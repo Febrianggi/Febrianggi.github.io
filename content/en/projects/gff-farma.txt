@@ -2,3 +2,5 @@ SUBJUDUL: A pharmacy website, final project for the Database course
 
 RINGKASAN: A PHP pharmacy website backed by a MySQL database, built as the final
 project for the Database course.
+
+LABEL_DEMO: Try the website demo
