@@ -7,8 +7,8 @@
   <meta name="description" content="Portofolio Febrianggi Caesar Immanuel, mahasiswa Statistika Universitas Padjadjaran.">
   <meta name="color-scheme" content="dark">
   <meta name="theme-color" content="#101113">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23101113'/%3E%3Cpath d='M5 21 11 15l5 4 5-9 6 3' fill='none' stroke='%238bb4ff' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
-  <link rel="preload" href="assets/fonts/space-grotesk-600.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23101113'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='Arial' font-weight='700' font-size='15' fill='%238bb4ff'%3EF%3C/text%3E%3C/svg%3E">
+  <link rel="preload" href="assets/fonts/plus-jakarta-sans-700.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/styles.css">
   <script type="module" src="js/main.js"></script>
 </head>
@@ -29,16 +29,16 @@
 
   <header class="site-header">
     <div class="shell header-inner">
-      <a class="brand" href="#top" aria-label="Kembali ke atas">
-        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 22 10.5 15.5l5 4 5.5-10 7 3.5"/></svg>
-        <span data-field="profile.PANGGILAN">Febri</span>
-      </a>
+      <a class="brand" href="#about" data-slot="brand">Febrianggi <span>Caesar Immanuel</span></a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
         <span data-i18n="NAV_MENU">Menu</span>
       </button>
       <nav class="site-nav" id="site-nav" aria-label="Navigasi utama">
         <a href="#about" data-i18n="NAV_ABOUT">Tentang</a>
-        <a href="#portfolio" data-i18n="NAV_PORTFOLIO">Portofolio</a>
+        <a href="#projects" data-i18n="NAV_PROJECTS">Proyek Unggulan</a>
+        <a href="#more-projects" data-i18n="NAV_MORE">Proyek Lainnya</a>
+        <a href="#publications" data-i18n="NAV_PUBLICATIONS">Publikasi</a>
+        <a href="#certificates" data-i18n="NAV_CERTIFICATES">Sertifikat</a>
         <a href="#contact" data-i18n="NAV_CONTACT">Kontak</a>
         <button class="lang-toggle" type="button" id="lang-toggle" data-i18n="LANG_BUTTON" data-i18n-aria="LANG_LABEL" aria-label="Tampilkan dalam Bahasa Inggris">EN</button>
       </nav>
@@ -46,118 +46,87 @@
   </header>
 
   <main id="main" tabindex="-1">
-    <!-- ======================= HERO ======================= -->
-    <section class="hero shell" id="top" aria-labelledby="hero-name">
-      <div class="hero-text" data-slot="hero" aria-busy="true">
-        <p class="hero-role"><span class="sk sk-line" style="width: 14rem"></span></p>
-        <h1 id="hero-name" class="hero-name"><span class="sk sk-title"></span></h1>
-        <div class="hero-intro"><span class="sk sk-line"></span><span class="sk sk-line"></span><span class="sk sk-line" style="width: 60%"></span></div>
-      </div>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#portfolio" data-i18n="HERO_CTA">Lihat proyek</a>
-        <button class="btn btn-ghost" type="button" data-copy-email disabled>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg>
-          <span data-i18n="COPY_EMAIL">Salin email</span>
-        </button>
-        <a class="btn btn-ghost" data-slot="cv" hidden download><span data-i18n="CV">Unduh CV</span></a>
-      </div>
-      <ul class="social" data-slot="social" aria-label="Tautan profil"></ul>
+    <!-- ======================= HERO / TENTANG ======================= -->
+    <section class="hero shell" id="about" aria-labelledby="hero-title">
+      <h1 class="hero-title" id="hero-title" data-slot="page-title"><span class="sk sk-title"></span></h1>
 
-      <figure class="portrait" data-slot="portrait">
-        <div class="portrait-frame">
-          <span class="portrait-initials" aria-hidden="true">FCI</span>
-        </div>
-      </figure>
-
-      <!-- Motif identitas: grafik kendali (UCL / CL / LCL) dengan satu titik di luar batas -->
-      <svg class="hero-chart" viewBox="0 0 1200 140" preserveAspectRatio="none" aria-hidden="true">
-        <line class="lim" x1="0" y1="30" x2="1200" y2="30"/>
-        <line class="cl" x1="0" y1="70" x2="1200" y2="70"/>
-        <line class="lim" x1="0" y1="110" x2="1200" y2="110"/>
-        <polyline class="series" points="0,78 60,64 120,82 180,70 240,90 300,74 360,60 420,76 480,66 540,86 600,72 660,58 720,80 780,68 840,74 900,52 960,66 1020,48 1080,40 1140,22"/>
-        <circle class="out" cx="1140" cy="22" r="6"/>
-      </svg>
-    </section>
-
-    <!-- ======================= TENTANG ======================= -->
-    <section class="about shell" id="about" aria-labelledby="about-title">
-      <header class="section-head">
-        <span class="limits" aria-hidden="true"></span>
-        <h2 id="about-title" data-i18n="ABOUT_TITLE">Tentang</h2>
-      </header>
-      <div class="about-grid">
-        <div class="about-text prose" data-slot="about" aria-busy="true">
-          <span class="sk sk-line"></span><span class="sk sk-line"></span><span class="sk sk-line" style="width: 70%"></span>
-        </div>
-        <div class="about-side">
-          <article class="panel">
-            <h3 data-i18n="EDUCATION">Pendidikan</h3>
+      <div class="hero-grid">
+        <div class="hero-col">
+          <article class="info-card">
+            <h2 class="card-label" data-i18n="ABOUT_ME">Tentang Saya</h2>
+            <div class="about-text" data-slot="about" aria-busy="true">
+              <span class="sk sk-line"></span><span class="sk sk-line"></span><span class="sk sk-line" style="width: 70%"></span>
+            </div>
+          </article>
+          <article class="info-card">
+            <h2 class="card-label" data-i18n="EDUCATION">Pendidikan</h2>
             <div data-slot="education" aria-busy="true"><span class="sk sk-line"></span><span class="sk sk-line" style="width: 50%"></span></div>
           </article>
-          <article class="panel panel-accent">
-            <h3 data-i18n="ACHIEVEMENTS">Prestasi</h3>
+        </div>
+
+        <div class="hero-col">
+          <article class="info-card">
+            <h2 class="card-label" data-i18n="SKILLS">Technical Skills</h2>
+            <p class="card-hint" data-i18n="SKILLS_HINT">Ikon bertanda angka dipakai di proyek. Pilih untuk menyaring proyek.</p>
+            <div data-slot="tools" aria-busy="true"><span class="sk sk-block"></span></div>
+          </article>
+          <article class="info-card">
+            <h2 class="card-label" data-i18n="ACHIEVEMENTS">Prestasi</h2>
             <div data-slot="achievements" aria-busy="true"><span class="sk sk-line"></span><span class="sk sk-line" style="width: 60%"></span></div>
           </article>
         </div>
+
+        <div class="profile" data-slot="profile" aria-busy="true">
+          <div class="photo"><span class="photo-initials" aria-hidden="true"></span></div>
+          <span class="sk sk-line" style="width: 70%; margin-inline: auto"></span>
+        </div>
       </div>
     </section>
 
-    <!-- ======================= PORTOFOLIO ======================= -->
-    <section class="portfolio shell" id="portfolio" aria-labelledby="portfolio-title">
-      <header class="section-head">
-        <span class="limits" aria-hidden="true"></span>
-        <h2 id="portfolio-title" data-i18n="PORTFOLIO_TITLE">Portofolio</h2>
-        <p class="section-lead" data-i18n="PORTFOLIO_LEAD">Proyek analisis, tulisan yang sudah terbit, sertifikat, dan alat yang kupakai sehari-hari.</p>
-      </header>
-
-      <div class="tablist" role="tablist" aria-labelledby="portfolio-title">
-        <button role="tab" id="tab-projects" aria-controls="panel-projects" aria-selected="true" data-i18n="TAB_PROJECTS">Proyek</button>
-        <button role="tab" id="tab-publications" aria-controls="panel-publications" aria-selected="false" tabindex="-1" data-i18n="TAB_PUBLICATIONS">Publikasi</button>
-        <button role="tab" id="tab-certificates" aria-controls="panel-certificates" aria-selected="false" tabindex="-1" data-i18n="TAB_CERTIFICATES">Sertifikat</button>
-        <button role="tab" id="tab-tools" aria-controls="panel-tools" aria-selected="false" tabindex="-1" data-i18n="TAB_TOOLS">Tools</button>
+    <!-- ======================= PROYEK UNGGULAN ======================= -->
+    <section class="section shell" id="projects" aria-labelledby="projects-title">
+      <h2 class="section-title" id="projects-title" data-i18n="PROJECTS_TITLE">Proyek Unggulan</h2>
+      <div class="filter-status" id="filter-status" aria-live="polite" hidden>
+        <p id="filter-text"></p>
+        <button class="btn btn-ghost btn-sm" type="button" id="filter-clear" data-i18n="FILTER_CLEAR">Tampilkan semua proyek</button>
       </div>
-
-      <div class="tabpanel" role="tabpanel" id="panel-projects" aria-labelledby="tab-projects" tabindex="0">
-        <div class="filter-bar" data-slot="filters" role="group" aria-labelledby="filter-label">
-          <span id="filter-label" class="filter-label" data-i18n="FILTER_LABEL">Saring menurut tools</span>
-        </div>
-        <p class="filter-status" id="filter-status" aria-live="polite"></p>
-        <div class="project-grid" data-slot="projects" aria-busy="true">
-          <div class="card sk-card"></div><div class="card sk-card"></div>
-        </div>
+      <div class="feature-list" data-slot="projects" aria-busy="true">
+        <div class="sk-card"></div>
       </div>
+    </section>
 
-      <div class="tabpanel" role="tabpanel" id="panel-publications" aria-labelledby="tab-publications" tabindex="0" hidden>
-        <div class="pub-list" data-slot="publications" aria-busy="true">
-          <div class="card sk-card sk-short"></div><div class="card sk-card sk-short"></div>
-        </div>
-      </div>
+    <!-- ======================= PROYEK LAINNYA ======================= -->
+    <section class="section shell" id="more-projects" aria-labelledby="more-title">
+      <h2 class="section-title" id="more-title" data-i18n="MORE_TITLE">Proyek Lainnya</h2>
+      <div class="more-grid" data-slot="more" aria-busy="true"><div class="sk-card sk-short"></div></div>
+    </section>
 
-      <div class="tabpanel" role="tabpanel" id="panel-certificates" aria-labelledby="tab-certificates" tabindex="0" hidden>
-        <div data-slot="certificates" aria-busy="true"><div class="card sk-card sk-short"></div></div>
+    <!-- ======================= PUBLIKASI ======================= -->
+    <section class="section shell" id="publications" aria-labelledby="publications-title">
+      <h2 class="section-title" id="publications-title" data-i18n="PUBLICATIONS_TITLE">Publikasi</h2>
+      <div class="pub-list" data-slot="publications" aria-busy="true">
+        <div class="sk-card sk-short"></div><div class="sk-card sk-short"></div>
       </div>
+    </section>
 
-      <div class="tabpanel" role="tabpanel" id="panel-tools" aria-labelledby="tab-tools" tabindex="0" hidden>
-        <p class="tools-hint" data-i18n="TOOLS_HINT">Pilih tool untuk melihat proyek yang memakainya.</p>
-        <div class="tool-groups" data-slot="tools" aria-busy="true"><div class="card sk-card sk-short"></div></div>
-      </div>
+    <!-- ======================= SERTIFIKAT ======================= -->
+    <section class="section shell" id="certificates" aria-labelledby="certificates-title">
+      <h2 class="section-title" id="certificates-title" data-i18n="CERTIFICATES_TITLE">Sertifikat</h2>
+      <div data-slot="certificates" aria-busy="true"><div class="sk-card sk-short"></div></div>
     </section>
 
     <!-- ======================= KONTAK ======================= -->
-    <section class="contact shell" id="contact" aria-labelledby="contact-title">
-      <header class="section-head">
-        <span class="limits" aria-hidden="true"></span>
-        <h2 id="contact-title" data-i18n="CONTACT_TITLE">Kontak</h2>
-      </header>
-      <div class="contact-body" data-slot="contact" aria-busy="true">
-        <span class="sk sk-line"></span><span class="sk sk-title"></span>
-      </div>
+    <section class="section contact shell" id="contact" aria-labelledby="contact-title">
+      <h2 class="section-title" id="contact-title" data-i18n="CONTACT_TITLE">Mari Terhubung</h2>
+      <div data-slot="contact" aria-busy="true"><span class="sk sk-line" style="width: 40%; margin-inline: auto"></span></div>
     </section>
   </main>
 
-  <footer class="site-footer shell">
-    <p><span>© <span data-year></span> <span data-field="profile.NAMA">Febrianggi Caesar Immanuel</span></span>
-      <span data-i18n="FOOTER">Dibuat dengan HTML, CSS, dan JavaScript.</span></p>
+  <footer class="site-footer">
+    <div class="shell">
+      <p>© <span data-year></span> <span data-field="profile.NAMA">Febrianggi Caesar Immanuel</span>.</p>
+      <p data-i18n="FOOTER">Dibuat dengan HTML, CSS, dan JavaScript.</p>
+    </div>
   </footer>
 
   <!-- Detail proyek / catatan metodologi -->

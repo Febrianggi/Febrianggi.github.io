@@ -9,3 +9,5 @@ INSTITUSI: Universitas Padjadjaran
 PROGRAM: S1 Statistika
 PERIODE: 2024 sampai sekarang
 KETERANGAN:
+# IPK opsional, contoh: IPK: 3.90 / 4.00  (kosong = tidak ditampilkan)
+IPK:

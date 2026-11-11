@@ -1,37 +1,4 @@
-# English version: only GRUP is translated. Same order as content/id/tools.txt.
-
-GRUP: Statistics & programming
----
-GRUP: Statistics & programming
----
-GRUP: Statistics & programming
----
-GRUP: Statistics & programming
----
-GRUP: Statistics & programming
----
-GRUP: Databases
----
-GRUP: Databases
----
-GRUP: Workspace
----
-GRUP: Workspace
----
-GRUP: Workspace
----
-GRUP: Analysis & visualization
----
-GRUP: Analysis & visualization
----
-GRUP: Analysis & visualization
----
-GRUP: Analysis & visualization
----
-GRUP: Analysis & visualization
----
-GRUP: Documents & design
----
-GRUP: Documents & design
----
-GRUP: Documents & design
+# English version of tools.txt.
+# Tool names are the same in both languages, so nothing needs translating.
+# Add NAMA lines here only if a tool needs a different English name
+# (entries must follow the same order as content/id/tools.txt).

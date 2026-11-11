@@ -22,3 +22,5 @@ KONTRIBUSI: Built together with Gregorius Adiyatma Pradana as team Astral Expres
 
 GAMBAR:
 - assets/projects/rasio-multilevel/1.webp | Background page of the RASIO multilevel dashboard: problem context and survey design
+
+TEKNIK: Linear Mixed Models (M1 to M4), variance decomposition, random slope

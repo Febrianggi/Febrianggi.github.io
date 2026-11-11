@@ -1,0 +1,23 @@
+# ============================================================
+# TEMPLATE PROYEK LAINNYA (file ini tidak ditampilkan)
+# ------------------------------------------------------------
+# Untuk proyek kecil yang cukup tampil sebagai kartu ringkas.
+# 1. Salin file ini, ganti namanya, misalnya analisis-survei.txt
+# 2. Isi kunci di bawah.
+# 3. Tambahkan "- analisis-survei" ke daftar PROYEK_LAINNYA
+#    di content/manifest.txt
+# 4. Opsional: buat content/en/more-projects/analisis-survei.txt
+#    berisi kunci yang diterjemahkan saja.
+# ============================================================
+
+JUDUL:
+TAHUN:
+KATEGORI:
+HASIL:
+- temuan atau capaian pertama
+- temuan atau capaian kedua
+TEKNIK:
+TOOLS:
+LINK_REPO:
+LINK_DEMO:
+LINK_LAPORAN:
