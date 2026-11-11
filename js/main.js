@@ -342,9 +342,9 @@ function featureRow(project) {
         meta.map(([label, value]) => h("div", {}, h("dt", { text: label }), h("dd", { text: value }))),
         tools.length > 0 && h("div", {}, h("dt", { text: t("PROJECT_TOOLS") }), h("dd", {}, toolChips(tools)))),
       h("div", { class: "actions" },
-        h("button", { class: `btn ${project.LINK_DEMO ? "btn-ghost" : "btn-primary"} btn-sm`, type: "button", onclick: e => openProject(project, e.currentTarget) }, t("PROJECT_DETAIL")),
-        project.LINK_DEMO && h("a", { class: "btn btn-primary btn-sm", href: project.LINK_DEMO, ...external }, project.LABEL_DEMO || t("PROJECT_DEMO")),
-        project.LINK_REPO && h("a", { class: "btn btn-ghost btn-sm", href: project.LINK_REPO, ...external }, t("PROJECT_REPO")))));
+        h("button", { class: "btn btn-primary btn-sm", type: "button", onclick: e => openProject(project, e.currentTarget) }, t("PROJECT_DETAIL")),
+        project.LINK_DEMO && h("a", { class: "text-link", href: project.LINK_DEMO, ...external }, project.LABEL_DEMO || t("PROJECT_DEMO")),
+        project.LINK_REPO && h("a", { class: "text-link", href: project.LINK_REPO, ...external }, t("PROJECT_REPO")))));
 }
 
 function renderProjects(el, { projects }) {
