@@ -38,7 +38,7 @@ const listOf = value => (Array.isArray(value) ? value : value ? [value] : []);
 const reducedMotion = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 const state = {
-  lang: "id",
+  lang: "en",
   manifest: {},
   ui: {},
   profile: {},
@@ -52,12 +52,6 @@ function t(key, vars = {}, fallback) {
   return template.replace(/\{(\w+)\}/g, (match, name) => (name in vars ? vars[name] : match));
 }
 
-function getStoredLang() {
-  try { return localStorage.getItem("portfolio-lang"); } catch { return null; }
-}
-function storeLang(lang) {
-  try { localStorage.setItem("portfolio-lang", lang); } catch { /* penyimpanan tidak tersedia */ }
-}
 
 /* ------------------------------------------------------------------
    State UI: memuat, gagal, kosong
@@ -342,7 +336,8 @@ function featureRow(project) {
         meta.map(([label, value]) => h("div", {}, h("dt", { text: label }), h("dd", { text: value }))),
         tools.length > 0 && h("div", {}, h("dt", { text: t("PROJECT_TOOLS") }), h("dd", {}, toolChips(tools)))),
       h("div", { class: "actions" },
-        h("button", { class: "btn btn-primary btn-sm", type: "button", onclick: e => openProject(project, e.currentTarget) }, t("PROJECT_DETAIL")),
+        h("button", { class: "btn btn-primary btn-sm", type: "button", onclick: e => openProject(project, e.currentTarget) }, t("PROJECT_DETAIL"))),
+      (project.LINK_DEMO || project.LINK_REPO) && h("div", { class: "feature-links" },
         project.LINK_DEMO && h("a", { class: "text-link", href: project.LINK_DEMO, ...external }, project.LABEL_DEMO || t("PROJECT_DEMO")),
         project.LINK_REPO && h("a", { class: "text-link", href: project.LINK_REPO, ...external }, t("PROJECT_REPO")))));
 }
@@ -691,11 +686,6 @@ function setupHeader() {
   });
   matchMedia("(min-width: 64rem)").addEventListener("change", () => setOpen(false));
 
-  $("#lang-toggle").addEventListener("click", async () => {
-    state.lang = state.lang === "id" ? "en" : "id";
-    storeLang(state.lang);
-    await renderAllContent();
-  });
 }
 
 /* ------------------------------------------------------------------
@@ -722,7 +712,7 @@ async function boot() {
   } catch (error) {
     console.error(error);
   }
-  state.lang = getStoredLang() || state.manifest.BAHASA_DEFAULT || "id";
+  state.lang = "en";
   await renderAllContent();
 }
 

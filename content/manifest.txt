@@ -7,7 +7,7 @@
 # Baris yang diawali # adalah komentar dan tidak ditampilkan.
 # ============================================================
 
-BAHASA_DEFAULT: id
+BAHASA_DEFAULT: en
 
 PROYEK:
 - currency-control-chart

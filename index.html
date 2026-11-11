@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Febrianggi Caesar Immanuel · Portofolio</title>
-  <meta name="description" content="Portofolio Febrianggi Caesar Immanuel, mahasiswa Statistika Universitas Padjadjaran.">
+  <title>Febrianggi Caesar Immanuel · Portfolio</title>
+  <meta name="description" content="Portfolio of Febrianggi Caesar Immanuel, Statistics student at Universitas Padjadjaran.">
   <meta name="color-scheme" content="dark">
   <meta name="theme-color" content="#101113">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23101113'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='Arial' font-weight='700' font-size='15' fill='%238bb4ff'%3EF%3C/text%3E%3C/svg%3E">
@@ -13,14 +13,14 @@
   <script type="module" src="js/main.js"></script>
 </head>
 <body>
-  <a class="skip-link" href="#main" data-i18n="SKIP">Lewati ke konten utama</a>
+  <a class="skip-link" href="#main" data-i18n="SKIP">Skip to main content</a>
 
   <!-- Hanya muncul jika situs dibuka langsung sebagai file (file://) -->
   <div class="file-banner" id="file-banner" role="alert" hidden>
-    <strong>Konten belum bisa dimuat karena halaman dibuka langsung dari file.</strong>
-    Browser memblokir <code>fetch()</code> untuk alamat <code>file://</code>. Jalankan lewat server lokal:
-    klik kanan <code>index.html</code> lalu <em>Open with Live Server</em> di VS Code, atau jalankan
-    <code>python -m http.server 8000</code> di folder ini lalu buka <code>http://localhost:8000</code>.
+    <strong>Content can't load because the page was opened directly from a file.</strong>
+    Browsers block <code>fetch()</code> on <code>file://</code> addresses. Run it through a local server:
+    right-click <code>index.html</code> and choose <em>Open with Live Server</em> in VS Code, or run
+    <code>python -m http.server 8000</code> in this folder and open <code>http://localhost:8000</code>.
   </div>
   <!-- Skrip modul tidak berjalan di file://, jadi pengecekan ini sengaja ditulis inline -->
   <script>if (location.protocol === "file:") document.getElementById("file-banner").hidden = false;</script>
@@ -33,14 +33,13 @@
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
         <span data-i18n="NAV_MENU">Menu</span>
       </button>
-      <nav class="site-nav" id="site-nav" aria-label="Navigasi utama">
-        <a href="#about" data-i18n="NAV_ABOUT">Tentang</a>
-        <a href="#projects" data-i18n="NAV_PROJECTS">Proyek Unggulan</a>
-        <a href="#more-projects" data-i18n="NAV_MORE">Proyek Lainnya</a>
-        <a href="#publications" data-i18n="NAV_PUBLICATIONS">Publikasi</a>
-        <a href="#certificates" data-i18n="NAV_CERTIFICATES">Sertifikat</a>
-        <a href="#contact" data-i18n="NAV_CONTACT">Kontak</a>
-        <button class="lang-toggle" type="button" id="lang-toggle" data-i18n="LANG_BUTTON" data-i18n-aria="LANG_LABEL" aria-label="Tampilkan dalam Bahasa Inggris">EN</button>
+      <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+        <a href="#about" data-i18n="NAV_ABOUT">About</a>
+        <a href="#projects" data-i18n="NAV_PROJECTS">Featured Projects</a>
+        <a href="#more-projects" data-i18n="NAV_MORE">More Projects</a>
+        <a href="#publications" data-i18n="NAV_PUBLICATIONS">Publications</a>
+        <a href="#certificates" data-i18n="NAV_CERTIFICATES">Certificates</a>
+        <a href="#contact" data-i18n="NAV_CONTACT">Contact</a>
       </nav>
     </div>
   </header>
@@ -53,13 +52,13 @@
       <div class="hero-grid">
         <div class="hero-col">
           <article class="info-card">
-            <h2 class="card-label" data-i18n="ABOUT_ME">Tentang Saya</h2>
+            <h2 class="card-label" data-i18n="ABOUT_ME">About Me</h2>
             <div class="about-text" data-slot="about" aria-busy="true">
               <span class="sk sk-line"></span><span class="sk sk-line"></span><span class="sk sk-line" style="width: 70%"></span>
             </div>
           </article>
           <article class="info-card">
-            <h2 class="card-label" data-i18n="EDUCATION">Pendidikan</h2>
+            <h2 class="card-label" data-i18n="EDUCATION">Education</h2>
             <div data-slot="education" aria-busy="true"><span class="sk sk-line"></span><span class="sk sk-line" style="width: 50%"></span></div>
           </article>
         </div>
@@ -67,11 +66,11 @@
         <div class="hero-col">
           <article class="info-card">
             <h2 class="card-label" data-i18n="SKILLS">Technical Skills</h2>
-            <p class="card-hint" data-i18n="SKILLS_HINT">Ikon bertanda angka dipakai di proyek. Pilih untuk menyaring proyek.</p>
+            <p class="card-hint" data-i18n="SKILLS_HINT">Icons with a number are used in projects. Pick one to filter the projects.</p>
             <div data-slot="tools" aria-busy="true"><span class="sk sk-block"></span></div>
           </article>
           <article class="info-card">
-            <h2 class="card-label" data-i18n="ACHIEVEMENTS">Prestasi</h2>
+            <h2 class="card-label" data-i18n="ACHIEVEMENTS">Achievements</h2>
             <div data-slot="achievements" aria-busy="true"><span class="sk sk-line"></span><span class="sk sk-line" style="width: 60%"></span></div>
           </article>
         </div>
@@ -85,10 +84,10 @@
 
     <!-- ======================= PROYEK UNGGULAN ======================= -->
     <section class="section shell" id="projects" aria-labelledby="projects-title">
-      <h2 class="section-title" id="projects-title" data-i18n="PROJECTS_TITLE">Proyek Unggulan</h2>
+      <h2 class="section-title" id="projects-title" data-i18n="PROJECTS_TITLE">Featured Projects</h2>
       <div class="filter-status" id="filter-status" aria-live="polite" hidden>
         <p id="filter-text"></p>
-        <button class="btn btn-ghost btn-sm" type="button" id="filter-clear" data-i18n="FILTER_CLEAR">Tampilkan semua proyek</button>
+        <button class="btn btn-ghost btn-sm" type="button" id="filter-clear" data-i18n="FILTER_CLEAR">Show all projects</button>
       </div>
       <div class="feature-list" data-slot="projects" aria-busy="true">
         <div class="sk-card"></div>
@@ -97,13 +96,13 @@
 
     <!-- ======================= PROYEK LAINNYA ======================= -->
     <section class="section shell" id="more-projects" aria-labelledby="more-title">
-      <h2 class="section-title" id="more-title" data-i18n="MORE_TITLE">Proyek Lainnya</h2>
+      <h2 class="section-title" id="more-title" data-i18n="MORE_TITLE">More Projects</h2>
       <div class="more-grid" data-slot="more" aria-busy="true"><div class="sk-card sk-short"></div></div>
     </section>
 
     <!-- ======================= PUBLIKASI ======================= -->
     <section class="section shell" id="publications" aria-labelledby="publications-title">
-      <h2 class="section-title" id="publications-title" data-i18n="PUBLICATIONS_TITLE">Publikasi</h2>
+      <h2 class="section-title" id="publications-title" data-i18n="PUBLICATIONS_TITLE">Publications</h2>
       <div class="pub-list" data-slot="publications" aria-busy="true">
         <div class="sk-card sk-short"></div><div class="sk-card sk-short"></div>
       </div>
@@ -111,13 +110,13 @@
 
     <!-- ======================= SERTIFIKAT ======================= -->
     <section class="section shell" id="certificates" aria-labelledby="certificates-title">
-      <h2 class="section-title" id="certificates-title" data-i18n="CERTIFICATES_TITLE">Sertifikat</h2>
+      <h2 class="section-title" id="certificates-title" data-i18n="CERTIFICATES_TITLE">Certificates</h2>
       <div data-slot="certificates" aria-busy="true"><div class="sk-card sk-short"></div></div>
     </section>
 
     <!-- ======================= KONTAK ======================= -->
     <section class="section contact shell" id="contact" aria-labelledby="contact-title">
-      <h2 class="section-title" id="contact-title" data-i18n="CONTACT_TITLE">Mari Terhubung</h2>
+      <h2 class="section-title" id="contact-title" data-i18n="CONTACT_TITLE">Let's Connect</h2>
       <div data-slot="contact" aria-busy="true"><span class="sk sk-line" style="width: 40%; margin-inline: auto"></span></div>
     </section>
   </main>
@@ -125,7 +124,7 @@
   <footer class="site-footer">
     <div class="shell">
       <p>© <span data-year></span> <span data-field="profile.NAMA">Febrianggi Caesar Immanuel</span>.</p>
-      <p data-i18n="FOOTER">Dibuat dengan HTML, CSS, dan JavaScript.</p>
+      <p data-i18n="FOOTER">Built with HTML, CSS, and JavaScript.</p>
     </div>
   </footer>
 
@@ -136,7 +135,7 @@
         <p class="sheet-kicker" id="project-dialog-kicker"></p>
         <h2 id="project-dialog-title"></h2>
       </div>
-      <button class="icon-btn" type="button" data-close data-i18n-aria="CLOSE" aria-label="Tutup">
+      <button class="icon-btn" type="button" data-close data-i18n-aria="CLOSE" aria-label="Close">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
       </button>
     </div>
@@ -144,22 +143,22 @@
   </dialog>
 
   <!-- Lightbox gambar & PDF -->
-  <dialog class="lightbox" id="lightbox" aria-label="Pratinjau">
+  <dialog class="lightbox" id="lightbox" aria-label="Preview">
     <div class="lightbox-bar">
       <p class="lightbox-caption" id="lightbox-caption"></p>
       <span class="lightbox-count" id="lightbox-count"></span>
-      <button class="icon-btn" type="button" id="lightbox-zoom" data-i18n-aria="ZOOM_IN" aria-label="Perbesar" aria-pressed="false">
+      <button class="icon-btn" type="button" id="lightbox-zoom" data-i18n-aria="ZOOM_IN" aria-label="Zoom in" aria-pressed="false">
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5M11 8v6M8 11h6"/></svg>
       </button>
-      <button class="icon-btn" type="button" data-close data-i18n-aria="CLOSE" aria-label="Tutup">
+      <button class="icon-btn" type="button" data-close data-i18n-aria="CLOSE" aria-label="Close">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
       </button>
     </div>
     <div class="lightbox-stage" id="lightbox-stage"></div>
-    <button class="icon-btn lightbox-nav prev" type="button" id="lightbox-prev" data-i18n-aria="PREV" aria-label="Sebelumnya">
+    <button class="icon-btn lightbox-nav prev" type="button" id="lightbox-prev" data-i18n-aria="PREV" aria-label="Previous">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
     </button>
-    <button class="icon-btn lightbox-nav next" type="button" id="lightbox-next" data-i18n-aria="NEXT" aria-label="Berikutnya">
+    <button class="icon-btn lightbox-nav next" type="button" id="lightbox-next" data-i18n-aria="NEXT" aria-label="Next">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
     </button>
   </dialog>

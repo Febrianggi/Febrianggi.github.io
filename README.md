@@ -19,7 +19,7 @@ Statistics student at Universitas Padjadjaran · Data analysis with R, Python, a
 
 ## Overview
 
-A bilingual (Indonesian / English) personal portfolio built with plain HTML, CSS, and JavaScript. It has no framework and no build step. Every piece of text about me lives in plain `.txt` files under `content/`, so the site can be updated without touching the code.
+An English-language personal portfolio built with plain HTML, CSS, and JavaScript. It has no framework and no build step. Every piece of text about me lives in plain `.txt` files under `content/`, so the site can be updated without touching the code.
 
 ## Sections
 
@@ -35,7 +35,7 @@ A bilingual (Indonesian / English) personal portfolio built with plain HTML, CSS
 ## Features
 
 - **Content in `.txt` files**, loaded at runtime with `fetch()` and a small parser. Each section shows a loading skeleton, an error message with a retry button, and an empty state.
-- **Indonesian / English switch.** English files only need the keys that are translated; everything else falls back to the Indonesian version. The visitor's choice is remembered.
+- **English site, layered content.** Base files live in `content/id/`; `content/en/` holds the English text and overrides matching keys. Any key missing in English falls back to the base file.
 - **Skill-based filtering.** Selecting a technical-skill icon shows only the projects that use that tool.
 - **Lightbox** for screenshots, book covers, and certificates, with zoom and keyboard navigation. PDFs are previewed in place.
 - **Cursor glow** that follows the mouse using `requestAnimationFrame` and linear interpolation. It turns off on touch screens and when reduced motion is requested.
@@ -58,7 +58,7 @@ A bilingual (Indonesian / English) personal portfolio built with plain HTML, CSS
 ├── index.html
 ├── css/styles.css
 ├── js/
-│   ├── content.js          # .txt parser and bilingual loader
+│   ├── content.js          # .txt parser and content loader
 │   └── main.js             # rendering, filter, dialogs, lightbox, carousel
 ├── content/
 │   ├── manifest.txt        # which projects and publications appear, in order
@@ -115,7 +115,7 @@ JUDUL: Next entry (entries are separated by ---)
 1. Copy any file in `content/id/projects/` and rename it, for example `new-project.txt`.
 2. Put up to four screenshots in `assets/projects/new-project/` (16:10, about 1600×1000 px).
 3. Add `- new-project` under `PROYEK:` in `content/manifest.txt`.
-4. Optional: add `content/en/projects/new-project.txt` with the translated keys.
+4. Add `content/en/projects/new-project.txt` with the English text for the keys shown on the site.
 
 ### Adding a smaller project or a publication
 

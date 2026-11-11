@@ -19,7 +19,7 @@ Mahasiswa Statistika Universitas Padjadjaran · Analisis data dengan R, Python, 
 
 ## Gambaran umum
 
-Portofolio pribadi dua bahasa (Indonesia / Inggris) yang dibangun dengan HTML, CSS, dan JavaScript murni, tanpa framework dan tanpa proses build. Semua teks tentang diriku disimpan di file `.txt` biasa di folder `content/`, sehingga isi website bisa diperbarui tanpa menyentuh kode.
+Portofolio pribadi berbahasa Inggris yang dibangun dengan HTML, CSS, dan JavaScript murni, tanpa framework dan tanpa proses build. Semua teks tentang diriku disimpan di file `.txt` biasa di folder `content/`, sehingga isi website bisa diperbarui tanpa menyentuh kode.
 
 ## Bagian website
 
@@ -35,7 +35,7 @@ Portofolio pribadi dua bahasa (Indonesia / Inggris) yang dibangun dengan HTML, C
 ## Fitur
 
 - **Konten di file `.txt`**, dimuat saat halaman dibuka dengan `fetch()` dan parser kecil. Setiap bagian punya skeleton saat memuat, pesan error dengan tombol coba lagi, dan tampilan saat kosong.
-- **Pilihan Bahasa Indonesia / Inggris.** File Inggris cukup berisi kunci yang diterjemahkan; sisanya otomatis diambil dari versi Indonesia. Pilihan pengunjung diingat browser.
+- **Situs berbahasa Inggris, konten berlapis.** File dasar ada di `content/id/`; `content/en/` berisi teks Inggris yang menimpa kunci yang sama. Kunci yang tidak ada di versi Inggris otomatis diambil dari file dasar.
 - **Filter berdasarkan skill.** Memilih ikon di Technical Skills hanya menampilkan proyek yang memakai tool tersebut.
 - **Lightbox** untuk screenshot, sampul buku, dan sertifikat, dengan zoom dan navigasi keyboard. PDF bisa dipratinjau langsung.
 - **Cahaya kursor** biru yang mengikuti mouse memakai `requestAnimationFrame` dan interpolasi linear. Otomatis mati di layar sentuh dan saat pengguna meminta gerakan dikurangi.
@@ -58,7 +58,7 @@ Portofolio pribadi dua bahasa (Indonesia / Inggris) yang dibangun dengan HTML, C
 ├── index.html
 ├── css/styles.css
 ├── js/
-│   ├── content.js          # parser .txt dan pemuat dua bahasa
+│   ├── content.js          # parser .txt dan pemuat konten
 │   └── main.js             # render, filter, dialog, lightbox, carousel
 ├── content/
 │   ├── manifest.txt        # proyek dan publikasi yang tampil, beserta urutannya
@@ -115,7 +115,7 @@ JUDUL: Entri berikutnya (entri dipisah ---)
 1. Salin salah satu file di `content/id/projects/` dan ganti namanya, misalnya `proyek-baru.txt`.
 2. Taruh maksimal empat screenshot di `assets/projects/proyek-baru/` (16:10, sekitar 1600×1000 px).
 3. Tambahkan `- proyek-baru` di bawah `PROYEK:` pada `content/manifest.txt`.
-4. Opsional: buat `content/en/projects/proyek-baru.txt` berisi kunci yang diterjemahkan.
+4. Buat `content/en/projects/proyek-baru.txt` berisi teks Inggris untuk kunci yang tampil di situs.
 
 ### Menambah proyek lainnya atau publikasi
 
