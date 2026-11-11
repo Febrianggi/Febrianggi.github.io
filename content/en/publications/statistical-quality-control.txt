@@ -1,0 +1,4 @@
+JENIS: Book
+RINGKASAN: An introductory book on statistical quality control, written as a team
+under the guidance of Prof. Yuyun Hidayat.
+SAMPUL_ALT: Cover of the book Statistical Quality Control, white title over a gold chart

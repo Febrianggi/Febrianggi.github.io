@@ -1,0 +1,4 @@
+# English version. Entries must stay in the same order as content/id/education.txt.
+
+PROGRAM: Bachelor of Statistics
+PERIODE: 2024 to present

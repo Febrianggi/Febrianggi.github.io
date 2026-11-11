@@ -1,0 +1,13 @@
+JUDUL: Calibration of Ensemble Forecasts for Extreme Rainfall Using Bayesian Model Averaging: A Comparative Review of Gaussian and Gamma Distributions
+JENIS: Artikel jurnal
+STATUS: terbit
+PENULIS: Defi Yusti Faidah, Gumgum Darmawan, Bertho Tantular, Febrianggi Caesar Immanuel, Norizan Mohamed
+WADAH: Sustainability (MDPI), Vol. 18 No. 12, artikel 6121
+TANGGAL: 15 Juni 2026
+RINGKASAN: Scoping review atas 35 artikel tentang kalibrasi prakiraan ensemble curah hujan
+dengan Bayesian Model Averaging, mengikuti kerangka PRISMA-ScR dan dilengkapi analisis
+bibliometrik. Pendekatan berbasis Gaussian masih dominan, sementara distribusi Gamma
+yang lebih cocok untuk data curah hujan yang menceng masih jarang diteliti.
+SAMPUL:
+LINK: https://www.mdpi.com/2071-1050/18/12/6121
+DOI: 10.3390/su18126121

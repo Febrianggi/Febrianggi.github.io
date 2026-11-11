@@ -1,0 +1,15 @@
+# ============================================================
+# TENTANG AKU
+# ------------------------------------------------------------
+# Tulis bebas. Pisahkan paragraf dengan satu baris kosong.
+# Teks di bawah hanya draf dari fakta yang sudah kamu berikan,
+# silakan tulis ulang dengan gayamu sendiri.
+# ============================================================
+
+TEKS: Aku mahasiswa Statistika Universitas Padjadjaran angkatan 2024. Sebagian besar
+pekerjaanku ada di analisis data: mulai dari menyiapkan data, memilih metode, sampai
+menyajikan hasilnya dalam bentuk yang mudah dibaca.
+
+Alat utamaku R, Python, dan Excel. Untuk proyek basis data aku juga menulis PHP dan SQL.
+Aku ikut menulis paper di jurnal Sustainability (MDPI) dan buku Statistical Quality Control,
+dan bersama tim Astral Express meraih Juara 1 serta Best Presentation di RASIO 10.0.

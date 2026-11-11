@@ -1,0 +1,9 @@
+# English version of about.txt. Separate paragraphs with a blank line.
+
+TEKS: I am a Statistics student at Universitas Padjadjaran, class of 2024. Most of my
+work is in data analysis: preparing the data, choosing the method, and presenting the
+results in a form people can read.
+
+My main tools are R, Python, and Excel. For database projects I also write PHP and SQL.
+I co-authored a paper in Sustainability (MDPI) and the book Statistical Quality Control,
+and with team Astral Express I won 1st Place and Best Presentation at RASIO 10.0.

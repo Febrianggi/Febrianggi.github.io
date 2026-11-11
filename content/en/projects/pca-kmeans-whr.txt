@@ -1,0 +1,16 @@
+JUDUL: PCA and K-Means Clustering
+SUBJUDUL: Grouping countries with World Happiness Report data
+
+RINGKASAN: Countries in the World Happiness Report are grouped with K-Means after
+the data are reduced with Principal Component Analysis. The whole analysis is an R script.
+
+METODE: The World Happiness Report variables are first reduced with PCA so the
+grouping is not dominated by correlated variables. The principal component scores
+are then clustered with K-Means into two clusters.
+
+HASIL:
+- Indonesia falls in Cluster 1, alongside Egypt, Pakistan, Sri Lanka, and Peru among others.
+- Cluster 2 includes Singapore, Norway, Switzerland, Malaysia, and Chile among others.
+
+GAMBAR:
+- assets/projects/pca-kmeans-whr/1.webp | Slide listing the countries in Cluster 1 and Cluster 2 from K-Means

@@ -1,0 +1,80 @@
+# ============================================================
+# TOOLS / TECHNICAL SKILLS
+# ------------------------------------------------------------
+# NAMA harus SAMA PERSIS dengan yang ditulis di baris TOOLS: pada
+# file proyek, agar filter proyek bekerja (huruf besar/kecil bebas).
+# IKON kosong = ditampilkan inisial.
+# GRUP menentukan pengelompokan di tab Tools.
+# ============================================================
+
+NAMA: R
+IKON: assets/tools/r.webp
+GRUP: Statistik & pemrograman
+---
+NAMA: RStudio
+IKON: assets/tools/rstudio.png
+GRUP: Statistik & pemrograman
+---
+NAMA: Python
+IKON: assets/tools/python.webp
+GRUP: Statistik & pemrograman
+---
+NAMA: SQL
+IKON: assets/tools/sql.webp
+GRUP: Statistik & pemrograman
+---
+NAMA: PHP
+IKON:
+GRUP: Statistik & pemrograman
+---
+NAMA: PostgreSQL
+IKON: assets/tools/postgresql.png
+GRUP: Basis data
+---
+NAMA: SSMS
+IKON: assets/tools/ssms.png
+GRUP: Basis data
+---
+NAMA: VS Code
+IKON: assets/tools/vscode.png
+GRUP: Lingkungan kerja
+---
+NAMA: Jupyter
+IKON: assets/tools/jupyter.webp
+GRUP: Lingkungan kerja
+---
+NAMA: Google Colab
+IKON: assets/tools/colab.png
+GRUP: Lingkungan kerja
+---
+NAMA: Power BI
+IKON: assets/tools/powerbi.webp
+GRUP: Analisis & visualisasi
+---
+NAMA: SPSS
+IKON: assets/tools/spss-transparent.png
+GRUP: Analisis & visualisasi
+---
+NAMA: Minitab
+IKON: assets/tools/minitab.webp
+GRUP: Analisis & visualisasi
+---
+NAMA: Excel
+IKON: assets/tools/excel.webp
+GRUP: Analisis & visualisasi
+---
+NAMA: Google Sheets
+IKON: assets/tools/sheets.png
+GRUP: Analisis & visualisasi
+---
+NAMA: Word
+IKON: assets/tools/word.webp
+GRUP: Dokumen & desain
+---
+NAMA: PowerPoint
+IKON: assets/tools/ppt.webp
+GRUP: Dokumen & desain
+---
+NAMA: Canva
+IKON: assets/tools/canva.png
+GRUP: Dokumen & desain

@@ -1,0 +1,21 @@
+# ============================================================
+# PUBLIKASI
+# ------------------------------------------------------------
+# JENIS: Artikel jurnal / Buku / Prosiding / Naskah (bebas)
+# STATUS: terbit  atau  proses   (proses = belum dipublikasikan)
+# SAMPUL: path gambar sampul (opsional, hanya untuk buku)
+# LINK: tautan publikasi. Kosong = tombol tidak muncul.
+# ============================================================
+# TODO: cek ulang penulis, volume, dan halaman. Detail ini diambil
+# dari situs rekan penulis karena halaman jurnal terkunci verifikasi.
+
+JUDUL: Analisis Performa Rupiah Terhadap Mata Uang Global Menggunakan X Control Chart
+JENIS: Artikel jurnal
+STATUS: terbit
+PENULIS: Yuyun Hidayat, Rayyan Ilyas Fadani, Gregorius Adiyatma Pradana, Febrianggi Caesar Immanuel, Muhamad Fadhli Alfarizi
+WADAH: BIAStatistics Special Issue, Vol. 6 No. 2, hlm. 63–70
+TANGGAL: 10 Agustus 2026
+RINGKASAN: Kurs bulanan 155 mata uang dari April 2021 sampai April 2026 dianalisis
+dengan control chart dan perbandingan terstandardisasi untuk menilai posisi rupiah.
+SAMPUL:
+LINK: https://biastatistics.statistics.unpad.ac.id/?journal=biastatistics-special-issue&page=article&op=view&path%5B%5D=365

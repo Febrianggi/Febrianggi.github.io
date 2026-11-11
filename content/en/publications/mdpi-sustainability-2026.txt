@@ -1,0 +1,7 @@
+JENIS: Journal article
+WADAH: Sustainability (MDPI), Vol. 18 No. 12, article 6121
+TANGGAL: 15 June 2026
+RINGKASAN: A scoping review of 35 articles on calibrating ensemble rainfall forecasts with
+Bayesian Model Averaging, following PRISMA-ScR and paired with a bibliometric analysis.
+Gaussian-based approaches still dominate, while the Gamma distribution, better suited to
+skewed rainfall data, remains little studied.

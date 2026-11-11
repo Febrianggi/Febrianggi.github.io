@@ -1,0 +1,13 @@
+# TODO: pastikan link buku ini (diambil dari situs rekan penulis).
+
+JUDUL: Statistical Quality Control
+JENIS: Buku
+STATUS: terbit
+PENULIS: Prof. Yuyun Hidayat, Febrianggi C. I., Rayyan I. F., Rovita D. P., Gregorius A. P., Arini S. H., Fathia S., Navira A., Nur Tiara A. A., Gisyaila F., Kevin P. S. S., M. Fadhli A., Naura J. D., S. Qanita N., Nurul S. M., Mutiara F. A. M., Bilbina S. G.
+WADAH:
+TANGGAL:
+RINGKASAN: Buku pengantar pengendalian kualitas statistik, disusun bersama tim
+di bawah bimbingan Prof. Yuyun Hidayat.
+SAMPUL: assets/publications/statistical-quality-control.webp
+SAMPUL_ALT: Sampul buku Statistical Quality Control dengan judul putih di atas grafik berwarna emas
+LINK: https://play.google.com/store/books/details?id=x0sCEgAAQBAJ

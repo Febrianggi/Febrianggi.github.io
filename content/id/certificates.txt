@@ -1,0 +1,23 @@
+# ============================================================
+# SERTIFIKAT (tampil di carousel 3D, tab Sertifikat)
+# ------------------------------------------------------------
+# GAMBAR: path gambar sertifikat (landscape, sekitar 2000x1414 px),
+#         misalnya assets/certificates/rasio-juara-1.webp
+#         Kosong = kartu menampilkan placeholder.
+# PDF:    path PDF sertifikat (opsional, untuk pratinjau di lightbox).
+# LINK:   tautan ke sertifikat online. Sementara ke profil GitHub.
+# ============================================================
+
+JUDUL: Juara 1, RASIO 10.0
+PENERBIT: Padjadjaran Statistics Olympiad
+TAHUN: 2026
+GAMBAR:
+PDF:
+LINK: https://github.com/Febrianggi
+---
+JUDUL: Best Presentation, RASIO 10.0
+PENERBIT: Padjadjaran Statistics Olympiad
+TAHUN: 2026
+GAMBAR:
+PDF:
+LINK: https://github.com/Febrianggi

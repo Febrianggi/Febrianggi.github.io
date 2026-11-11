@@ -1,0 +1,10 @@
+# English version. Only translated text lives here.
+# Any key left out (FOTO, CV, NAMA, ...) is taken from content/id/profile.txt.
+
+PERAN: Statistics student, Universitas Padjadjaran
+
+INTRO: I work with data in R, Python, and Excel, then turn the results into
+dashboards other people can read on their own. This page collects the projects,
+publications, and certificates I have worked on.
+
+FOTO_ALT: Photo of Febrianggi Caesar Immanuel

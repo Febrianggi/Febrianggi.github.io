@@ -1,0 +1,23 @@
+# PROYEK: GFF Farma
+# Gambar menyusul. Taruh screenshot di assets/projects/gff-farma/1.webp sampai 4.webp
+# (16:10, sekitar 1600x1000 px), lalu tulis di GAMBAR seperti proyek lain.
+
+JUDUL: GFF Farma
+SUBJUDUL: Website apotek, proyek akhir mata kuliah Basis Data
+TAHUN:
+
+RINGKASAN: Website apotek berbasis PHP dengan basis data MySQL, dibuat sebagai
+proyek akhir mata kuliah Basis Data.
+
+METODE:
+
+HASIL:
+
+KONTRIBUSI:
+
+TOOLS: PHP, SQL
+
+GAMBAR:
+
+LINK_REPO: https://github.com/Febrianggi
+LINK_DEMO:

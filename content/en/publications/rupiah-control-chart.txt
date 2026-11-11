@@ -1,0 +1,6 @@
+JUDUL: Analysis of the Rupiah's Performance Against Global Currencies Using an X Control Chart
+JENIS: Journal article
+WADAH: BIAStatistics Special Issue, Vol. 6 No. 2, pp. 63–70
+TANGGAL: 10 August 2026
+RINGKASAN: Monthly exchange rates for 155 currencies from April 2021 to April 2026
+are analyzed with control charts and standardized comparisons to assess the rupiah's position.

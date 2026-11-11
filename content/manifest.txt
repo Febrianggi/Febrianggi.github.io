@@ -1,0 +1,21 @@
+# ============================================================
+# MANIFEST: daftar isi situs (berlaku untuk semua bahasa)
+# ------------------------------------------------------------
+# Urutan di sini = urutan tampil di website.
+# Untuk menambah proyek: buat file content/id/projects/<slug>.txt
+# lalu tambahkan <slug> ke daftar PROYEK di bawah.
+# Baris yang diawali # adalah komentar dan tidak ditampilkan.
+# ============================================================
+
+BAHASA_DEFAULT: id
+
+PROYEK:
+- currency-control-chart
+- rasio-multilevel
+- pca-kmeans-whr
+- gff-farma
+
+PUBLIKASI:
+- rupiah-control-chart
+- mdpi-sustainability-2026
+- statistical-quality-control

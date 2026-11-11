@@ -1,0 +1,20 @@
+SUBJUDUL: A dashboard of the rupiah's performance against world currencies
+
+RINGKASAN: An interactive dashboard that places the rupiah's rate per SDR on an
+x̄ control chart, then compares it with other currencies worldwide and in ASEAN.
+Visitors can pick a country, a period, and the underlying data tables.
+
+METODE: Monthly exchange rates per SDR from April 2021 to April 2026 (61 months)
+were processed in Google Colab. The center line is the mean rate, and the upper and
+lower control limits sit 2 standard deviations either side of it.
+
+The latest month is then placed against the control limits, with the 12 months
+before it shown as reference dots on the same bar.
+
+HASIL:
+- In April 2026 one SDR cost Rp 23,757, up 653 from the month before.
+- That is above the upper control limit of Rp 23,186 (center Rp 20,985, lower limit Rp 18,784).
+- Of the 61 months observed, 1 fell outside the control limits.
+
+GAMBAR:
+- assets/projects/currency-control-chart/1.webp | Dashboard overview: the rupiah sits above the upper control limit in April 2026

@@ -1,0 +1,24 @@
+JUDUL: Multilevel Analysis Dashboard
+SUBJUDUL: Factors behind students' mathematics achievement, RASIO 10.0 final round
+
+RINGKASAN: The dashboard from the final round of the Padjadjaran Statistics Olympiad
+(RASIO). The question: is the variation in students' math scores mostly down to the
+students themselves, or also to the school they attend?
+
+METODE: The organizers' survey data cover 900 students drawn from 30 schools
+(30 students per school), so the data are hierarchical: students nested in schools.
+Students in the same school tend to score alike, so they cannot be treated as
+independent observations.
+
+Linear Mixed Models were therefore built step by step from M1 to M4: variance
+decomposition, then student traits (prior score, socioeconomic status, study hours),
+school traits (facility quality, teacher experience), and a study-hours slope allowed
+to vary across schools, followed by model diagnostics.
+
+HASIL:
+- 1st Place and Best Presentation in the RASIO 10.0 final round.
+
+KONTRIBUSI: Built together with Gregorius Adiyatma Pradana as team Astral Express.
+
+GAMBAR:
+- assets/projects/rasio-multilevel/1.webp | Background page of the RASIO multilevel dashboard: problem context and survey design

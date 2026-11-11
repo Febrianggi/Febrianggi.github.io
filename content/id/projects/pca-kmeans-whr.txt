@@ -1,0 +1,27 @@
+# PROYEK: PCA dan K-Means pada World Happiness Report
+
+JUDUL: PCA dan K-Means Clustering
+SUBJUDUL: Pengelompokan negara berdasarkan data World Happiness Report
+TAHUN:
+
+RINGKASAN: Negara-negara dalam World Happiness Report dikelompokkan dengan
+K-Means setelah dimensi datanya diringkas menggunakan Principal Component Analysis.
+Seluruh analisis ditulis sebagai skrip R.
+
+METODE: Variabel World Happiness Report diringkas dulu dengan PCA supaya
+pengelompokan tidak didominasi variabel yang saling berkorelasi. Skor komponen
+utama kemudian dikelompokkan dengan K-Means menjadi dua kluster.
+
+HASIL:
+- Indonesia berada di Kluster 1, bersama antara lain Mesir, Pakistan, Sri Lanka, dan Peru.
+- Kluster 2 berisi antara lain Singapura, Norwegia, Swiss, Malaysia, dan Chile.
+
+KONTRIBUSI:
+
+TOOLS: R
+
+GAMBAR:
+- assets/projects/pca-kmeans-whr/1.webp | Slide daftar negara pada Kluster 1 dan Kluster 2 hasil K-Means
+
+LINK_REPO: https://github.com/Febrianggi
+LINK_DEMO:

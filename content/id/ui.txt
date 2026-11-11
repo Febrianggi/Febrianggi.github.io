@@ -1,0 +1,83 @@
+# ============================================================
+# TEKS ANTARMUKA (label tombol, menu, pesan)
+# Ubah teks di kanan titik dua. Jangan ubah nama kunci di kiri.
+# {n}, {total}, {i}, {file} diganti otomatis oleh website.
+# ============================================================
+
+SKIP: Lewati ke konten utama
+NAV_ABOUT: Tentang
+NAV_PORTFOLIO: Portofolio
+NAV_CONTACT: Kontak
+NAV_MENU: Menu
+LANG_BUTTON: EN
+LANG_LABEL: Tampilkan dalam Bahasa Inggris
+
+HERO_CTA: Lihat proyek
+COPY_EMAIL: Salin email
+CV: Unduh CV
+PHOTO_PENDING: Foto menyusul
+
+ABOUT_TITLE: Tentang
+EDUCATION: Pendidikan
+ACHIEVEMENTS: Prestasi
+EVIDENCE: Lihat bukti
+
+PORTFOLIO_TITLE: Portofolio
+PORTFOLIO_LEAD: Proyek analisis, tulisan yang sudah terbit, sertifikat, dan alat yang kupakai sehari-hari.
+TAB_PROJECTS: Proyek
+TAB_PUBLICATIONS: Publikasi
+TAB_CERTIFICATES: Sertifikat
+TAB_TOOLS: Tools
+
+FILTER_LABEL: Saring menurut tools
+FILTER_ALL: Semua
+FILTER_STATUS: Menampilkan {n} dari {total} proyek
+FILTER_STATUS_TOOL: Menampilkan {n} dari {total} proyek yang memakai {tool}
+FILTER_EMPTY: Belum ada proyek yang memakai tools ini.
+
+PROJECT_DETAIL: Catatan metodologi
+PROJECT_REPO: Repositori
+PROJECT_DEMO: Buka dashboard
+PROJECT_SUMMARY: Ringkasan
+PROJECT_METHOD: Metode
+PROJECT_RESULTS: Hasil
+PROJECT_CONTRIBUTION: Kontribusi
+PROJECT_TOOLS: Tools
+PROJECT_PENDING: Bagian ini belum diisi.
+IMAGE_PENDING: Screenshot menyusul
+IMAGE_ZOOM: Perbesar gambar
+
+PUB_READ: Baca artikel
+PUB_BOOK: Lihat buku
+PUB_PUBLISHED: Terbit
+PUB_IN_PROGRESS: Dalam proses
+
+CERT_VIEW: Lihat sertifikat
+CERT_PDF: Pratinjau PDF
+CERT_PREV: Sertifikat sebelumnya
+CERT_NEXT: Sertifikat berikutnya
+CERT_COUNTER: {i} dari {n}
+CERT_PENDING: Gambar sertifikat menyusul
+CERT_PICK: Tampilkan sertifikat {i}
+
+TOOLS_HINT: Pilih tool untuk melihat proyek yang memakainya.
+TOOLS_COUNT: {n} proyek
+TOOLS_COUNT_ONE: 1 proyek
+TOOLS_NONE: Belum ada proyek
+
+CONTACT_TITLE: Kontak
+TOAST_COPIED: Email berhasil disalin!
+TOAST_COPY_FAIL: Gagal menyalin otomatis. Email: {email}
+
+CLOSE: Tutup
+PREV: Sebelumnya
+NEXT: Berikutnya
+ZOOM_IN: Perbesar
+ZOOM_OUT: Perkecil
+
+LOADING: Memuat konten
+ERROR: Konten gagal dimuat ({file}).
+RETRY: Coba lagi
+EMPTY: Belum ada isi di bagian ini.
+
+FOOTER: Dibuat dengan HTML, CSS, dan JavaScript.

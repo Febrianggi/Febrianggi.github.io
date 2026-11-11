@@ -1,0 +1,15 @@
+# ============================================================
+# KONTAK
+# ------------------------------------------------------------
+# Kosongkan nilai untuk menyembunyikan tautan (misalnya WHATSAPP).
+# WHATSAPP diisi nomor format internasional tanpa +, contoh 6281234567890
+# ============================================================
+
+EMAIL: febrianggicaesarimmanuel@gmail.com
+GITHUB: https://github.com/Febrianggi
+LINKEDIN: https://www.linkedin.com/in/febrianggi/
+INSTAGRAM: https://www.instagram.com/febri.immanuel_/
+WHATSAPP:
+
+AJAKAN: Terbuka untuk kolaborasi riset, proyek analisis data, dan magang.
+Cara tercepat menghubungiku lewat email.

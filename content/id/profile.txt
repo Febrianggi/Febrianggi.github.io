@@ -1,0 +1,22 @@
+# ============================================================
+# PROFIL (bagian paling atas website)
+# ------------------------------------------------------------
+# FOTO: isi dengan path foto setelah kamu menaruhnya di
+#       assets/personal/ (rasio 4:5, minimal 800x1000 px).
+#       Selama kosong, website menampilkan inisial FCI.
+# CV:   isi dengan path PDF, misalnya assets/documents/cv-febrianggi.pdf.
+#       Selama kosong, tombol CV tidak muncul.
+# ============================================================
+
+NAMA: Febrianggi Caesar Immanuel
+PANGGILAN: Febri
+INISIAL: FCI
+PERAN: Mahasiswa Statistika, Universitas Padjadjaran
+
+INTRO: Aku mengolah data dengan R, Python, dan Excel, lalu menyajikan hasilnya
+sebagai dashboard yang bisa langsung dibaca orang lain. Di halaman ini ada proyek,
+publikasi, dan sertifikat yang pernah kukerjakan.
+
+FOTO:
+FOTO_ALT: Foto Febrianggi Caesar Immanuel
+CV:

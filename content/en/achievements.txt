@@ -1,0 +1,6 @@
+# English version. Same order as content/id/achievements.txt.
+
+JUDUL: 1st Place, Statistics Olympiad RASIO 10.0
+KETERANGAN: Final round: a multilevel analysis of factors behind students' mathematics achievement, with team Astral Express.
+---
+JUDUL: Best Presentation, Statistics Olympiad RASIO 10.0

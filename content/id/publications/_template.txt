@@ -1,0 +1,16 @@
+# ============================================================
+# TEMPLATE PUBLIKASI BARU (file ini tidak ditampilkan)
+# 1. Salin file ini, ganti namanya, misalnya paper-baru.txt
+# 2. Isi kunci di bawah. Untuk naskah yang belum terbit tulis STATUS: proses
+# 3. Tambahkan "- paper-baru" ke daftar PUBLIKASI di content/manifest.txt
+# ============================================================
+
+JUDUL:
+JENIS: Artikel jurnal
+STATUS: proses
+PENULIS:
+WADAH:
+TANGGAL:
+RINGKASAN:
+SAMPUL:
+LINK:

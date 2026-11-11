@@ -1,0 +1,79 @@
+# English interface text. Keys must match content/id/ui.txt.
+
+SKIP: Skip to main content
+NAV_ABOUT: About
+NAV_PORTFOLIO: Portfolio
+NAV_CONTACT: Contact
+NAV_MENU: Menu
+LANG_BUTTON: ID
+LANG_LABEL: Tampilkan dalam Bahasa Indonesia
+
+HERO_CTA: See projects
+COPY_EMAIL: Copy email
+CV: Download CV
+PHOTO_PENDING: Photo coming soon
+
+ABOUT_TITLE: About
+EDUCATION: Education
+ACHIEVEMENTS: Achievements
+EVIDENCE: See proof
+
+PORTFOLIO_TITLE: Portfolio
+PORTFOLIO_LEAD: Analysis projects, published writing, certificates, and the tools I use day to day.
+TAB_PROJECTS: Projects
+TAB_PUBLICATIONS: Publications
+TAB_CERTIFICATES: Certificates
+TAB_TOOLS: Tools
+
+FILTER_LABEL: Filter by tool
+FILTER_ALL: All
+FILTER_STATUS: Showing {n} of {total} projects
+FILTER_STATUS_TOOL: Showing {n} of {total} projects that use {tool}
+FILTER_EMPTY: No projects use this tool yet.
+
+PROJECT_DETAIL: Method notes
+PROJECT_REPO: Repository
+PROJECT_DEMO: Open dashboard
+PROJECT_SUMMARY: Summary
+PROJECT_METHOD: Method
+PROJECT_RESULTS: Results
+PROJECT_CONTRIBUTION: Contribution
+PROJECT_TOOLS: Tools
+PROJECT_PENDING: This part has not been written yet.
+IMAGE_PENDING: Screenshot coming soon
+IMAGE_ZOOM: Enlarge image
+
+PUB_READ: Read the article
+PUB_BOOK: View the book
+PUB_PUBLISHED: Published
+PUB_IN_PROGRESS: In progress
+
+CERT_VIEW: View certificate
+CERT_PDF: Preview PDF
+CERT_PREV: Previous certificate
+CERT_NEXT: Next certificate
+CERT_COUNTER: {i} of {n}
+CERT_PENDING: Certificate image coming soon
+CERT_PICK: Show certificate {i}
+
+TOOLS_HINT: Pick a tool to see the projects that use it.
+TOOLS_COUNT: {n} projects
+TOOLS_COUNT_ONE: 1 project
+TOOLS_NONE: No projects yet
+
+CONTACT_TITLE: Contact
+TOAST_COPIED: Email copied!
+TOAST_COPY_FAIL: Could not copy automatically. Email: {email}
+
+CLOSE: Close
+PREV: Previous
+NEXT: Next
+ZOOM_IN: Zoom in
+ZOOM_OUT: Zoom out
+
+LOADING: Loading content
+ERROR: Could not load content ({file}).
+RETRY: Try again
+EMPTY: Nothing here yet.
+
+FOOTER: Built with HTML, CSS, and JavaScript.

@@ -1,0 +1,11 @@
+# ============================================================
+# PENDIDIKAN
+# ------------------------------------------------------------
+# Satu entri per blok. Pisahkan entri dengan baris ---
+# KETERANGAN boleh dikosongkan (misalnya untuk IPK atau minat).
+# ============================================================
+
+INSTITUSI: Universitas Padjadjaran
+PROGRAM: S1 Statistika
+PERIODE: 2024 sampai sekarang
+KETERANGAN:

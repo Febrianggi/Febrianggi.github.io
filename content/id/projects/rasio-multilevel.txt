@@ -1,0 +1,33 @@
+# PROYEK: Dashboard analisis multilevel, babak final RASIO 10.0
+# TODO: isi TOOLS (software yang dipakai untuk model dan dashboard) agar proyek ini ikut terfilter.
+
+JUDUL: Dashboard Analisis Multilevel
+SUBJUDUL: Faktor yang memengaruhi prestasi matematika siswa, babak final RASIO 10.0
+TAHUN: 2026
+
+RINGKASAN: Dashboard hasil babak final Padjadjaran Statistics Olympiad (RASIO).
+Pertanyaannya: apakah perbedaan nilai matematika siswa lebih banyak ditentukan oleh
+karakteristik siswa, atau juga oleh lingkungan sekolahnya?
+
+METODE: Data survei dari panitia berisi 900 siswa yang diambil dari 30 sekolah
+(30 siswa per sekolah), sehingga datanya berjenjang: siswa bersarang di sekolah.
+Siswa di sekolah yang sama cenderung punya nilai mirip, jadi mereka tidak bisa
+dianggap pengamatan yang saling bebas.
+
+Karena itu dipakai Linear Mixed Models secara bertahap dari M1 sampai M4: dekomposisi
+varians, penambahan karakteristik siswa (nilai awal, status sosial ekonomi, jam belajar),
+karakteristik sekolah (kualitas fasilitas, pengalaman guru), lalu slope jam belajar
+yang boleh berbeda antarsekolah, ditutup dengan diagnostik model.
+
+HASIL:
+- Juara 1 dan Best Presentation di babak final RASIO 10.0.
+
+KONTRIBUSI: Dikerjakan berdua dengan Gregorius Adiyatma Pradana sebagai tim Astral Express.
+
+TOOLS:
+
+GAMBAR:
+- assets/projects/rasio-multilevel/1.webp | Halaman Background dashboard analisis multilevel RASIO: konteks masalah dan desain survei
+
+LINK_REPO: https://github.com/Febrianggi
+LINK_DEMO:

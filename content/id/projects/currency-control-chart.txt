@@ -1,0 +1,41 @@
+# ============================================================
+# PROYEK: Currency Control Chart
+# ------------------------------------------------------------
+# Kunci yang tersedia:
+#   JUDUL, SUBJUDUL, TAHUN, RINGKASAN, METODE (boleh beberapa paragraf),
+#   HASIL (daftar, tiap baris diawali "- "), KONTRIBUSI,
+#   TOOLS (dipisah koma, harus sama dengan NAMA di tools.txt),
+#   GAMBAR (daftar "path | teks alt", maksimal 4 untuk grid 2x2),
+#   LINK_REPO, LINK_DEMO
+# ============================================================
+
+JUDUL: Currency Control Chart
+SUBJUDUL: Dashboard kinerja rupiah terhadap mata uang dunia
+TAHUN: 2026
+
+RINGKASAN: Dashboard interaktif yang menempatkan kurs rupiah per SDR di dalam
+x̄ control chart, lalu membandingkannya dengan mata uang lain di dunia dan ASEAN.
+Pengunjung bisa memilih negara, periode, dan tabel data sumbernya.
+
+METODE: Data kurs bulanan per SDR dari April 2021 sampai April 2026 (61 bulan)
+diolah di Google Colab. Garis tengah adalah rata-rata kurs, sedangkan batas kendali
+atas dan bawah dipasang 2 simpangan baku dari rata-rata itu.
+
+Bulan terbaru lalu diposisikan terhadap batas kendali, dan 12 bulan sebelumnya
+ditampilkan sebagai titik pembanding pada bar yang sama.
+
+HASIL:
+- Pada April 2026 satu SDR setara Rp 23.757, naik 653 dari bulan sebelumnya.
+- Nilai itu berada di atas batas kendali atas Rp 23.186 (garis tengah Rp 20.985, batas bawah Rp 18.784).
+- Dari 61 bulan pengamatan, 1 bulan berada di luar batas kendali.
+
+KONTRIBUSI:
+
+TOOLS: Python, Google Colab, Excel
+
+GAMBAR:
+- assets/projects/currency-control-chart/1.webp | Tampilan Overview dashboard: rupiah berada di atas batas kendali atas pada April 2026
+
+# TODO: ganti dengan link repo dan GitHub Pages dashboard ini
+LINK_REPO: https://github.com/Febrianggi
+LINK_DEMO:
