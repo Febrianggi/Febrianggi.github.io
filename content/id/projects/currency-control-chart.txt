@@ -38,5 +38,5 @@ TOOLS: Python, Google Colab, Excel
 GAMBAR:
 - assets/projects/currency-control-chart/1.webp | Tampilan Overview dashboard: rupiah berada di atas batas kendali atas pada April 2026
 
-LINK_REPO: https://github.com/Febrianggi/currency-control-charts
-LINK_DEMO: https://febrianggi.github.io/currency-control-charts/
+LINK_REPO: https://github.com/Febrianggi/currency-wars
+LINK_DEMO: https://febrianggi.github.io/currency-wars/
