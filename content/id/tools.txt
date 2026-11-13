@@ -45,6 +45,9 @@ IKON: assets/tools/spss-transparent.png
 NAMA: Winsteps
 IKON: assets/tools/winsteps.png
 ---
+NAMA: SmartPLS
+IKON: assets/tools/smartpls.png
+---
 NAMA: Excel
 IKON: assets/tools/excel.webp
 ---
