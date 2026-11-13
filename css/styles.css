@@ -467,7 +467,7 @@ button.tech-item[aria-pressed="true"] .tech-name { color: var(--accent-soft); }
 --------------------------------------------------------------------- */
 .cert-carousel { border-radius: var(--r-lg); }
 .cert-carousel:focus-visible { outline-offset: 6px; }
-.cert-stage { display: grid; perspective: 1400px; overflow: clip; padding-block: var(--s4); }
+.cert-stage { display: grid; grid-template-columns: minmax(0, 1fr); perspective: 1400px; overflow: clip; padding-block: var(--s4); }
 .cert-card {
   grid-area: 1 / 1; justify-self: center; width: min(34rem, 86%);
   background: var(--surface); border: 1px solid var(--line-strong); border-radius: var(--r-lg); overflow: hidden;
@@ -479,7 +479,7 @@ button.tech-item[aria-pressed="true"] .tech-name { color: var(--accent-soft); }
 .cert-card[data-pos="hidden"] { transform: scale(0.7); opacity: 0; visibility: hidden; }
 @media (prefers-reduced-motion: reduce) { .cert-card { transition: none; } }
 .cert-media { display: block; width: 100%; aspect-ratio: 1.414 / 1; padding: 0; border: 0; border-bottom: 1px solid var(--line); background: var(--surface-2); cursor: zoom-in; }
-.cert-media img { width: 100%; height: 100%; object-fit: cover; }
+.cert-media img { width: 100%; height: 100%; object-fit: contain; }
 .cert-placeholder {
   display: grid; place-content: center; justify-items: center; gap: var(--s3); cursor: default;
   color: var(--muted); font-size: 0.9rem; font-weight: 500;
@@ -490,12 +490,13 @@ button.tech-item[aria-pressed="true"] .tech-name { color: var(--accent-soft); }
 .cert-info { padding: var(--s4) var(--s5) var(--s5); display: grid; gap: var(--s2); }
 .cert-info h3 { font-size: 1.15rem; font-weight: 700; }
 .cert-controls { display: flex; align-items: center; justify-content: center; gap: var(--s3); margin-top: var(--s4); flex-wrap: wrap; }
-.cert-dots { display: flex; gap: var(--s1); }
+.cert-dots { display: flex; flex-wrap: wrap; justify-content: center; max-width: 100%; gap: 0; }
 .dot { width: 44px; height: 44px; padding: 0; border: 0; background: none; cursor: pointer; display: grid; place-items: center; }
 .dot::before { content: ""; width: 10px; height: 10px; border-radius: 50%; border: 1px solid var(--accent-soft); transition: background-color 0.2s; }
 .dot[aria-current="true"]::before { background: var(--accent-soft); }
 .cert-count { min-width: 4.5rem; text-align: center; }
 @media (max-width: 34rem) {
+  .cert-dots { order: 3; flex-basis: 100%; }
   .cert-card[data-pos="left"] { transform: translateX(-72%) scale(0.8) rotateY(24deg); opacity: 0.3; }
   .cert-card[data-pos="right"] { transform: translateX(72%) scale(0.8) rotateY(-24deg); opacity: 0.3; }
 }

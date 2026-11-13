@@ -8,6 +8,55 @@
 # LINK:   tautan ke sertifikat online. Sementara ke profil GitHub.
 # ============================================================
 
+JUDUL: Data Analysis Specialization (16 courses)
+PENERBIT: MySkill
+TAHUN: 2026
+GAMBAR: assets/certificates/myskill-data-analysis.webp
+PDF: assets/certificates/myskill-data-analysis.pdf
+LINK: 
+---
+JUDUL: Basic Data Specialization (10 courses)
+PENERBIT: MySkill
+TAHUN: 2026
+GAMBAR: assets/certificates/myskill-basic-data.webp
+PDF: assets/certificates/myskill-basic-data.pdf
+LINK: 
+---
+JUDUL: Membangun Aplikasi Gen AI dengan Microsoft Azure
+PENERBIT: Dicoding Indonesia
+TAHUN: 2026
+GAMBAR: assets/certificates/dicoding-azure-gen-ai.webp
+PDF: assets/certificates/dicoding-azure-gen-ai.pdf
+LINK: https://www.dicoding.com/certificates/N9ZO0OL18XG5
+---
+JUDUL: Belajar Penerapan Data Science dengan Microsoft Fabric
+PENERBIT: Dicoding Indonesia
+TAHUN: 2026
+GAMBAR: assets/certificates/dicoding-data-science-microsoft-fabric.webp
+PDF: assets/certificates/dicoding-data-science-microsoft-fabric.pdf
+LINK: https://www.dicoding.com/certificates/6RPNOV915X2M
+---
+JUDUL: Belajar Dasar Cloud dan Gen AI di AWS
+PENERBIT: Dicoding Indonesia
+TAHUN: 2026
+GAMBAR: assets/certificates/dicoding-aws-cloud-gen-ai.webp
+PDF: assets/certificates/dicoding-aws-cloud-gen-ai.pdf
+LINK: https://www.dicoding.com/certificates/EYX4O09DJXDL
+---
+JUDUL: Spec-Driven Development dengan Kiro
+PENERBIT: Dicoding Indonesia
+TAHUN: 2026
+GAMBAR: assets/certificates/dicoding-spec-driven-kiro.webp
+PDF: assets/certificates/dicoding-spec-driven-kiro.pdf
+LINK: https://www.dicoding.com/certificates/6RPNOV6M5X2M
+---
+JUDUL: Belajar Dasar Data Science
+PENERBIT: Dicoding Indonesia
+TAHUN: 2026
+GAMBAR: assets/certificates/dicoding-dasar-data-science.webp
+PDF: assets/certificates/dicoding-dasar-data-science.pdf
+LINK: https://www.dicoding.com/certificates/72ZDM719JZYW
+---
 JUDUL: Juara 1, RASIO 10.0
 PENERBIT: Padjadjaran Statistics Olympiad
 TAHUN: 2026

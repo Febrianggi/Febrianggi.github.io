@@ -1,5 +1,19 @@
 # English version. Same order as content/id/certificates.txt.
 
+JUDUL: Data Analysis Specialization (16 courses)
+---
+JUDUL: Basic Data Specialization (10 courses)
+---
+JUDUL: Membangun Aplikasi Gen AI dengan Microsoft Azure
+---
+JUDUL: Belajar Penerapan Data Science dengan Microsoft Fabric
+---
+JUDUL: Belajar Dasar Cloud dan Gen AI di AWS
+---
+JUDUL: Spec-Driven Development dengan Kiro
+---
+JUDUL: Belajar Dasar Data Science
+---
 JUDUL: 1st Place, RASIO 10.0
 ---
 JUDUL: Best Presentation, RASIO 10.0
