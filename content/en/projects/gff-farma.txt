@@ -4,3 +4,6 @@ RINGKASAN: A PHP pharmacy website backed by a MySQL database, built as the final
 project for the Database course.
 
 LABEL_DEMO: Try the website demo
+
+GAMBAR:
+- assets/projects/gff-farma/1.webp | GFF Farma website demo: the pharmacy home page with Home, About, Table, and Contact menus

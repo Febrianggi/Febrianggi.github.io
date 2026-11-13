@@ -19,6 +19,7 @@ TEKNIK:
 TOOLS: PHP, SQL
 
 GAMBAR:
+- assets/projects/gff-farma/1.webp | Tampilan demo website GFF Farma: halaman beranda apotek dengan menu Home, Tentang, Tabel, dan Kontak
 
 LINK_REPO: https://github.com/Febrianggi/php-mysql-pharmacy-database
 LINK_DEMO: https://febrianggi.github.io/php-mysql-pharmacy-database/
