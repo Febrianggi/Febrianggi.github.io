@@ -1,5 +1,12 @@
 # English version. Same order as content/id/certificates.txt.
 
+JUDUL: 1st Place, Statistics Olympiad RASIO 10.0
+---
+JUDUL: Best Presentation, Statistics Olympiad RASIO 10.0
+---
+JUDUL: 1st Place, Most Outstanding Student (Mapres), Statistics Class of 2024
+PENERBIT: Statistics Study Program, Universitas Padjadjaran
+---
 JUDUL: Data Analysis Specialization (16 courses)
 ---
 JUDUL: Basic Data Specialization (10 courses)
@@ -13,7 +20,3 @@ JUDUL: Belajar Dasar Cloud dan Gen AI di AWS
 JUDUL: Spec-Driven Development dengan Kiro
 ---
 JUDUL: Belajar Dasar Data Science
----
-JUDUL: 1st Place, RASIO 10.0
----
-JUDUL: Best Presentation, RASIO 10.0

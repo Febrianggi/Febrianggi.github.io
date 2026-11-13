@@ -184,7 +184,7 @@ function renderAchievements(el, entries) {
       h("p", { class: "entry-title", text: e.JUDUL }),
       h("p", { class: "small muted", text: [e.PENYELENGGARA, e.TAHUN].filter(Boolean).join(" · ") }),
       e.KETERANGAN && h("p", { class: "muted", text: e.KETERANGAN }),
-      e.LINK && h("a", { class: "text-link", href: e.LINK, ...external }, t("EVIDENCE"))))));
+      e.LINK && h("a", { class: "text-link", href: e.LINK, ...(e.LINK.startsWith("#") ? {} : external) }, t("EVIDENCE"))))));
 }
 
 /* ------------------------------------------------------------------

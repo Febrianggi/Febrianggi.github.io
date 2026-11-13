@@ -5,14 +5,20 @@
 # LINK: tautan bukti (sertifikat, berita). Sementara ke GitHub.
 # ============================================================
 
+JUDUL: Juara 1 Mahasiswa Berprestasi (Mapres), Statistika Angkatan 2024
+PENYELENGGARA: Program Studi Statistika, Universitas Padjadjaran
+TAHUN: 2026
+KETERANGAN:
+LINK: #certificates
+---
 JUDUL: Juara 1, Statistics Olympiad RASIO 10.0
 PENYELENGGARA: Padjadjaran Statistics Olympiad
 TAHUN: 2026
 KETERANGAN: Babak final: analisis multilevel faktor yang memengaruhi prestasi matematika siswa, bersama tim Astral Express.
-LINK: https://github.com/Febrianggi
+LINK: #certificates
 ---
 JUDUL: Best Presentation, Statistics Olympiad RASIO 10.0
 PENYELENGGARA: Padjadjaran Statistics Olympiad
 TAHUN: 2026
 KETERANGAN:
-LINK: https://github.com/Febrianggi
+LINK: #certificates

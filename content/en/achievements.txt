@@ -1,5 +1,8 @@
 # English version. Same order as content/id/achievements.txt.
 
+JUDUL: 1st Place, Most Outstanding Student (Mapres), Statistics Class of 2024
+PENYELENGGARA: Statistics Study Program, Universitas Padjadjaran
+---
 JUDUL: 1st Place, Statistics Olympiad RASIO 10.0
 KETERANGAN: Final round: a multilevel analysis of factors behind students' mathematics achievement, with team Astral Express.
 ---
