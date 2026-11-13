@@ -5,6 +5,11 @@
 # file proyek, agar filter proyek bekerja (huruf besar/kecil bebas).
 # IKON kosong = ditampilkan inisial.
 # Urutan di file ini = urutan ikon di kartu Technical Skills.
+#
+# Disembunyikan (ikonnya tetap ada di assets/tools/, tinggal tambahkan lagi blok-nya):
+#   NAMA: PostgreSQL | IKON: assets/tools/postgresql.png
+#   NAMA: SSMS       | IKON: assets/tools/ssms.png
+#   NAMA: Minitab    | IKON: assets/tools/minitab.webp
 # ============================================================
 
 NAMA: R
@@ -22,12 +27,6 @@ IKON: assets/tools/sql.webp
 NAMA: PHP
 IKON:
 ---
-NAMA: PostgreSQL
-IKON: assets/tools/postgresql.png
----
-NAMA: SSMS
-IKON: assets/tools/ssms.png
----
 NAMA: VS Code
 IKON: assets/tools/vscode.png
 ---
@@ -43,8 +42,8 @@ IKON: assets/tools/powerbi.webp
 NAMA: SPSS
 IKON: assets/tools/spss-transparent.png
 ---
-NAMA: Minitab
-IKON: assets/tools/minitab.webp
+NAMA: Winsteps
+IKON: assets/tools/winsteps.png
 ---
 NAMA: Excel
 IKON: assets/tools/excel.webp
