@@ -761,18 +761,31 @@ async function copyEmail() {
 ------------------------------------------------------------------- */
 function setupCursorGlow() {
   const glow = $(".cursor-glow");
+  const grid = $(".grid-reveal");
   const capable = matchMedia("(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)");
   const target = { x: 0, y: 0 };
   const pos = { x: 0, y: 0 };
   let frame = 0;
   let visible = false;
+  let scrollFrame = 0;
 
+  // Satu posisi (hasil lerp) menggerakkan cahaya dan pusat mask grid sekaligus,
+  // jadi keduanya selalu sinkron tanpa listener mousemove tambahan.
   const tick = () => {
     pos.x += (target.x - pos.x) * 0.12;
     pos.y += (target.y - pos.y) * 0.12;
     glow.style.transform = `translate3d(${pos.x - 260}px, ${pos.y - 260}px, 0)`;
+    grid.style.setProperty("--gx", `${pos.x.toFixed(1)}px`);
+    grid.style.setProperty("--gy", `${pos.y.toFixed(1)}px`);
     frame = Math.abs(target.x - pos.x) + Math.abs(target.y - pos.y) > 0.5 ? requestAnimationFrame(tick) : 0;
   };
+  // Garis grid ikut halaman saat scroll (pergeseran dibatasi satu sel agar angkanya kecil)
+  const syncScroll = () => {
+    scrollFrame = 0;
+    const cell = 44;
+    grid.style.setProperty("--gsy", `${-(scrollY % cell)}px`);
+  };
+  const onScroll = () => { if (!scrollFrame) scrollFrame = requestAnimationFrame(syncScroll); };
   const onMove = event => {
     if (event.pointerType && event.pointerType !== "mouse") return;
     target.x = event.clientX;
@@ -781,6 +794,7 @@ function setupCursorGlow() {
       pos.x = target.x; pos.y = target.y;
       visible = true;
       glow.classList.add("is-visible");
+      grid.classList.add("is-visible");
     }
     if (!frame) frame = requestAnimationFrame(tick);
   };
@@ -788,18 +802,23 @@ function setupCursorGlow() {
     if (event.relatedTarget) return;
     visible = false;
     glow.classList.remove("is-visible");
+    grid.classList.remove("is-visible");
   };
   const sync = () => {
     if (capable.matches) {
       addEventListener("pointermove", onMove, { passive: true });
+      addEventListener("scroll", onScroll, { passive: true });
       document.addEventListener("mouseout", onLeave);
+      syncScroll();
     } else {
       removeEventListener("pointermove", onMove);
+      removeEventListener("scroll", onScroll);
       document.removeEventListener("mouseout", onLeave);
       cancelAnimationFrame(frame);
       frame = 0;
       visible = false;
       glow.classList.remove("is-visible");
+      grid.classList.remove("is-visible");
     }
   };
   capable.addEventListener("change", sync);

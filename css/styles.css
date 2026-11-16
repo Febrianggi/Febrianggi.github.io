@@ -128,7 +128,27 @@ main:focus { outline: none; }
   will-change: transform;
 }
 .cursor-glow.is-visible { opacity: 1; }
-@media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) { .cursor-glow { display: none; } }
+
+/* Grid tersembunyi yang hanya terungkap oleh cahaya kursor.
+   Lapisan ini menempel di viewport, di belakang konten (z-index -1), dan
+   seluruhnya transparan kecuali di dalam lingkaran mask yang posisinya
+   diisi oleh JS cahaya kursor yang sama (--gx, --gy). Garis grid menempel
+   pada halaman (ikut bergeser saat scroll lewat --gsy), sehingga yang
+   bergerak hanya "cahayanya", bukan strukturnya. */
+.grid-reveal {
+  --cell: 44px;
+  position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(86, 198, 207, 0.17) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(86, 198, 207, 0.17) 1px, transparent 1px);
+  background-size: var(--cell) var(--cell);
+  background-position: 0 var(--gsy, 0px);
+  -webkit-mask-image: radial-gradient(circle 230px at var(--gx, -600px) var(--gy, -600px), #000 0%, rgba(0, 0, 0, 0.7) 30%, rgba(0, 0, 0, 0.32) 58%, rgba(0, 0, 0, 0.1) 80%, transparent 100%);
+  mask-image: radial-gradient(circle 230px at var(--gx, -600px) var(--gy, -600px), #000 0%, rgba(0, 0, 0, 0.7) 30%, rgba(0, 0, 0, 0.32) 58%, rgba(0, 0, 0, 0.1) 80%, transparent 100%);
+  opacity: 0; transition: opacity 0.4s ease;
+}
+.grid-reveal.is-visible { opacity: 1; }
+@media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) { .cursor-glow, .grid-reveal { display: none; } }
 
 /* ---------------------------------------------------------------------
    Header
