@@ -138,7 +138,7 @@ function renderProfile(el, [profile, contact]) {
 
   const photo = h("div", { class: profile.FOTO ? "photo has-img" : "photo" });
   if (profile.FOTO) {
-    photo.append(h("img", { src: profile.FOTO, alt: profile.FOTO_ALT || profile.NAMA, width: 960, height: 1200, fetchpriority: "high", decoding: "async" }));
+    photo.append(h("img", { src: profile.FOTO, alt: profile.FOTO_ALT || profile.NAMA, width: 660, height: 660, fetchpriority: "high", decoding: "async" }));
   } else {
     photo.append(h("span", { class: "photo-initials", "aria-hidden": "true", text: profile.INISIAL || "" }));
   }
