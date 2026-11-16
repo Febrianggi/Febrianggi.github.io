@@ -292,6 +292,14 @@ button.tech-item[aria-pressed="true"] .tech-name { color: var(--accent-soft); }
   box-shadow: 0 0 0 10px rgba(74, 144, 226, 0.06), 0 0 60px -10px rgba(74, 144, 226, 0.55);
 }
 .photo img { width: 100%; height: 100%; object-fit: cover; }
+/* real photo: a 4:5 portrait card so the whole seated pose stays in view */
+.photo.has-img {
+  width: min(17rem, 100%); aspect-ratio: 4 / 5;
+  border-radius: var(--r-lg);
+  background: #e9ecef;
+  box-shadow: 0 0 0 8px rgba(74, 144, 226, 0.06), 0 24px 60px -24px rgba(74, 144, 226, 0.55);
+}
+.photo.has-img img { object-position: 50% 100%; }
 .photo-initials { font-weight: 800; font-size: clamp(3rem, 7vw, 4.25rem); color: var(--accent-soft); letter-spacing: 0.02em; }
 .photo-note { margin-top: var(--s2); font-size: 0.8rem; color: var(--muted); }
 .profile-name { margin-top: var(--s5); font-weight: 800; font-size: 1.45rem; line-height: 1.25; }
@@ -315,6 +323,7 @@ button.tech-item[aria-pressed="true"] .tech-name { color: var(--accent-soft); }
   .hero-title { text-align: center; }
   .hero-grid { grid-template-columns: minmax(0, 1fr); }
   .photo { width: min(13rem, 70%); }
+  .photo.has-img { width: min(15rem, 72%); }
 }
 
 /* ---------------------------------------------------------------------

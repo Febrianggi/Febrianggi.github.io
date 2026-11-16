@@ -14,6 +14,6 @@ PANGGILAN: Febri
 INISIAL: FCI
 PERAN: Mahasiswa Statistika, Universitas Padjadjaran
 
-FOTO:
+FOTO: assets/personal/febrianggi.webp
 FOTO_ALT: Foto Febrianggi Caesar Immanuel
 CV:

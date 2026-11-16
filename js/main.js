@@ -136,16 +136,16 @@ function renderProfile(el, [profile, contact]) {
 
   slotEl("page-title").replaceChildren(profile.JUDUL_HALAMAN || profile.NAMA || "");
 
-  const photo = h("div", { class: "photo" });
+  const photo = h("div", { class: profile.FOTO ? "photo has-img" : "photo" });
   if (profile.FOTO) {
-    photo.append(h("img", { src: profile.FOTO, alt: profile.FOTO_ALT || profile.NAMA, width: 600, height: 600, fetchpriority: "high" }));
+    photo.append(h("img", { src: profile.FOTO, alt: profile.FOTO_ALT || profile.NAMA, width: 960, height: 1200, fetchpriority: "high", decoding: "async" }));
   } else {
     photo.append(h("span", { class: "photo-initials", "aria-hidden": "true", text: profile.INISIAL || "" }));
   }
 
   el.replaceChildren(
     photo,
-    !profile.FOTO && h("p", { class: "photo-note", text: t("PHOTO_PENDING") }),
+    profile.FOTO ? "" : h("p", { class: "photo-note", text: t("PHOTO_PENDING") }),
     h("p", { class: "profile-name" },
       h("span", { text: firstName }), rest.length ? h("span", { class: "accent", text: ` ${rest.join(" ")}` }) : ""),
     profile.PERAN && h("p", { class: "profile-role", text: profile.PERAN }),
