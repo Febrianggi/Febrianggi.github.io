@@ -8,16 +8,26 @@
 #    di content/manifest.txt
 # 4. Opsional: buat content/en/more-projects/analisis-survei.txt
 #    berisi kunci yang diterjemahkan saja.
+#
+# Semua kunci opsional kecuali JUDUL. Yang kosong tidak ditampilkan.
+# KATEGORI:  misalnya Dashboard, Riset, R / Statistik. Tombol filter
+#            kategori muncul otomatis jika ada 2 kategori atau lebih.
+# RINGKASAN: 1-2 kalimat. Jika kosong, kartu menampilkan 2 poin HASIL.
+# GAMBAR:    screenshot untuk kartu (rasio 16:10), format "path | alt".
+#            THUMBNAIL: boleh dipakai jika gambar kartu berbeda.
 # ============================================================
 
 JUDUL:
 TAHUN:
 KATEGORI:
+RINGKASAN:
 HASIL:
 - temuan atau capaian pertama
 - temuan atau capaian kedua
 TEKNIK:
 TOOLS:
+GAMBAR:
+- assets/projects/nama-proyek/1.webp | Deskripsi singkat gambar
 LINK_REPO:
 LINK_DEMO:
 LINK_LAPORAN:

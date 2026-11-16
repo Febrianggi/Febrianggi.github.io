@@ -5,6 +5,9 @@
 # file proyek, agar filter proyek bekerja (huruf besar/kecil bebas).
 # IKON kosong = ditampilkan inisial.
 # Urutan di file ini = urutan ikon di kartu Technical Skills.
+# GRUP: kelompok ikon. Pilihan: komputasi, perangkat-statistik, analitik,
+#       pengembangan, produktivitas. Kosong = masuk kelompok "lainnya".
+#       Nama kelompok yang tampil diatur di ui.txt (SKILL_GROUP_...).
 #
 # Disembunyikan (ikonnya tetap ada di assets/tools/, tinggal tambahkan lagi blok-nya):
 #   NAMA: PostgreSQL | IKON: assets/tools/postgresql.png
@@ -13,52 +16,69 @@
 # ============================================================
 
 NAMA: R
+GRUP: komputasi
 IKON: assets/tools/r.webp
 ---
 NAMA: RStudio
+GRUP: komputasi
 IKON: assets/tools/rstudio.png
 ---
 NAMA: Python
+GRUP: komputasi
 IKON: assets/tools/python.webp
 ---
 NAMA: SQL
+GRUP: pengembangan
 IKON: assets/tools/sql.webp
 ---
 NAMA: PHP
+GRUP: pengembangan
 IKON:
 ---
 NAMA: VS Code
+GRUP: pengembangan
 IKON: assets/tools/vscode.png
 ---
 NAMA: Jupyter
+GRUP: komputasi
 IKON: assets/tools/jupyter.webp
 ---
 NAMA: Google Colab
+GRUP: komputasi
 IKON: assets/tools/colab.png
 ---
 NAMA: Power BI
+GRUP: analitik
 IKON: assets/tools/powerbi.webp
 ---
 NAMA: SPSS
+GRUP: perangkat-statistik
 IKON: assets/tools/spss-transparent.png
 ---
 NAMA: Winsteps
+GRUP: perangkat-statistik
 IKON: assets/tools/winsteps.png
 ---
 NAMA: SmartPLS
+GRUP: perangkat-statistik
 IKON: assets/tools/smartpls.png
 ---
 NAMA: Excel
+GRUP: analitik
 IKON: assets/tools/excel.webp
 ---
 NAMA: Google Sheets
+GRUP: analitik
 IKON: assets/tools/sheets.png
 ---
 NAMA: Word
+GRUP: produktivitas
 IKON: assets/tools/word.webp
 ---
 NAMA: PowerPoint
+GRUP: produktivitas
 IKON: assets/tools/ppt.webp
 ---
 NAMA: Canva
+GRUP: produktivitas
 IKON: assets/tools/canva.png

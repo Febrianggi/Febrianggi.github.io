@@ -21,62 +21,84 @@ Mahasiswa Statistika Universitas Padjadjaran · Analisis data dengan R, Python, 
 
 Portofolio pribadi berbahasa Inggris yang dibangun dengan HTML, CSS, dan JavaScript murni, tanpa framework dan tanpa proses build. Semua teks tentang diriku disimpan di file `.txt` biasa di folder `content/`, sehingga isi website bisa diperbarui tanpa menyentuh kode.
 
+## Sistem desain: Teal Scientific
+
+Tata letak editorial gelap dengan aksen ilmiah. Token warnanya ada di bagian atas `css/styles.css`.
+
+| Token | Nilai | Dipakai untuk |
+|---|---|---|
+| Latar | `#101517` | Halaman |
+| Permukaan / terangkat | `#182124` / `#1A292D` | Panel, kartu, dialog |
+| Aksen / hover | `#56C6CF` / `#79DCE3` | Nomor bagian, tautan, status aktif, tombol utama |
+| Aksen tipis | `rgba(86,198,207,0.12)` | Filter terpilih, lencana |
+| Teks / sekunder / redup | `#ECF9FA` / `#B4C5C9` / `#95A9AE` | Isi teks dan metadata |
+| Garis | `rgba(236,249,250,0.10)` | Pemisah |
+
+- **Huruf:** Plus Jakarta Sans dengan skala fluid dari `clamp()`: hero 42 sampai 72 px, judul bagian 32 sampai 44 px, judul proyek 26 sampai 36 px, judul kartu 18 sampai 22 px, isi 15 sampai 17 px, metadata 13 sampai 14 px.
+- **Jarak:** kelipatan 4 px (`--s1` sampai `--s9`), lebar konten 1280 px, jarak antarbagian 72 sampai 120 px.
+- **Radius:** 6 px chip, 10 px tombol, 16 px kartu dan gambar.
+- **Kontras:** setiap pasangan teks dan latar minimal 6:1 (WCAG AA).
+
 ## Bagian website
 
-| Bagian | Isi |
-|---|---|
-| **Tentang** | Judul halaman, Tentang Saya, Pendidikan, Technical Skills, Prestasi, foto profil dan tautan |
-| **Proyek Unggulan** | Proyek utama dengan grid screenshot 2×2, metode, tools, dan dialog catatan metodologi |
-| **Proyek Lainnya** | Kartu ringkas untuk proyek yang lebih kecil |
-| **Publikasi** | Artikel jurnal dan buku, lengkap dengan status (terbit / dalam proses) |
-| **Sertifikat** | Carousel 3D dengan pratinjau gambar atau PDF |
-| **Kontak** | Email (salin sekali klik), LinkedIn, GitHub, Instagram |
+| # | Bagian | Isi |
+|---|---|---|
+| | **Hero** | Teks kecil, nama, kalimat posisi, pengantar singkat, tombol Explore my work / Contact me, tautan sosial, foto profil |
+| 01 | **About & Core Competencies** | About Me, pendidikan, sorotan prestasi, technical skills berkelompok yang menyaring proyek |
+| 02 | **Selected Projects** | Satu studi kasus per baris dengan screenshot besar (sisi bergantian di desktop), metode, tools, hasil utama, tautan, dan catatan metodologi |
+| 03 | **More Projects** | Galeri kartu (3 / 2 / 1 kolom) dengan filter kategori opsional; catatan rapi saat daftarnya masih kosong |
+| 04 | **Research & Publications** | Daftar bernomor berisi status, jenis, tanggal, penulis, wadah, ringkasan, DOI atau tautan, dan sampul buku |
+| 05 | **Achievements & Certificates** | Linimasa prestasi dengan tautan bukti, dan carousel sertifikat |
+| 06 | **Contact** | Email sebagai tombol utama, salin satu klik, LinkedIn, GitHub, Instagram |
 
 ## Fitur
 
-- **Konten di file `.txt`**, dimuat saat halaman dibuka dengan `fetch()` dan parser kecil. Setiap bagian punya skeleton saat memuat, pesan error dengan tombol coba lagi, dan tampilan saat kosong.
-- **Situs berbahasa Inggris, konten berlapis.** File dasar ada di `content/id/`; `content/en/` berisi teks Inggris yang menimpa kunci yang sama. Kunci yang tidak ada di versi Inggris otomatis diambil dari file dasar.
-- **Filter berdasarkan skill.** Memilih ikon di Technical Skills hanya menampilkan proyek yang memakai tool tersebut.
-- **Lightbox** untuk screenshot, sampul buku, dan sertifikat, dengan zoom dan navigasi keyboard. PDF bisa dipratinjau langsung.
-- **Cahaya kursor** biru yang mengikuti mouse memakai `requestAnimationFrame` dan interpolasi linear. Otomatis mati di layar sentuh dan saat pengguna meminta gerakan dikurangi.
-- **Aksesibilitas:** HTML semantik, `<dialog>` bawaan browser, fokus keyboard yang terlihat, skip link, area sentuh minimal 44 px, dan kontras sesuai WCAG AA.
+- **Konten dari file `.txt`**, dimuat saat halaman dibuka dengan `fetch()` dan parser kecil. Tiap bagian punya skeleton saat memuat, pesan galat dengan tombol coba lagi, dan tampilan kosong. Semua teks dimasukkan lewat `textContent`, tidak pernah sebagai HTML.
+- **Situs berbahasa Inggris, konten berlapis.** File dasar ada di `content/id/`; `content/en/` berisi teks Inggris yang menimpa kunci yang sama. Kunci yang tidak ada di versi Inggris memakai file dasar. Ubah `BAHASA_DEFAULT: id` di `manifest.txt` untuk menampilkan teks Indonesia.
+- **Filter skill.** Tools yang dipakai di proyek menampilkan angka. Memilih salah satu akan menyaring kedua bagian proyek, menyorot chip tools yang cocok, menampilkan "Showing n of N" dengan tombol reset, dan pesan kosong jika satu bagian tidak punya proyek yang cocok.
+- **Filter kategori** di More Projects, dibuat dari nilai `KATEGORI`. Hanya muncul jika proyeknya memakai dua kategori atau lebih.
+- **Media proyek:** screenshot besar ditampilkan utuh (tidak dipotong), thumbnail jika proyek punya beberapa gambar, dan lightbox dengan zoom serta navigasi tombol panah. PDF dibuka di tempat.
+- **Navigasi:** header lengket yang menjadi solid setelah di-scroll, garis bawah pada bagian yang sedang terlihat, menu HP yang aksesibel (tertutup saat tautan dipilih, Escape, atau klik di luar), dan tombol kembali ke atas.
+- **Gerak (moderat):** hero muncul bertahap, animasi muncul saat scroll dengan `IntersectionObserver`, foto profil melayang pelan, kartu sedikit terangkat saat hover, dan cahaya kursor tipis. Semuanya berhenti jika perangkat meminta gerak dikurangi, dan konten tidak pernah tersembunyi meski observer tidak tersedia atau gagal.
+- **SEO dan pratinjau tautan:** deskripsi, URL kanonik, kartu Open Graph dan Twitter dengan `assets/social/og-image.png`, data terstruktur `Person`, dan favicon SVG.
+- **Aksesibilitas:** landmark semantik, satu `h1`, `<dialog>` bawaan dengan fokus kembali ke tombol asal, skip link, cincin fokus terlihat, target sentuh 44 px, `aria-pressed` pada filter, dan carousel yang bisa dioperasikan dengan keyboard (tombol panah, tanpa autoplay).
 
 ## Teknologi
 
-| Area | Pilihan |
+| Bagian | Pilihan |
 |---|---|
 | Markup | HTML5 semantik |
-| Gaya | CSS custom properties, Grid, Flexbox, `backdrop-filter` |
-| Skrip | JavaScript murni (ES modules) |
-| Tipografi | [Plus Jakarta Sans](https://github.com/tokotype/PlusJakartaSans), di-host sendiri (SIL OFL 1.1) |
+| Gaya | CSS custom properties, Grid, Flexbox |
+| Skrip | JavaScript murni (ES modules), tanpa dependensi |
+| Huruf | [Plus Jakarta Sans](https://github.com/tokotype/PlusJakartaSans), di-host sendiri (SIL OFL 1.1) |
 | Hosting | GitHub Pages |
 
-## Struktur folder
+## Struktur proyek
 
 ```
 .
 ├── index.html
-├── css/styles.css
+├── css/styles.css          # token desain + semua komponen
 ├── js/
 │   ├── content.js          # parser .txt dan pemuat konten
-│   └── main.js             # render, filter, dialog, lightbox, carousel
+│   └── main.js             # render, filter, dialog, lightbox, carousel, gerak
 ├── content/
 │   ├── manifest.txt        # proyek dan publikasi yang tampil, beserta urutannya
-│   ├── id/                 # teks Bahasa Indonesia (utama, lengkap)
+│   ├── id/                 # teks Indonesia (utama, lengkap)
 │   │   ├── profile.txt  about.txt  education.txt  achievements.txt
 │   │   ├── tools.txt  certificates.txt  contact.txt  ui.txt
 │   │   ├── projects/       # proyek unggulan, satu file per proyek
-│   │   ├── more-projects/  # proyek lainnya (lihat _template.txt)
+│   │   ├── more-projects/  # proyek kecil (lihat _template.txt)
 │   │   └── publications/   # satu file per publikasi (lihat _template.txt)
 │   └── en/                 # terjemahan Inggris (hanya kunci yang diterjemahkan)
 └── assets/
     ├── personal/  projects/<slug>/  publications/  certificates/  documents/
-    ├── contact/   tools/   fonts/
+    ├── contact/   tools/   fonts/   social/
 ```
 
-## Menjalankan di komputer
+## Menjalankan secara lokal
 
-Website memuat teksnya dengan `fetch()`, yang diblokir browser jika halaman dibuka langsung dari file (`file://`). Jalankan lewat server lokal:
+Website memuat teksnya dengan `fetch()`, yang diblokir browser jika halaman dibuka langsung dari disk (`file://`). Jalankan lewat server lokal:
 
 ```bash
 # Cara 1: VS Code
@@ -87,56 +109,76 @@ python -m http.server 8000
 # lalu buka http://localhost:8000
 ```
 
-## Mengedit konten
+## Mengubah konten
 
 File konten memakai format `KUNCI: nilai`:
 
 ```text
-# Baris diawali # adalah komentar
+# Baris yang diawali # adalah komentar
 JUDUL: Nilai satu baris
-RINGKASAN: Nilai panjang boleh
-menyambung ke baris berikutnya.
+RINGKASAN: Nilai panjang boleh berlanjut
+ke baris berikutnya.
 
-Baris kosong membuat paragraf baru.
+Baris kosong memulai paragraf baru.
 HASIL:
 - poin pertama
 - poin kedua
 TOOLS: R, Python, Excel
 ---
-JUDUL: Entri berikutnya (entri dipisah ---)
+JUDUL: Entri berikutnya (entri dipisahkan dengan ---)
 ```
 
 - Kunci ditulis huruf besar di awal baris.
-- Nilai kosong (misalnya `LINK_DEMO:`) menyembunyikan tombol atau bagian tersebut.
-- Nama di `TOOLS:` proyek harus sama dengan `NAMA:` di `tools.txt` agar filter skill bekerja.
+- Nilai kosong (misalnya `LINK_DEMO:`) menyembunyikan tombol atau blok itu. Tidak ada tombol mati yang ditampilkan.
+- Nama di `TOOLS:` pada file proyek harus sama dengan `NAMA:` di `tools.txt` agar filter skill bekerja.
+- Teks antarmuka (tombol, judul, pesan) ada di `ui.txt`, baik di `content/id/` maupun `content/en/`.
+
+### Teks hero
+
+`content/id/profile.txt` (dan `content/en/profile.txt` untuk bahasa Inggris) punya tiga kunci opsional: `EYEBROW` (teks kecil di atas nama), `HEADLINE` (kalimat posisi), dan `INTRO` (satu paragraf pendek).
+
+### Kelompok skill
+
+Setiap tool di `content/id/tools.txt` punya nilai `GRUP:`: `komputasi`, `perangkat-statistik`, `analitik`, `pengembangan`, atau `produktivitas`. Tool tanpa `GRUP` masuk ke "Other Tools". Nama kelompok ada di `ui.txt` (`SKILL_GROUP_...`).
 
 ### Menambah proyek unggulan
 
-1. Salin salah satu file di `content/id/projects/` dan ganti namanya, misalnya `proyek-baru.txt`.
-2. Taruh maksimal empat screenshot di `assets/projects/proyek-baru/` (16:10, sekitar 1600×1000 px).
-3. Tambahkan `- proyek-baru` di bawah `PROYEK:` pada `content/manifest.txt`.
-4. Buat `content/en/projects/proyek-baru.txt` berisi teks Inggris untuk kunci yang tampil di situs.
+1. Salin salah satu file di `content/id/projects/` lalu ganti namanya, misalnya `proyek-baru.txt`.
+2. Taruh screenshot di `assets/projects/proyek-baru/` (16:10, sekitar 1600×1000 px). Tulis di bawah `GAMBAR:`; gambar pertama jadi gambar utama, sisanya jadi thumbnail.
+3. Tambahkan `- proyek-baru` di bawah `PROYEK:` pada `content/manifest.txt`. Urutan di sana sama dengan urutan di halaman, dan sisi gambar bergantian otomatis.
+4. Buat `content/en/projects/proyek-baru.txt` berisi teks Inggris untuk kunci yang tampil di website.
 
-### Menambah proyek lainnya atau publikasi
+Kunci opsional: `TUJUAN`, `TEKNIK`, `HASIL` (dua poin pertama tampil di halaman, semuanya di catatan metodologi), `KONTRIBUSI`, `LINK_DEMO`, `LABEL_DEMO`, `LINK_REPO`.
 
-Salin `_template.txt` di `content/id/more-projects/` atau `content/id/publications/`, isi, lalu tulis nama file barunya di bawah `PROYEK_LAINNYA:` atau `PUBLIKASI:` pada `content/manifest.txt`.
+### Menambah proyek kecil
+
+1. Salin `content/id/more-projects/_template.txt` ke file baru, misalnya `analisis-saya.txt`, lalu isi.
+2. Opsional: taruh screenshot di `assets/projects/analisis-saya/` dan tulis di bawah `GAMBAR:` (atau `THUMBNAIL:`).
+3. Tambahkan `- analisis-saya` di bawah `PROYEK_LAINNYA:` pada `content/manifest.txt`.
+
+`KATEGORI` (misalnya `Dashboard` atau `Riset`) dipakai untuk filter kategori, yang muncul begitu ada minimal dua kategori. Selama `PROYEK_LAINNYA:` kosong, bagian ini menampilkan catatan singkat bahwa proyek lain sedang disiapkan.
+
+### Menambah publikasi
+
+Salin `content/id/publications/_template.txt`, isi, lalu tulis nama filenya di bawah `PUBLIKASI:` pada `content/manifest.txt`. `STATUS: proses` menampilkan "In progress"; nilai lain menampilkan "Published".
 
 ### Foto, CV, dan sertifikat
 
 | Item | Lokasi | Lalu isi |
 |---|---|---|
-| Foto profil (persegi atau 4:5, minimal 800 px) | `assets/personal/` | `FOTO:` di `content/id/profile.txt` |
-| CV (PDF) | `assets/documents/` | `CV:` di `content/id/profile.txt` |
+| Foto profil (latar transparan, persegi, minimal 720 px) | `assets/personal/` | `FOTO:` di `content/id/profile.txt` |
+| CV (PDF) | `assets/documents/` | `CV:` di `content/id/profile.txt`; tombol Download CV lalu menggantikan Contact me di hero |
 | Gambar / PDF sertifikat | `assets/certificates/` | `GAMBAR:`, `PDF:`, `LINK:` di `content/id/certificates.txt` |
+| Pratinjau tautan (1200×630) | `assets/social/og-image.png` | Dipanggil di `index.html` |
 
-## Deployment
+## Deploy
 
-Website dipublikasikan lewat GitHub Pages dari root branch `main` (**Settings → Pages → Deploy from a branch**). Setiap push ke `main` memperbarui [febrianggi.github.io](https://febrianggi.github.io) dalam satu sampai dua menit.
+Website diterbitkan lewat GitHub Pages dari root branch `main` (**Settings → Pages → Deploy from a branch**). Setiap push ke `main` memperbarui [febrianggi.github.io](https://febrianggi.github.io) dalam satu sampai dua menit. Tidak ada yang perlu di-build.
 
 ## Kredit
 
-- Tata letak dan urutan bagian mengikuti portofolio **Humaira Zeanova**.
-- Ikon tools dan kontak diambil dari portofolio referensi yang menjadi dasar website ini.
+- Bingkai foto profil berlapis terinspirasi dari portofolio **Humaira Zeanova**.
+- Ikon tools dan kontak dipakai ulang dari portofolio referensi yang menjadi dasar website ini.
 - Plus Jakarta Sans © The Plus Jakarta Sans Project Authors, berlisensi SIL Open Font License 1.1.
 
 ## Kontak

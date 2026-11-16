@@ -2,35 +2,55 @@
 
 SKIP: Skip to main content
 NAV_ABOUT: About
-NAV_PROJECTS: Featured Projects
-NAV_MORE: More Projects
-NAV_PUBLICATIONS: Publications
+NAV_PROJECTS: Projects
+NAV_MORE: More
+NAV_PUBLICATIONS: Research
+NAV_ACHIEVEMENTS: Achievements
 NAV_CERTIFICATES: Certificates
 NAV_CONTACT: Contact
 NAV_MENU: Menu
 LANG_BUTTON: ID
 LANG_LABEL: Tampilkan dalam Bahasa Indonesia
 
+HERO_CTA: Explore my work
+HERO_CONTACT: Contact me
+SCROLL_CUE: Scroll to About
+BACK_TO_TOP: Back to top
+
+ABOUT_TITLE: About & Core Competencies
 ABOUT_ME: About Me
 EDUCATION: Education
 SKILLS: Technical Skills
-SKILLS_HINT: Icons with a number are used in projects. Pick one to filter the projects.
+SKILLS_HINT: Tools with a number are used in projects. Select one to filter the projects.
+SKILLS_FILTER_LABEL: Filter projects by tool
+SKILL_GROUP_KOMPUTASI: Programming & Statistical Computing
+SKILL_GROUP_PERANGKAT_STATISTIK: Statistical Software
+SKILL_GROUP_ANALITIK: Data Analytics & Visualization
+SKILL_GROUP_PENGEMBANGAN: Database & Development
+SKILL_GROUP_PRODUKTIVITAS: Research & Productivity
+SKILL_GROUP_LAINNYA: Other Tools
 ACHIEVEMENTS: Achievements
+ACHIEVEMENTS_PREVIEW: Highlights
+ACHIEVEMENTS_ALL: All achievements
 EVIDENCE: See proof
-HERO_CTA: See projects
 COPY_EMAIL: Copy email
+EMAIL_ME: Email me
 CV: Download CV
 PHOTO_PENDING: Photo coming soon
 
-PROJECTS_TITLE: Featured Projects
+PROJECTS_TITLE: Selected Projects
+PROJECTS_LEAD: Case studies in statistical analysis, dashboards, and data-driven applications.
 MORE_TITLE: More Projects
-MORE_EMPTY: More projects will be added here.
-PUBLICATIONS_TITLE: Publications
+MORE_EMPTY: More projects are on the way. New work will appear here as it is published.
+MORE_FILTER_LABEL: Filter by category
+FILTER_ALL: All projects
+PUBLICATIONS_TITLE: Research & Publications
+ACHIEVEMENTS_TITLE: Achievements & Certificates
 CERTIFICATES_TITLE: Certificates
 
 FILTER_STATUS_TOOL: Showing {n} of {total} projects that use {tool}
 FILTER_CLEAR: Show all projects
-FILTER_EMPTY: No projects use this tool yet.
+FILTER_EMPTY: No projects in this section use this tool yet.
 
 PROJECT_DETAIL: Method notes
 PROJECT_REPO: GitHub repository
@@ -41,11 +61,13 @@ PROJECT_TECHNIQUE: Methods
 PROJECT_SUMMARY: Summary
 PROJECT_METHOD: Method
 PROJECT_RESULTS: Results
+PROJECT_HIGHLIGHTS: Key results
 PROJECT_CONTRIBUTION: Contribution
 PROJECT_TOOLS: Tools
 PROJECT_PENDING: This part has not been written yet.
 IMAGE_PENDING: Screenshot coming soon
 IMAGE_ZOOM: Enlarge image
+IMAGE_SHOW: Show image {i}
 
 PUB_READ: Read the article
 PUB_BOOK: View the book
@@ -63,7 +85,7 @@ CERT_PICK: Show certificate {i}
 TOOLS_COUNT: {n} projects
 TOOLS_COUNT_ONE: 1 project
 
-CONTACT_TITLE: Let's Connect
+CONTACT_TITLE: Let's work with data that matters.
 TOAST_COPIED: Email copied!
 TOAST_COPY_FAIL: Could not copy automatically. Email: {email}
 
@@ -78,4 +100,4 @@ ERROR: Could not load content ({file}).
 RETRY: Try again
 EMPTY: Nothing here yet.
 
-FOOTER: Built with HTML, CSS, and JavaScript.
+FOOTER: Built with HTML, CSS, and JavaScript. Hosted on GitHub Pages.

@@ -21,33 +21,55 @@ Statistics student at Universitas Padjadjaran · Data analysis with R, Python, a
 
 An English-language personal portfolio built with plain HTML, CSS, and JavaScript. It has no framework and no build step. Every piece of text about me lives in plain `.txt` files under `content/`, so the site can be updated without touching the code.
 
+## Design system: Teal Scientific
+
+A dark editorial layout with a scientific accent. Tokens live at the top of `css/styles.css`.
+
+| Token | Value | Used for |
+|---|---|---|
+| Background | `#101517` | Page |
+| Surface / elevated | `#182124` / `#1A292D` | Panels, cards, dialogs |
+| Accent / hover | `#56C6CF` / `#79DCE3` | Section numbers, links, active states, primary buttons |
+| Accent tint | `rgba(86,198,207,0.12)` | Selected filters, badges |
+| Text / secondary / muted | `#ECF9FA` / `#B4C5C9` / `#95A9AE` | Body copy and metadata |
+| Border | `rgba(236,249,250,0.10)` | Separators |
+
+- **Type:** Plus Jakarta Sans with a fluid scale from `clamp()`: hero 42 to 72 px, section titles 32 to 44 px, project titles 26 to 36 px, card titles 18 to 22 px, body 15 to 17 px, metadata 13 to 14 px.
+- **Spacing:** 4 px steps (`--s1` to `--s9`), content width 1280 px, section gap 72 to 120 px.
+- **Radius:** 6 px chips, 10 px buttons, 16 px cards and images.
+- **Contrast:** every text and background pair is at least 6:1 (WCAG AA).
+
 ## Sections
 
-| Section | Contents |
-|---|---|
-| **About** | Page title, About Me, Education, Technical Skills, Achievements, profile photo and links |
-| **Featured Projects** | Main projects with a 2×2 screenshot grid, methods, tools, and a method-notes dialog |
-| **More Projects** | Compact cards for smaller projects |
-| **Publications** | Journal articles and books, with status (published / in progress) |
-| **Certificates** | 3D carousel with image or PDF preview |
-| **Contact** | Email (one-click copy), LinkedIn, GitHub, Instagram |
+| # | Section | Contents |
+|---|---|---|
+| | **Hero** | Eyebrow, name, positioning line, short intro, Explore my work / Contact me, social links, profile photo |
+| 01 | **About & Core Competencies** | About Me, Education, achievement highlights, technical skills in groups that filter the projects |
+| 02 | **Selected Projects** | One case study per row with a large screenshot (sides alternate on desktop), methods, tools, key results, links, and method notes |
+| 03 | **More Projects** | Card gallery (3 / 2 / 1 columns) with optional category filter; tidy empty state while the list is empty |
+| 04 | **Research & Publications** | Numbered list with status, type, date, authors, venue, abstract, DOI or link, and book cover |
+| 05 | **Achievements & Certificates** | Achievement timeline with proof links, and a certificate carousel |
+| 06 | **Contact** | Email as the main action, one-click copy, LinkedIn, GitHub, Instagram |
 
 ## Features
 
-- **Content in `.txt` files**, loaded at runtime with `fetch()` and a small parser. Each section shows a loading skeleton, an error message with a retry button, and an empty state.
-- **English site, layered content.** Base files live in `content/id/`; `content/en/` holds the English text and overrides matching keys. Any key missing in English falls back to the base file.
-- **Skill-based filtering.** Selecting a technical-skill icon shows only the projects that use that tool.
-- **Lightbox** for screenshots, book covers, and certificates, with zoom and keyboard navigation. PDFs are previewed in place.
-- **Cursor glow** that follows the mouse using `requestAnimationFrame` and linear interpolation. It turns off on touch screens and when reduced motion is requested.
-- **Accessibility:** semantic HTML, native `<dialog>`, visible focus states, a skip link, 44 px touch targets, and WCAG AA contrast.
+- **Content in `.txt` files**, loaded at runtime with `fetch()` and a small parser. Each section shows a loading skeleton, an error message with a retry button, and an empty state. All text is inserted with `textContent`, never as HTML.
+- **English site, layered content.** Base files live in `content/id/`; `content/en/` holds the English text and overrides matching keys. Any key missing in English falls back to the base file. Setting `BAHASA_DEFAULT: id` in `manifest.txt` shows the Indonesian text.
+- **Skill filter.** Tools that appear in projects show a count. Selecting one filters both project sections, highlights the matching tool chips, shows "Showing n of N" with a reset button, and shows an empty message if a section has no match.
+- **Category filter** in More Projects, built from the `KATEGORI` values. It only appears when the projects use two or more categories.
+- **Project media:** a large screenshot shown whole (no cropping), thumbnails when a project has several images, and a lightbox with zoom and arrow-key navigation. PDFs open in place.
+- **Navigation:** sticky header that turns solid after scrolling, an underline on the section in view, an accessible mobile menu (closes on link, Escape, or outside click), and a back-to-top button.
+- **Motion (moderate):** staggered hero entrance, scroll reveal with `IntersectionObserver`, a slowly floating profile photo, hover lifts on cards, and a subtle cursor glow. Everything stops when the device asks for reduced motion, and content is never hidden if the observer is missing or fails.
+- **SEO and sharing:** description, canonical URL, Open Graph and Twitter cards with `assets/social/og-image.png`, `Person` structured data, and an SVG favicon.
+- **Accessibility:** semantic landmarks, one `h1`, native `<dialog>` with focus return, a skip link, visible focus rings, 44 px touch targets, `aria-pressed` on filters, and a keyboard-operable carousel (arrow keys, no autoplay).
 
 ## Tech stack
 
 | Area | Choice |
 |---|---|
 | Markup | Semantic HTML5 |
-| Styling | CSS custom properties, Grid, Flexbox, `backdrop-filter` |
-| Scripting | Vanilla JavaScript (ES modules) |
+| Styling | CSS custom properties, Grid, Flexbox |
+| Scripting | Vanilla JavaScript (ES modules), no dependencies |
 | Typography | [Plus Jakarta Sans](https://github.com/tokotype/PlusJakartaSans), self-hosted (SIL OFL 1.1) |
 | Hosting | GitHub Pages |
 
@@ -56,10 +78,10 @@ An English-language personal portfolio built with plain HTML, CSS, and JavaScrip
 ```
 .
 ├── index.html
-├── css/styles.css
+├── css/styles.css          # design tokens + all components
 ├── js/
 │   ├── content.js          # .txt parser and content loader
-│   └── main.js             # rendering, filter, dialogs, lightbox, carousel
+│   └── main.js             # rendering, filters, dialogs, lightbox, carousel, motion
 ├── content/
 │   ├── manifest.txt        # which projects and publications appear, in order
 │   ├── id/                 # Indonesian text (primary, complete)
@@ -71,7 +93,7 @@ An English-language personal portfolio built with plain HTML, CSS, and JavaScrip
 │   └── en/                 # English translations (translated keys only)
 └── assets/
     ├── personal/  projects/<slug>/  publications/  certificates/  documents/
-    ├── contact/   tools/   fonts/
+    ├── contact/   tools/   fonts/   social/
 ```
 
 ## Running locally
@@ -107,35 +129,55 @@ JUDUL: Next entry (entries are separated by ---)
 ```
 
 - Keys are uppercase and come first on the line.
-- An empty value (for example `LINK_DEMO:`) hides that button or block.
+- An empty value (for example `LINK_DEMO:`) hides that button or block. No dead buttons are rendered.
 - Names in a project's `TOOLS:` must match `NAMA:` in `tools.txt` for the skill filter to work.
+- Interface text (buttons, headings, messages) is in `ui.txt`, in both `content/id/` and `content/en/`.
+
+### Hero text
+
+`content/id/profile.txt` (and `content/en/profile.txt` for English) has three optional keys: `EYEBROW` (small line above the name), `HEADLINE` (positioning line), and `INTRO` (one short paragraph).
+
+### Skill groups
+
+Each tool in `content/id/tools.txt` has a `GRUP:` value: `komputasi`, `perangkat-statistik`, `analitik`, `pengembangan`, or `produktivitas`. A tool without `GRUP` goes into "Other Tools". Group names are in `ui.txt` (`SKILL_GROUP_...`).
 
 ### Adding a featured project
 
 1. Copy any file in `content/id/projects/` and rename it, for example `new-project.txt`.
-2. Put up to four screenshots in `assets/projects/new-project/` (16:10, about 1600×1000 px).
-3. Add `- new-project` under `PROYEK:` in `content/manifest.txt`.
+2. Put screenshots in `assets/projects/new-project/` (16:10, about 1600×1000 px). List them under `GAMBAR:`; the first is the main image and the rest become thumbnails.
+3. Add `- new-project` under `PROYEK:` in `content/manifest.txt`. The order there is the order on the page, and rows alternate sides automatically.
 4. Add `content/en/projects/new-project.txt` with the English text for the keys shown on the site.
 
-### Adding a smaller project or a publication
+Optional keys: `TUJUAN` (goal), `TEKNIK` (methods), `HASIL` (the first two points appear on the page, all of them in method notes), `KONTRIBUSI`, `LINK_DEMO`, `LABEL_DEMO`, `LINK_REPO`.
 
-Copy `_template.txt` in `content/id/more-projects/` or `content/id/publications/`, fill it in, then list the new file name under `PROYEK_LAINNYA:` or `PUBLIKASI:` in `content/manifest.txt`.
+### Adding a smaller project
+
+1. Copy `content/id/more-projects/_template.txt` to a new file, for example `my-analysis.txt`, and fill it in.
+2. Optional: add a screenshot in `assets/projects/my-analysis/` and list it under `GAMBAR:` (or `THUMBNAIL:`).
+3. List `- my-analysis` under `PROYEK_LAINNYA:` in `content/manifest.txt`.
+
+`KATEGORI` (for example `Dashboard` or `Research`) drives the category filter, which appears once at least two categories exist. While `PROYEK_LAINNYA:` is empty, the section shows a short "more projects are on the way" note.
+
+### Adding a publication
+
+Copy `content/id/publications/_template.txt`, fill it in, and list the file name under `PUBLIKASI:` in `content/manifest.txt`. `STATUS: proses` shows "In progress"; anything else shows "Published".
 
 ### Photo, CV, and certificates
 
 | Item | Location | Then set |
 |---|---|---|
-| Profile photo (square or 4:5, at least 800 px) | `assets/personal/` | `FOTO:` in `content/id/profile.txt` |
-| CV (PDF) | `assets/documents/` | `CV:` in `content/id/profile.txt` |
+| Profile photo (transparent background, square, at least 720 px) | `assets/personal/` | `FOTO:` in `content/id/profile.txt` |
+| CV (PDF) | `assets/documents/` | `CV:` in `content/id/profile.txt`; a Download CV button then replaces Contact me in the hero |
 | Certificate image / PDF | `assets/certificates/` | `GAMBAR:`, `PDF:`, `LINK:` in `content/id/certificates.txt` |
+| Social preview (1200×630) | `assets/social/og-image.png` | Referenced in `index.html` |
 
 ## Deployment
 
-The site is published with GitHub Pages from the `main` branch root (**Settings → Pages → Deploy from a branch**). Every push to `main` updates [febrianggi.github.io](https://febrianggi.github.io) within a minute or two.
+The site is published with GitHub Pages from the `main` branch root (**Settings → Pages → Deploy from a branch**). Every push to `main` updates [febrianggi.github.io](https://febrianggi.github.io) within a minute or two. There is nothing to build.
 
 ## Credits
 
-- Layout and section order follow the portfolio of **Humaira Zeanova**.
+- The layered profile-photo frame was inspired by the portfolio of **Humaira Zeanova**.
 - Tool and contact icons are reused from the reference portfolios this site is based on.
 - Plus Jakarta Sans © The Plus Jakarta Sans Project Authors, licensed under the SIL Open Font License 1.1.
 

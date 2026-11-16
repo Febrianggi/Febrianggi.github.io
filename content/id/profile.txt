@@ -14,6 +14,15 @@ PANGGILAN: Febri
 INISIAL: FCI
 PERAN: Mahasiswa Statistika, Universitas Padjadjaran
 
+# Bagian hero (atas halaman). Semua opsional.
+# EYEBROW:  teks kecil di atas nama
+# HEADLINE: kalimat posisi di bawah nama
+# INTRO:    satu paragraf pengantar singkat
+EYEBROW: Statistika · Analisis Data · Riset
+HEADLINE: Mengubah data menjadi wawasan yang bermakna.
+INTRO: Mahasiswa Statistika Universitas Padjadjaran angkatan 2024. Aku menyiapkan data,
+memilih metode statistik yang tepat, dan menyajikan hasilnya dalam bentuk yang mudah dibaca.
+
 FOTO: assets/personal/febrianggi.webp
 FOTO_ALT: Foto Febrianggi Caesar Immanuel
 CV:

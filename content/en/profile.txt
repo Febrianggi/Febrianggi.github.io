@@ -3,5 +3,9 @@
 
 JUDUL_HALAMAN: Statistics & Data Analysis Portfolio
 PERAN: Statistics student, Universitas Padjadjaran
+EYEBROW: Statistics · Data Analysis · Research
+HEADLINE: Transforming data into meaningful insights.
+INTRO: Statistics student at Universitas Padjadjaran, class of 2024. I prepare data,
+choose the right statistical method, and present the results in a form people can read.
 
 FOTO_ALT: Photo of Febrianggi Caesar Immanuel

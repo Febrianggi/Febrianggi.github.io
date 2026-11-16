@@ -4,37 +4,57 @@
 # {n}, {total}, {i}, {file}, {tool}, {email} diganti otomatis.
 # ============================================================
 
-SKIP: Lewati ke konten utama
+SKIP: Langsung ke konten utama
 NAV_ABOUT: Tentang
-NAV_PROJECTS: Proyek Unggulan
-NAV_MORE: Proyek Lainnya
-NAV_PUBLICATIONS: Publikasi
+NAV_PROJECTS: Proyek
+NAV_MORE: Lainnya
+NAV_PUBLICATIONS: Riset
+NAV_ACHIEVEMENTS: Prestasi
 NAV_CERTIFICATES: Sertifikat
 NAV_CONTACT: Kontak
 NAV_MENU: Menu
 LANG_BUTTON: EN
 LANG_LABEL: Tampilkan dalam Bahasa Inggris
 
+HERO_CTA: Lihat karyaku
+HERO_CONTACT: Hubungi aku
+SCROLL_CUE: Gulir ke bagian Tentang
+BACK_TO_TOP: Kembali ke atas
+
+ABOUT_TITLE: Tentang & Kompetensi Inti
 ABOUT_ME: Tentang Saya
 EDUCATION: Pendidikan
 SKILLS: Technical Skills
-SKILLS_HINT: Ikon bertanda angka dipakai di proyek. Pilih untuk menyaring proyek.
+SKILLS_HINT: Alat yang berangka dipakai di proyek. Pilih salah satu untuk menyaring proyek.
+SKILLS_FILTER_LABEL: Saring proyek berdasarkan alat
+SKILL_GROUP_KOMPUTASI: Pemrograman & Komputasi Statistik
+SKILL_GROUP_PERANGKAT_STATISTIK: Perangkat Lunak Statistik
+SKILL_GROUP_ANALITIK: Analitik & Visualisasi Data
+SKILL_GROUP_PENGEMBANGAN: Basis Data & Pengembangan
+SKILL_GROUP_PRODUKTIVITAS: Riset & Produktivitas
+SKILL_GROUP_LAINNYA: Alat Lainnya
 ACHIEVEMENTS: Prestasi
+ACHIEVEMENTS_PREVIEW: Sorotan
+ACHIEVEMENTS_ALL: Semua prestasi
 EVIDENCE: Lihat bukti
-HERO_CTA: Lihat proyek
 COPY_EMAIL: Salin email
+EMAIL_ME: Kirim email
 CV: Unduh CV
 PHOTO_PENDING: Foto menyusul
 
-PROJECTS_TITLE: Proyek Unggulan
+PROJECTS_TITLE: Proyek Pilihan
+PROJECTS_LEAD: Studi kasus analisis statistik, dashboard, dan aplikasi berbasis data.
 MORE_TITLE: Proyek Lainnya
-MORE_EMPTY: Proyek lainnya akan ditambahkan di sini.
-PUBLICATIONS_TITLE: Publikasi
+MORE_EMPTY: Proyek lain sedang disiapkan. Karya baru akan muncul di sini setelah dipublikasikan.
+MORE_FILTER_LABEL: Saring menurut kategori
+FILTER_ALL: Semua proyek
+PUBLICATIONS_TITLE: Riset & Publikasi
+ACHIEVEMENTS_TITLE: Prestasi & Sertifikat
 CERTIFICATES_TITLE: Sertifikat
 
 FILTER_STATUS_TOOL: Menampilkan {n} dari {total} proyek yang memakai {tool}
 FILTER_CLEAR: Tampilkan semua proyek
-FILTER_EMPTY: Belum ada proyek yang memakai tools ini.
+FILTER_EMPTY: Belum ada proyek di bagian ini yang memakai alat ini.
 
 PROJECT_DETAIL: Catatan metodologi
 PROJECT_REPO: Repositori GitHub
@@ -45,11 +65,13 @@ PROJECT_TECHNIQUE: Metode
 PROJECT_SUMMARY: Ringkasan
 PROJECT_METHOD: Metode
 PROJECT_RESULTS: Hasil
+PROJECT_HIGHLIGHTS: Hasil utama
 PROJECT_CONTRIBUTION: Kontribusi
 PROJECT_TOOLS: Tools
-PROJECT_PENDING: Bagian ini belum diisi.
+PROJECT_PENDING: Bagian ini belum ditulis.
 IMAGE_PENDING: Screenshot menyusul
 IMAGE_ZOOM: Perbesar gambar
+IMAGE_SHOW: Tampilkan gambar {i}
 
 PUB_READ: Baca artikel
 PUB_BOOK: Lihat buku
@@ -67,7 +89,7 @@ CERT_PICK: Tampilkan sertifikat {i}
 TOOLS_COUNT: {n} proyek
 TOOLS_COUNT_ONE: 1 proyek
 
-CONTACT_TITLE: Mari Terhubung
+CONTACT_TITLE: Mari bekerja dengan data yang berarti.
 TOAST_COPIED: Email berhasil disalin!
 TOAST_COPY_FAIL: Gagal menyalin otomatis. Email: {email}
 
@@ -82,4 +104,4 @@ ERROR: Konten gagal dimuat ({file}).
 RETRY: Coba lagi
 EMPTY: Belum ada isi di bagian ini.
 
-FOOTER: Dibuat dengan HTML, CSS, dan JavaScript.
+FOOTER: Dibuat dengan HTML, CSS, dan JavaScript. Di-hosting di GitHub Pages.

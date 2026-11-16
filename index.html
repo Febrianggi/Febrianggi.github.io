@@ -3,13 +3,50 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Febrianggi Caesar Immanuel · Portfolio</title>
-  <meta name="description" content="Portfolio of Febrianggi Caesar Immanuel, Statistics student at Universitas Padjadjaran.">
+  <title>Febrianggi Caesar Immanuel · Statistics & Data Analysis Portfolio</title>
+  <meta name="description" content="Portfolio of Febrianggi Caesar Immanuel, Statistics student at Universitas Padjadjaran: data analysis projects, statistical research, publications, and certificates.">
+  <meta name="author" content="Febrianggi Caesar Immanuel">
   <meta name="color-scheme" content="dark">
-  <meta name="theme-color" content="#101113">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23101113'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='Arial' font-weight='700' font-size='15' fill='%238bb4ff'%3EF%3C/text%3E%3C/svg%3E">
-  <link rel="preload" href="assets/fonts/plus-jakarta-sans-700.woff2" as="font" type="font/woff2" crossorigin>
+  <meta name="theme-color" content="#101517">
+  <link rel="canonical" href="https://febrianggi.github.io/">
+
+  <meta property="og:type" content="profile">
+  <meta property="og:site_name" content="Febrianggi Caesar Immanuel">
+  <meta property="og:title" content="Febrianggi Caesar Immanuel · Statistics & Data Analysis Portfolio">
+  <meta property="og:description" content="Statistics student at Universitas Padjadjaran. Data analysis projects, statistical research, and publications.">
+  <meta property="og:url" content="https://febrianggi.github.io/">
+  <meta property="og:image" content="https://febrianggi.github.io/assets/social/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Febrianggi Caesar Immanuel, Statistics & Data Analysis Portfolio">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Febrianggi Caesar Immanuel · Statistics & Data Analysis Portfolio">
+  <meta name="twitter:description" content="Statistics student at Universitas Padjadjaran. Data analysis projects, statistical research, and publications.">
+  <meta name="twitter:image" content="https://febrianggi.github.io/assets/social/og-image.png">
+
+  <link rel="icon" href="assets/social/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/social/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="assets/social/apple-touch-icon.png">
+  <link rel="preload" href="assets/fonts/plus-jakarta-sans-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/personal/febrianggi.webp" as="image" type="image/webp">
   <link rel="stylesheet" href="css/styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Febrianggi Caesar Immanuel",
+    "url": "https://febrianggi.github.io/",
+    "image": "https://febrianggi.github.io/assets/personal/febrianggi.webp",
+    "jobTitle": "Statistics student",
+    "affiliation": { "@type": "CollegeOrUniversity", "name": "Universitas Padjadjaran" },
+    "sameAs": [
+      "https://github.com/Febrianggi",
+      "https://www.linkedin.com/in/febrianggi/",
+      "https://www.instagram.com/febri.immanuel_/"
+    ]
+  }
+  </script>
+  <script>document.documentElement.classList.add("js");</script>
   <script type="module" src="js/main.js"></script>
 </head>
 <body>
@@ -29,62 +66,83 @@
 
   <header class="site-header">
     <div class="shell header-inner">
-      <a class="brand" href="#about" data-slot="brand">Febrianggi <span>Caesar Immanuel</span></a>
+      <a class="brand" href="#top" data-slot="brand"><span class="brand-mark" aria-hidden="true">F</span><span class="brand-name">Febrianggi <span>Caesar Immanuel</span></span></a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
-        <span data-i18n="NAV_MENU">Menu</span>
+        <span class="menu-icon" aria-hidden="true"></span><span data-i18n="NAV_MENU">Menu</span>
       </button>
       <nav class="site-nav" id="site-nav" aria-label="Main navigation">
         <a href="#about" data-i18n="NAV_ABOUT">About</a>
-        <a href="#projects" data-i18n="NAV_PROJECTS">Featured Projects</a>
-        <a href="#more-projects" data-i18n="NAV_MORE">More Projects</a>
-        <a href="#publications" data-i18n="NAV_PUBLICATIONS">Publications</a>
-        <a href="#certificates" data-i18n="NAV_CERTIFICATES">Certificates</a>
-        <a href="#contact" data-i18n="NAV_CONTACT">Contact</a>
+        <a href="#projects" data-i18n="NAV_PROJECTS">Projects</a>
+        <a href="#more-projects" data-i18n="NAV_MORE">More</a>
+        <a href="#publications" data-i18n="NAV_PUBLICATIONS">Research</a>
+        <a href="#achievements" data-i18n="NAV_ACHIEVEMENTS">Achievements</a>
+        <a href="#contact" class="nav-cta" data-i18n="NAV_CONTACT">Contact</a>
       </nav>
     </div>
   </header>
 
   <main id="main" tabindex="-1">
-    <!-- ======================= HERO / TENTANG ======================= -->
-    <section class="hero shell" id="about" aria-labelledby="hero-title">
-      <h1 class="hero-title" id="hero-title" data-slot="page-title"><span class="sk sk-title"></span></h1>
-
-      <div class="hero-grid">
-        <div class="hero-col">
-          <article class="info-card">
-            <h2 class="card-label" data-i18n="ABOUT_ME">About Me</h2>
-            <div class="about-text" data-slot="about" aria-busy="true">
-              <span class="sk sk-line"></span><span class="sk sk-line"></span><span class="sk sk-line" style="width: 70%"></span>
-            </div>
-          </article>
-          <article class="info-card">
-            <h2 class="card-label" data-i18n="EDUCATION">Education</h2>
-            <div data-slot="education" aria-busy="true"><span class="sk sk-line"></span><span class="sk sk-line" style="width: 50%"></span></div>
-          </article>
+    <!-- ======================= HERO ======================= -->
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="shell hero-inner">
+        <div class="hero-copy" data-slot="hero" aria-busy="true">
+          <p class="eyebrow"><span class="sk sk-line" style="width: 16rem"></span></p>
+          <h1 class="hero-title" id="hero-title">Febrianggi Caesar Immanuel</h1>
+          <span class="sk sk-line"></span><span class="sk sk-line" style="width: 70%"></span>
         </div>
-
-        <div class="hero-col">
-          <article class="info-card">
-            <h2 class="card-label" data-i18n="SKILLS">Technical Skills</h2>
-            <p class="card-hint" data-i18n="SKILLS_HINT">Icons with a number are used in projects. Pick one to filter the projects.</p>
-            <div data-slot="tools" aria-busy="true"><span class="sk sk-block"></span></div>
-          </article>
-          <article class="info-card">
-            <h2 class="card-label" data-i18n="ACHIEVEMENTS">Achievements</h2>
-            <div data-slot="achievements" aria-busy="true"><span class="sk sk-line"></span><span class="sk sk-line" style="width: 60%"></span></div>
-          </article>
-        </div>
-
-        <div class="profile" data-slot="profile" aria-busy="true">
+        <div class="hero-visual" data-slot="profile" aria-busy="true">
           <div class="photo"><span class="photo-initials" aria-hidden="true"></span></div>
-          <span class="sk sk-line" style="width: 70%; margin-inline: auto"></span>
         </div>
+      </div>
+      <a class="scroll-cue" href="#about" data-i18n-aria="SCROLL_CUE" aria-label="Scroll to About"><span aria-hidden="true"></span></a>
+    </section>
+
+    <!-- ======================= ABOUT & COMPETENCIES ======================= -->
+    <section class="section shell" id="about" aria-labelledby="about-title">
+      <header class="section-head reveal">
+        <p class="section-index" aria-hidden="true">01</p>
+        <h2 class="section-title" id="about-title" data-i18n="ABOUT_TITLE">About &amp; Core Competencies</h2>
+      </header>
+
+      <div class="about-grid">
+        <div class="about-main reveal">
+          <h3 class="label" data-i18n="ABOUT_ME">About Me</h3>
+          <div class="about-text" data-slot="about" aria-busy="true">
+            <span class="sk sk-line"></span><span class="sk sk-line"></span><span class="sk sk-line" style="width: 70%"></span>
+          </div>
+        </div>
+        <aside class="about-side reveal">
+          <div class="panel">
+            <h3 class="label" data-i18n="EDUCATION">Education</h3>
+            <div data-slot="education" aria-busy="true"><span class="sk sk-line"></span><span class="sk sk-line" style="width: 50%"></span></div>
+          </div>
+          <div class="panel">
+            <div class="label-row">
+              <h3 class="label" data-i18n="ACHIEVEMENTS_PREVIEW">Highlights</h3>
+              <a class="text-link small-link" href="#achievements" data-i18n="ACHIEVEMENTS_ALL">All achievements</a>
+            </div>
+            <div data-slot="achievements-preview" aria-busy="true"><span class="sk sk-line"></span><span class="sk sk-line" style="width: 60%"></span></div>
+          </div>
+        </aside>
+      </div>
+
+      <div class="skills reveal" id="skills">
+        <div class="label-row">
+          <h3 class="label" data-i18n="SKILLS">Technical Skills</h3>
+          <p class="hint" data-i18n="SKILLS_HINT">Tools with a number are used in projects. Select one to filter the projects.</p>
+        </div>
+        <div data-slot="tools" aria-busy="true"><span class="sk sk-block"></span></div>
       </div>
     </section>
 
-    <!-- ======================= PROYEK UNGGULAN ======================= -->
+    <!-- ======================= FEATURED PROJECTS ======================= -->
     <section class="section shell" id="projects" aria-labelledby="projects-title">
-      <h2 class="section-title" id="projects-title" data-i18n="PROJECTS_TITLE">Featured Projects</h2>
+      <header class="section-head reveal">
+        <p class="section-index" aria-hidden="true">02</p>
+        <h2 class="section-title" id="projects-title" data-i18n="PROJECTS_TITLE">Selected Projects</h2>
+        <p class="section-lead" data-i18n="PROJECTS_LEAD">Case studies in statistical analysis, dashboards, and data-driven applications.</p>
+      </header>
       <div class="filter-status" id="filter-status" aria-live="polite" hidden>
         <p id="filter-text"></p>
         <button class="btn btn-ghost btn-sm" type="button" id="filter-clear" data-i18n="FILTER_CLEAR">Show all projects</button>
@@ -94,39 +152,66 @@
       </div>
     </section>
 
-    <!-- ======================= PROYEK LAINNYA ======================= -->
+    <!-- ======================= MORE PROJECTS ======================= -->
     <section class="section shell" id="more-projects" aria-labelledby="more-title">
-      <h2 class="section-title" id="more-title" data-i18n="MORE_TITLE">More Projects</h2>
+      <header class="section-head reveal">
+        <p class="section-index" aria-hidden="true">03</p>
+        <h2 class="section-title" id="more-title" data-i18n="MORE_TITLE">More Projects</h2>
+      </header>
+      <div class="more-filters" data-slot="more-filters" hidden></div>
       <div class="more-grid" data-slot="more" aria-busy="true"><div class="sk-card sk-short"></div></div>
     </section>
 
-    <!-- ======================= PUBLIKASI ======================= -->
+    <!-- ======================= RESEARCH & PUBLICATIONS ======================= -->
     <section class="section shell" id="publications" aria-labelledby="publications-title">
-      <h2 class="section-title" id="publications-title" data-i18n="PUBLICATIONS_TITLE">Publications</h2>
+      <header class="section-head reveal">
+        <p class="section-index" aria-hidden="true">04</p>
+        <h2 class="section-title" id="publications-title" data-i18n="PUBLICATIONS_TITLE">Research &amp; Publications</h2>
+      </header>
       <div class="pub-list" data-slot="publications" aria-busy="true">
         <div class="sk-card sk-short"></div><div class="sk-card sk-short"></div>
       </div>
     </section>
 
-    <!-- ======================= SERTIFIKAT ======================= -->
-    <section class="section shell" id="certificates" aria-labelledby="certificates-title">
-      <h2 class="section-title" id="certificates-title" data-i18n="CERTIFICATES_TITLE">Certificates</h2>
-      <div data-slot="certificates" aria-busy="true"><div class="sk-card sk-short"></div></div>
+    <!-- ======================= ACHIEVEMENTS & CERTIFICATES ======================= -->
+    <section class="section shell" id="achievements" aria-labelledby="achievements-title">
+      <header class="section-head reveal">
+        <p class="section-index" aria-hidden="true">05</p>
+        <h2 class="section-title" id="achievements-title" data-i18n="ACHIEVEMENTS_TITLE">Achievements &amp; Certificates</h2>
+      </header>
+      <div class="achieve-wrap">
+        <div class="achieve-col">
+          <h3 class="label" data-i18n="ACHIEVEMENTS">Achievements</h3>
+          <div data-slot="achievements" aria-busy="true"><span class="sk sk-line"></span><span class="sk sk-line" style="width: 60%"></span></div>
+        </div>
+        <div class="cert-col" id="certificates">
+          <h3 class="label" id="certificates-title" data-i18n="CERTIFICATES_TITLE">Certificates</h3>
+          <div data-slot="certificates" aria-busy="true"><div class="sk-card sk-short"></div></div>
+        </div>
+      </div>
     </section>
 
-    <!-- ======================= KONTAK ======================= -->
-    <section class="section contact shell" id="contact" aria-labelledby="contact-title">
-      <h2 class="section-title" id="contact-title" data-i18n="CONTACT_TITLE">Let's Connect</h2>
-      <div data-slot="contact" aria-busy="true"><span class="sk sk-line" style="width: 40%; margin-inline: auto"></span></div>
+    <!-- ======================= CONTACT ======================= -->
+    <section class="section shell contact" id="contact" aria-labelledby="contact-title">
+      <div class="contact-card reveal">
+        <p class="section-index" aria-hidden="true">06</p>
+        <h2 class="contact-title" id="contact-title" data-i18n="CONTACT_TITLE">Let's Work With Data That Matters.</h2>
+        <div data-slot="contact" aria-busy="true"><span class="sk sk-line" style="width: 40%; margin-inline: auto"></span></div>
+      </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="shell">
-      <p>© <span data-year></span> <span data-field="profile.NAMA">Febrianggi Caesar Immanuel</span>.</p>
-      <p data-i18n="FOOTER">Built with HTML, CSS, and JavaScript.</p>
+    <div class="shell footer-inner">
+      <p>© <span data-year></span> <span data-field="profile.NAMA">Febrianggi Caesar Immanuel</span></p>
+      <p data-i18n="FOOTER">Built with HTML, CSS, and JavaScript. Hosted on GitHub Pages.</p>
+      <a class="text-link small-link" href="#top" data-i18n="BACK_TO_TOP">Back to top</a>
     </div>
   </footer>
+
+  <a class="to-top" href="#top" data-i18n-aria="BACK_TO_TOP" aria-label="Back to top" hidden>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </a>
 
   <!-- Detail proyek / catatan metodologi -->
   <dialog class="sheet" id="project-dialog" aria-labelledby="project-dialog-title">
