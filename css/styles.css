@@ -292,31 +292,51 @@ button.tech-item[aria-pressed="true"] .tech-name { color: var(--accent-soft); }
   box-shadow: 0 0 0 10px rgba(74, 144, 226, 0.06), 0 0 60px -10px rgba(74, 144, 226, 0.55);
 }
 .photo img { width: 100%; height: 100%; object-fit: cover; }
-/* real photo: background removed, head rises out of the circle, chest fades into the page */
+/* real photo: background removed, layered like a studio card.
+   Layers, back to front: glow circle, glass arch, photo (floats), light line. */
 .photo.has-img {
-  width: min(19rem, 100%); aspect-ratio: 1;
+  --px: 0px; --py: 0px;
+  width: min(20rem, 100%); aspect-ratio: 1;
   border-radius: 0; overflow: visible; background: none; border: 0; box-shadow: none;
   display: block; isolation: isolate;
 }
-.photo.has-img::before {
-  content: ""; position: absolute; z-index: -1;
-  left: 4%; right: 4%; bottom: 3%; aspect-ratio: 1;
-  border-radius: 50%;
-  background: radial-gradient(circle at 50% 38%, rgba(74, 144, 226, 0.34), rgba(25, 27, 31, 0.92) 72%);
-  border: 1px solid rgba(139, 180, 255, 0.3);
-  box-shadow: 0 0 0 10px rgba(74, 144, 226, 0.05), 0 0 70px -12px rgba(74, 144, 226, 0.6);
+.photo-ring, .photo-arch, .photo-line { position: absolute; pointer-events: none; }
+.photo-ring {
+  z-index: -2; inset: 3% 5% 5%; border-radius: 50%;
+  background: radial-gradient(circle at 50% 40%, rgba(74, 144, 226, 0.32), rgba(20, 34, 54, 0.85) 58%, rgba(17, 19, 23, 0.95) 76%);
+  border: 1px solid rgba(139, 180, 255, 0.28);
+  box-shadow: 0 0 0 12px rgba(74, 144, 226, 0.035), 0 0 80px -10px rgba(74, 144, 226, 0.5);
+  transform: translate(calc(var(--px) * -0.4), calc(var(--py) * -0.4));
 }
-.photo.has-img::after {
-  content: ""; position: absolute; left: 8%; right: 8%; bottom: 3%; height: 2px;
-  border-radius: 2px;
-  background: linear-gradient(90deg, transparent, var(--accent), transparent);
-  box-shadow: 0 0 14px 1px rgba(74, 144, 226, 0.7);
+.photo-arch {
+  z-index: -1; left: 21%; right: 21%; top: 19%; bottom: 5%;
+  border-radius: 999px 999px 16px 16px;
+  background: linear-gradient(180deg, rgba(160, 196, 255, 0.13), rgba(160, 196, 255, 0.03) 70%, transparent);
+  border: 1px solid rgba(160, 196, 255, 0.16); border-bottom: 0;
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  transform: translate(calc(var(--px) * -0.2), calc(var(--py) * -0.2));
+}
+.photo-line {
+  left: 0; right: 0; bottom: 5%; height: 2px; border-radius: 2px;
+  background: linear-gradient(90deg, transparent, rgba(74, 144, 226, 0.6) 15%, #8bb4ff 50%, rgba(74, 144, 226, 0.6) 85%, transparent);
+  box-shadow: 0 0 18px 2px rgba(74, 144, 226, 0.55);
+  animation: photo-glow 4.8s ease-in-out infinite;
 }
 .photo.has-img img {
   position: relative; display: block; width: 100%; height: auto;
   object-fit: contain;
-  -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent 97%);
-  mask-image: linear-gradient(to bottom, #000 70%, transparent 97%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 74%, transparent 95%);
+  mask-image: linear-gradient(to bottom, #000 74%, transparent 95%);
+  filter: drop-shadow(0 18px 24px rgba(0, 0, 0, 0.35));
+  translate: var(--px) var(--py);
+  animation: photo-float 4.8s ease-in-out infinite;
+  transition: translate 0.25s ease-out;
+}
+@keyframes photo-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+@keyframes photo-glow { 0%, 100% { opacity: 0.75; } 50% { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .photo.has-img img, .photo-line { animation: none; }
+  .photo.has-img img, .photo-ring, .photo-arch { translate: none; transform: none; }
 }
 .photo-initials { font-weight: 800; font-size: clamp(3rem, 7vw, 4.25rem); color: var(--accent-soft); letter-spacing: 0.02em; }
 .photo-note { margin-top: var(--s2); font-size: 0.8rem; color: var(--muted); }

@@ -138,7 +138,28 @@ function renderProfile(el, [profile, contact]) {
 
   const photo = h("div", { class: profile.FOTO ? "photo has-img" : "photo" });
   if (profile.FOTO) {
-    photo.append(h("img", { src: profile.FOTO, alt: profile.FOTO_ALT || profile.NAMA, width: 720, height: 720, fetchpriority: "high", decoding: "async" }));
+    photo.append(
+      h("span", { class: "photo-ring", "aria-hidden": "true" }),
+      h("span", { class: "photo-arch", "aria-hidden": "true" }),
+      h("img", { src: profile.FOTO, alt: profile.FOTO_ALT || profile.NAMA, width: 720, height: 720, fetchpriority: "high", decoding: "async" }),
+      h("span", { class: "photo-line", "aria-hidden": "true" }));
+    // gentle depth: layers drift a few pixels with the pointer (mouse only, off when motion is reduced)
+    if (matchMedia("(hover: hover) and (pointer: fine)").matches && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      const hero = document.querySelector(".hero") || document.body;
+      let raf = 0;
+      hero.addEventListener("pointermove", e => {
+        if (raf) return;
+        raf = requestAnimationFrame(() => {
+          raf = 0;
+          const r = photo.getBoundingClientRect();
+          const dx = Math.max(-1, Math.min(1, (e.clientX - (r.left + r.width / 2)) / (r.width * 1.5)));
+          const dy = Math.max(-1, Math.min(1, (e.clientY - (r.top + r.height / 2)) / (r.height * 1.5)));
+          photo.style.setProperty("--px", `${(dx * 8).toFixed(1)}px`);
+          photo.style.setProperty("--py", `${(dy * 6).toFixed(1)}px`);
+        });
+      });
+      hero.addEventListener("pointerleave", () => { photo.style.setProperty("--px", "0px"); photo.style.setProperty("--py", "0px"); });
+    }
   } else {
     photo.append(h("span", { class: "photo-initials", "aria-hidden": "true", text: profile.INISIAL || "" }));
   }
