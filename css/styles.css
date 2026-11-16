@@ -292,7 +292,32 @@ button.tech-item[aria-pressed="true"] .tech-name { color: var(--accent-soft); }
   box-shadow: 0 0 0 10px rgba(74, 144, 226, 0.06), 0 0 60px -10px rgba(74, 144, 226, 0.55);
 }
 .photo img { width: 100%; height: 100%; object-fit: cover; }
-.photo.has-img { background: #e9ecef; }
+/* real photo: background removed, head rises out of the circle, chest fades into the page */
+.photo.has-img {
+  width: min(19rem, 100%); aspect-ratio: 1;
+  border-radius: 0; overflow: visible; background: none; border: 0; box-shadow: none;
+  display: block; isolation: isolate;
+}
+.photo.has-img::before {
+  content: ""; position: absolute; z-index: -1;
+  left: 4%; right: 4%; bottom: 3%; aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 38%, rgba(74, 144, 226, 0.34), rgba(25, 27, 31, 0.92) 72%);
+  border: 1px solid rgba(139, 180, 255, 0.3);
+  box-shadow: 0 0 0 10px rgba(74, 144, 226, 0.05), 0 0 70px -12px rgba(74, 144, 226, 0.6);
+}
+.photo.has-img::after {
+  content: ""; position: absolute; left: 8%; right: 8%; bottom: 3%; height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  box-shadow: 0 0 14px 1px rgba(74, 144, 226, 0.7);
+}
+.photo.has-img img {
+  position: relative; display: block; width: 100%; height: auto;
+  object-fit: contain;
+  -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent 97%);
+  mask-image: linear-gradient(to bottom, #000 70%, transparent 97%);
+}
 .photo-initials { font-weight: 800; font-size: clamp(3rem, 7vw, 4.25rem); color: var(--accent-soft); letter-spacing: 0.02em; }
 .photo-note { margin-top: var(--s2); font-size: 0.8rem; color: var(--muted); }
 .profile-name { margin-top: var(--s5); font-weight: 800; font-size: 1.45rem; line-height: 1.25; }
@@ -316,6 +341,7 @@ button.tech-item[aria-pressed="true"] .tech-name { color: var(--accent-soft); }
   .hero-title { text-align: center; }
   .hero-grid { grid-template-columns: minmax(0, 1fr); }
   .photo { width: min(13rem, 70%); }
+  .photo.has-img { width: min(17rem, 82%); }
 }
 
 /* ---------------------------------------------------------------------
